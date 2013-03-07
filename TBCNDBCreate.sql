@@ -18,7 +18,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Address
 ENGINE = InnoDB;
 
 
--- Table tbcndb.Child_has_EmegencyContact
+-- (Link)Table tbcndb.Child_has_EmegencyContact
 CREATE  TABLE IF NOT EXISTS tbcndb.Child_has_EmegencyContact 
 (
   ContactID INT NOT NULL ,
@@ -89,7 +89,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Employee
   Holidays_Taken SMALLINT NULL ,
   HoursPerWeek SMALLINT NOT NULL ,
   HomeAddress VARCHAR(255) NOT NULL ,
-  DateOfBirth DATE NOT NULL ,
+  DOB DATE NOT NULL ,
   Salary DOUBLE NULL ,
   Home_Phone VARCHAR(12) NOT NULL ,
   Mobile_Phone VARCHAR(11) NULL ,
@@ -128,7 +128,8 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Department
   Weekly_Fee DECIMAL NOT NULL ,
   Daily_Fee DECIMAL NOT NULL ,
   Tea_Fee DECIMAL NULL ,
-  PRIMARY KEY (Min_Age, Max_Age) 
+  PRIMARY KEY (Min_Age, Max_Age) ,
+  CONSTRAINT CHECK (Weekly_Fee > 0 AND Daily_Fee > 0 AND Tea_Fee > 0) -- 'Incompatible with MySQL, use Trigger to emulate'
 )
 ENGINE = InnoDB;
 
@@ -159,8 +160,8 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Room
 ENGINE = InnoDB;
 
 
--- Table tbcndb.Child_has_Parent/Guardian
-CREATE  TABLE IF NOT EXISTS tbcndb.Child_has_Parent/Guardian 
+-- (Link)Table tbcndb.Child_has_Parent_Guardian
+CREATE  TABLE IF NOT EXISTS tbcndb.Child_has_Parent_Guardian 
 (
   Parent_ID INT NOT NULL ,
   ChildID VARCHAR(8) NOT NULL ,
@@ -196,7 +197,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Child
     ON UPDATE CASCADE,
   CONSTRAINT fk_Parent_Guardian
     FOREIGN KEY (Parent_Guardian )
-    REFERENCES tbcndb.Child_has_Parent/Guardian (Parent_ID )
+    REFERENCES tbcndb.Child_has_Parent_Guardian (Parent_ID )
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT fk_Sibling
@@ -218,7 +219,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Child
 ENGINE = InnoDB;
 
 
--- Table tbcndb.Parent/Guardian
+-- Table tbcndb.Parent_Guardian
 CREATE  TABLE IF NOT EXISTS tbcndb.Parent_Guardian 
 (
   Parent_ID INT NOT NULL AUTO_INCREMENT ,
@@ -237,7 +238,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Parent_Guardian
   PRIMARY KEY (Parent_ID) ,
   CONSTRAINT fk_Spouse
     FOREIGN KEY (Spouse )
-    REFERENCES tbcndb.Parent/Guardian (Parent_ID )
+    REFERENCES tbcndb.Parent_Guardian (Parent_ID )
     ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_Home_Address
@@ -252,7 +253,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Parent_Guardian
     ON UPDATE CASCADE,
   CONSTRAINT fk_Children
     FOREIGN KEY ()
-    REFERENCES tbcndb.Child_has_Parent/Guardian ()
+    REFERENCES tbcndb.Child_has_Parent_Guardian ()
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 )
@@ -285,10 +286,10 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Invoice
     ON UPDATE NO ACTION,
   CONSTRAINT fk_Paying_Parent
     FOREIGN KEY (Paying_Parent )
-    REFERENCES tbcndb.Parent/Guardian (Parent_ID )
+    REFERENCES tbcndb.Parent_Guardian (Parent_ID )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
-  CONSTRAINT Check (Percent_Discount >= 0 OR Percent_Discount <= 100) COMMENT 'Incompatible with MySQL, use Trigger to emulate'
+  CONSTRAINT Check (Percent_Discount >= 0 OR Percent_Discount <= 100)  -- 'Incompatible with MySQL, use Trigger to emulate'
 )
 ENGINE = InnoDB
 
@@ -309,6 +310,22 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Supplier_Invoice
   PRIMARY KEY (Supplier_InvoiceID) 
 )
 ENGINE = InnoDB;
+
+--DOB Constraint Trigger 
+CREATE OR REPLACE TRIGGER check_birth_date
+  BEFORE INSERT OR UPDATE ON Employee, Child,  
+  FOR EACH ROW
+BEGIN
+  IF( :new.DOB < date '1900-01-01' or 
+      :new.DOB > sysdate )
+  THEN
+    RAISE_APPLICATION_ERROR( 
+      -20001, 
+      'Employee or Child date of birth must be later than Jan 1, 1900 and earlier than today' 
+	 );
+  END IF;
+END;
+
 
 USE tbcndb ;
 
