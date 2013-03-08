@@ -1,9 +1,4 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
-
-CREATE SCHEMA IF NOT EXISTS tbcndb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE tbcndb ;
+USE tbcndb;
 
 -- Table tbcndb.Address
 CREATE  TABLE IF NOT EXISTS tbcndb.Address 
@@ -58,8 +53,8 @@ CREATE  TABLE IF NOT EXISTS tbcndb.EmegencyContact
   CONSTRAINT fk_Child
     FOREIGN KEY (Child )
     REFERENCES tbcndb.Child_has_EmegencyContact (ChildID )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 )
 ENGINE = InnoDB;
 
@@ -106,7 +101,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Employee
   CONSTRAINT fk_Emergency_Contact
     FOREIGN KEY (Emergency_Contact )
     REFERENCES tbcndb.EmegencyContact (Contact_ID )
-    ON DELETE RESTRICT
+    ON DELETE CASCADE -- Cascade but use participation constraint to keep 1?
     ON UPDATE CASCADE,
   CONSTRAINT fk_Medical_Information
     FOREIGN KEY (Medical_Information )
@@ -119,6 +114,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Employee
     ON DELETE RESTRICT
     ON UPDATE CASCADE ,
   CONSTRAINT CHECK (Holidays_Taken <= Holidays_Entitled) -- Use trigger for MySQL
+  --CONSTRAINT (PROJECT Emergency_Contact OVER Contact) DIFFERENCE (PROJECT Employee OVER Emergency_Contact) IS empty -- At least 1 parent
 )
 ENGINE = InnoDB;
 
@@ -201,7 +197,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Child
   CONSTRAINT fk_Parent_Guardian
     FOREIGN KEY (Parent_Guardian )
     REFERENCES tbcndb.Child_has_Parent_Guardian (Parent_ID )
-    ON DELETE RESTRICT
+    ON DELETE CASCADE --Cascade, but use Participation to keep 1
     ON UPDATE CASCADE,
   CONSTRAINT fk_Emergency_Contact
     FOREIGN KEY (Emergency_Contact )
@@ -213,6 +209,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Child
     REFERENCES tbcndb.Medical_Informaiton (MedicalID )
     ON DELETE RESTRICT
     ON UPDATE CASCADE
+  -- CONSTRAINT (PROJECT Child OVER Parent_Guardian) DIFFERENCE (PROJECT Parent_Guardian OVER ParentID) IS empty --at least 1 parent
 )
 ENGINE = InnoDB;
 
@@ -335,9 +332,3 @@ END $$
 
 DELIMITER ;
 
-USE tbcndb ;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
