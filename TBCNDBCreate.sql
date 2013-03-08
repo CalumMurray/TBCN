@@ -114,7 +114,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Employee
     ON DELETE RESTRICT
     ON UPDATE CASCADE ,
   CONSTRAINT CHECK (Holidays_Taken <= Holidays_Entitled) -- Use trigger for MySQL
-  --CONSTRAINT (PROJECT Emergency_Contact OVER Contact) DIFFERENCE (PROJECT Employee OVER Emergency_Contact) IS empty -- At least 1 parent
+  -- CONSTRAINT (PROJECT Emergency_Contact OVER Contact) DIFFERENCE (PROJECT Employee OVER Emergency_Contact) IS empty -- At least 1 parent
 )
 ENGINE = InnoDB;
 
@@ -197,7 +197,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Child
   CONSTRAINT fk_Parent_Guardian
     FOREIGN KEY (Parent_Guardian )
     REFERENCES tbcndb.Child_has_Parent_Guardian (Parent_ID )
-    ON DELETE CASCADE --Cascade, but use Participation to keep 1
+    ON DELETE CASCADE -- Cascade, but use Participation to keep 1
     ON UPDATE CASCADE,
   CONSTRAINT fk_Emergency_Contact
     FOREIGN KEY (Emergency_Contact )
@@ -250,8 +250,8 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Parent_Guardian
     FOREIGN KEY (Children)
     REFERENCES tbcndb.Child_has_Parent_Guardian (ChildID)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION ,
-  CONSTRAINT SELECT (JOIN Emergency_Contact AND Parent_Guardian WHERE ParentID = ContactID) IS empty -- FIXME
+    ON UPDATE NO ACTION
+  -- CONSTRAINT SELECT (JOIN Emergency_Contact AND Parent_Guardian WHERE ParentID = ContactID) IS empty -- Parent can't be Emergency_Contact
 )
 ENGINE = InnoDB;
 
