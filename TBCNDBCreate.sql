@@ -82,7 +82,9 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Employee
   National_Insurance_Number VARCHAR(9) NOT NULL ,
   FirstName VARCHAR(45) NOT NULL ,
   LastName VARCHAR(45) NOT NULL ,
+  Position VARCHAR(48) NOT NULL ,
   Gender ENUM('M', 'F') NOT NULL ,
+  Image BLOB NULL,
   Date_Started DATE NOT NULL ,
   Date_Finished DATE NULL ,
   PVG_Date DATE NOT NULL ,
@@ -177,13 +179,13 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Child
   Birth_Certificate_Number VARCHAR(8) NOT NULL ,
   First_Name VARCHAR(50) NOT NULL ,
   Last_Name VARCHAR(45) NOT NULL ,
+  Image BLOB NULL,
   Gender ENUM('M','F') NOT NULL ,
   DOB DATE NOT NULL ,
   First_Language VARCHAR(45) NULL ,
   Room_Attending VARCHAR(45) NOT NULL ,
   Parent_Guardian INT NOT NULL ,
   Emergency_Contact INT NOT NULL ,
-  Sibling VARCHAR(8) NULL ,
   Date_Applied DATE NOT NULL ,
   Date_Left DATE NULL ,
   Days_Per_Week TINYINT NOT NULL ,
@@ -200,11 +202,6 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Child
     FOREIGN KEY (Parent_Guardian )
     REFERENCES tbcndb.Child_has_Parent_Guardian (Parent_ID )
     ON DELETE RESTRICT
-    ON UPDATE CASCADE,
-  CONSTRAINT fk_Sibling
-    FOREIGN KEY (Sibling )
-    REFERENCES tbcndb.Child (Birth_Certificate_Number )
-    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_Emergency_Contact
     FOREIGN KEY (Emergency_Contact )
