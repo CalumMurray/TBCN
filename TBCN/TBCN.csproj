@@ -54,6 +54,18 @@
     <Compile Include="ChildInfo.Designer.cs">
       <DependentUpon>ChildInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeInfo.Designer.cs">
+      <DependentUpon>EmployeeInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParentInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParentInfo.Designer.cs">
+      <DependentUpon>ParentInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +88,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ChildInfo.resx">
       <DependentUpon>ChildInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeInfo.resx">
+      <DependentUpon>EmployeeInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParentInfo.resx">
+      <DependentUpon>ParentInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditEmployee.resx">
       <DependentUpon>EditEmployee.cs</DependentUpon>
