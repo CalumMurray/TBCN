@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace TBCN
 {
-    public partial class Form1 : Form
+    public partial class ChildInfo : Form
     {
-        public Form1()
+        public ChildInfo()
         {
             InitializeComponent();
         }
