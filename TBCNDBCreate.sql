@@ -1,7 +1,9 @@
-USE tbcndb;
+CREATE DATABASE IF NOT EXISTS 12ac3d03;
 
--- Table tbcndb.Address
-CREATE  TABLE IF NOT EXISTS tbcndb.Address 
+USE 12ac3d03;
+
+-- Table 12ac3d03.Address
+CREATE  TABLE IF NOT EXISTS 12ac3d03.Address 
 (
   Address_1 VARCHAR(255) NOT NULL ,
   City VARCHAR(45) NULL ,
@@ -13,8 +15,8 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Address
 ENGINE = InnoDB;
 
 
--- (Link)Table tbcndb.Child_has_EmegencyContact
-CREATE  TABLE IF NOT EXISTS tbcndb.Child_has_EmegencyContact 
+-- (Link)Table 12ac3d03.Child_has_Emergency_Contact
+CREATE  TABLE IF NOT EXISTS 12ac3d03.Child_has_Emergency_Contact 
 (
   ContactID INT NOT NULL ,
   ChildID VARCHAR(8) NOT NULL ,
@@ -23,44 +25,8 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Child_has_EmegencyContact
 ENGINE = InnoDB;
 
 
--- Table tbcndb.EmegencyContact
-CREATE  TABLE IF NOT EXISTS tbcndb.EmegencyContact 
-(
-  Contact_ID INT NOT NULL AUTO_INCREMENT ,
-  Title VARCHAR(4) NULL ,
-  Firs_tName VARCHAR(45) NOT NULL ,
-  Last_Name VARCHAR(45) NOT NULL ,
-  Relationship VARCHAR(45) NULL ,
-  Home_Phone VARCHAR(12) NOT NULL ,
-  Work_Phone VARCHAR(12) NULL ,
-  Mobile_Phone VARCHAR(11) NULL ,
-  Address VARCHAR(255) NOT NULL ,
-  Work_Address VARCHAR(255) NOT NULL ,
-  Gender ENUM('M', 'F'),
-  Email VARCHAR(45) NULL CHECK (Email LIKE '*@*.*') , -- Do this at Database level?
-  Child VARCHAR(8) NOT NULL ,
-  PRIMARY KEY (Contact_ID) ,
-  CONSTRAINT fk_Address
-    FOREIGN KEY (Address )
-    REFERENCES tbcndb.Address (Address_1 )
-    ON DELETE RESTRICT
-    ON UPDATE CASCADE,
-  CONSTRAINT fk_Work_Address
-    FOREIGN KEY (Work_Address )
-    REFERENCES tbcndb.Address (Address_1 )
-    ON DELETE RESTRICT
-    ON UPDATE CASCADE,
-  CONSTRAINT fk_Child
-    FOREIGN KEY (Child )
-    REFERENCES tbcndb.Child_has_EmegencyContact (ChildID )
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-)
-ENGINE = InnoDB;
-
-
--- Table tbcndb.Medical_Informaiton
-CREATE  TABLE IF NOT EXISTS tbcndb.Medical_Information 
+-- Table 12ac3d03.Medical_Information
+CREATE  TABLE IF NOT EXISTS 12ac3d03.Medical_Information 
 (
   MedicalID INT NOT NULL ,
   Allergies TEXT NULL ,
@@ -71,56 +37,13 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Medical_Information
 ENGINE = InnoDB;
 
 
--- Table tbcndb.Employee
-CREATE  TABLE IF NOT EXISTS tbcndb.Employee 
-(
-  National_Insurance_Number VARCHAR(9) NOT NULL ,
-  FirstName VARCHAR(45) NOT NULL ,
-  LastName VARCHAR(45) NOT NULL ,
-  Position VARCHAR(48) NOT NULL ,
-  Gender ENUM('M', 'F') NOT NULL ,
-  Image BLOB NULL,
-  Date_Started DATE NOT NULL ,
-  Date_Finished DATE NULL ,
-  PVG_Date DATE NOT NULL ,
-  Holidays_Entitled SMALLINT NOT NULL ,
-  Holidays_Taken SMALLINT NULL ,
-  HoursPerWeek SMALLINT NOT NULL ,
-  HomeAddress VARCHAR(255) NOT NULL ,
-  DOB DATE NOT NULL ,
-  Salary DOUBLE NULL ,
-  Home_Phone VARCHAR(12) NOT NULL ,
-  Mobile_Phone VARCHAR(11) NULL ,
-  Email VARCHAR(45) NOT NULL CHECK (Email LIKE '*@*.*') ,
-  Training TEXT NULL ,
-  Medical_Information INT NOT NULL ,
-  Emergency_Contact INT NOT NULL ,
-  Employeecol VARCHAR(45) NULL ,
-  Employeecol1 VARCHAR(45) NULL ,
-  PRIMARY KEY (National_Insurance_Number) ,
-  CONSTRAINT fk_Emergency_Contact
-    FOREIGN KEY (Emergency_Contact )
-    REFERENCES tbcndb.EmegencyContact (Contact_ID )
-    ON DELETE CASCADE -- Cascade but use participation constraint to keep 1?
-    ON UPDATE CASCADE,
-  CONSTRAINT fk_Medical_Information
-    FOREIGN KEY (Medical_Information )
-    REFERENCES tbcndb.Medical_Informaiton (MedicalID )
-    ON DELETE RESTRICT
-    ON UPDATE CASCADE,
-  CONSTRAINT fk_Address
-    FOREIGN KEY (HomeAddress )
-    REFERENCES tbcndb.Address (Address_1 )
-    ON DELETE RESTRICT
-    ON UPDATE CASCADE ,
-  CONSTRAINT CHECK (Holidays_Taken <= Holidays_Entitled) -- Use trigger for MySQL
-  -- CONSTRAINT (PROJECT Emergency_Contact OVER Contact) DIFFERENCE (PROJECT Employee OVER Emergency_Contact) IS empty -- At least 1 parent
-)
-ENGINE = InnoDB;
 
 
--- Table tbcndb.Department
-CREATE  TABLE IF NOT EXISTS tbcndb.Department 
+
+
+
+-- Table 12ac3d03.Department
+CREATE  TABLE IF NOT EXISTS 12ac3d03.Department 
 (
   Min_Age TINYINT NOT NULL ,
   Max_Age TINYINT NOT NULL ,
@@ -133,34 +56,78 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Department
 ENGINE = InnoDB;
 
 
--- Table tbcndb.Room
-CREATE  TABLE IF NOT EXISTS tbcndb.Room 
+-- Table 12ac3d03.Room
+CREATE  TABLE IF NOT EXISTS 12ac3d03.Room 
 (
-  Name VARCHAR(45) NOT NULL ,
+  RoomName VARCHAR(45) NOT NULL ,
   Max_Capacity INT NOT NULL ,
   Minimum_Ratio INT NOT NULL ,
   Minimum_Age TINYINT NOT NULL ,
   Maximum_Age TINYINT NOT NULL ,
   Current_Capacity INT NOT NULL ,
   Description TEXT NULL ,
-  Supervisors VARCHAR(9) NOT NULL ,
-  PRIMARY KEY (Name) ,
+  Supervisors VARCHAR(9) NULL,
+  PRIMARY KEY (RoomName),
   CONSTRAINT fk_Supervisors
     FOREIGN KEY (Supervisors )
-    REFERENCES tbcndb.Employee (National_Insurance_Number )
+    REFERENCES 12ac3d03.Employee (National_Insurance_Number )
     ON DELETE SET NULL
-    ON UPDATE CASCADE,
+    ON UPDATE CASCADE ,
   CONSTRAINT fk_Department
     FOREIGN KEY (Maximum_Age , Minimum_Age )
-    REFERENCES tbcndb.Department (Max_Age , Min_Age )
+    REFERENCES 12ac3d03.department (Max_Age , Min_Age )
     ON DELETE RESTRICT
     ON UPDATE CASCADE
 )
 ENGINE = InnoDB;
 
+-- Table 12ac3d03.Employee
+CREATE  TABLE IF NOT EXISTS 12ac3d03.Employee 
+(
+  National_Insurance_Number VARCHAR(9) NOT NULL ,
+  FirstName VARCHAR(45) NOT NULL ,
+  LastName VARCHAR(45) NOT NULL ,
+  Position VARCHAR(48) NOT NULL ,
+  Gender ENUM('M', 'F') NOT NULL ,
+  Image BLOB NULL,
+  Date_Started DATE NOT NULL ,
+  Date_Finished DATE NULL ,
+  PVG_Date DATE NOT NULL ,
+  Holidays_Entitled SMALLINT NOT NULL ,
+  Holidays_Taken SMALLINT NULL ,
+  Hours_Per_Week SMALLINT NOT NULL ,
+  Home_Address VARCHAR(255) NOT NULL ,
+  DOB DATE NOT NULL ,
+  Salary DOUBLE NULL ,
+  Home_Phone VARCHAR(12) NOT NULL ,
+  Mobile_Phone VARCHAR(11) NULL ,
+  Email VARCHAR(45) NOT NULL CHECK (Email LIKE '*@*.*') ,
+  Training TEXT NULL ,
+  Medical_Information INT NOT NULL ,
+  Emergency_Contact INT NOT NULL ,
+  PRIMARY KEY (National_Insurance_Number) ,
+ CONSTRAINT fk_Employee_Emergency_Contact
+    FOREIGN KEY (Emergency_Contact )
+    REFERENCES 12ac3d03.Emergency_Contact (Contact_ID )
+    ON DELETE CASCADE -- Cascade but use participation constraint to keep 1?
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_Employee_Medical_Information
+    FOREIGN KEY (Medical_Information )
+    REFERENCES 12ac3d03.Medical_Information (MedicalID )
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_Address1
+    FOREIGN KEY (Home_Address )
+    REFERENCES 12ac3d03.Address (Address_1 )
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE ,
+  CONSTRAINT CHECK (Holidays_Taken <= Holidays_Entitled) -- Use trigger for MySQL
+  -- CONSTRAINT (PROJECT Emergency_Contact OVER Contact) DIFFERENCE (PROJECT Employee OVER Emergency_Contact) IS empty -- At least 1 parent
+)
+ENGINE = InnoDB;
 
--- (Link)Table tbcndb.Child_has_Parent_Guardian
-CREATE  TABLE IF NOT EXISTS tbcndb.Child_has_Parent_Guardian 
+-- (Link)Table 12ac3d03.Child_has_Parent_Guardian
+CREATE  TABLE IF NOT EXISTS 12ac3d03.Child_has_Parent_Guardian 
 (
   Parent_ID INT NOT NULL ,
   ChildID VARCHAR(8) NOT NULL ,
@@ -169,8 +136,8 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Child_has_Parent_Guardian
 ENGINE = InnoDB;
 
 
--- Table tbcndb.Child
-CREATE  TABLE IF NOT EXISTS tbcndb.Child 
+-- Table 12ac3d03.Child
+CREATE  TABLE IF NOT EXISTS 12ac3d03.Child 
 (
   Birth_Certificate_Number VARCHAR(8) NOT NULL ,
   First_Name VARCHAR(50) NOT NULL ,
@@ -179,7 +146,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Child
   Gender ENUM('M','F') NOT NULL ,
   DOB DATE NOT NULL ,
   First_Language VARCHAR(45) NULL ,
-  Room_Attending VARCHAR(45) NOT NULL ,
+  Room_Attending VARCHAR(45) NULL ,
   Parent_Guardian INT NOT NULL ,
   Emergency_Contact INT NOT NULL ,
   Date_Applied DATE NOT NULL ,
@@ -191,22 +158,22 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Child
   PRIMARY KEY (Birth_Certificate_Number) ,
   CONSTRAINT fk_Room_Attending
     FOREIGN KEY (Room_Attending )
-    REFERENCES tbcndb.Room (Name )
+    REFERENCES 12ac3d03.Room (RoomName )
     ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_Parent_Guardian
     FOREIGN KEY (Parent_Guardian )
-    REFERENCES tbcndb.Child_has_Parent_Guardian (Parent_ID )
+    REFERENCES 12ac3d03.Child_has_Parent_Guardian (Parent_ID )
     ON DELETE CASCADE -- Cascade, but use Participation to keep 1
     ON UPDATE CASCADE,
-  CONSTRAINT fk_Emergency_Contact
+  CONSTRAINT fk_Emergency_Contact2
     FOREIGN KEY (Emergency_Contact )
-    REFERENCES tbcndb.Child_has_EmegencyContact (ContactID )
+    REFERENCES 12ac3d03.Child_has_Emergency_Contact (ContactID )
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
-  CONSTRAINT fk_Medical_Information
+  CONSTRAINT fk_Medical_Information2
     FOREIGN KEY (Medical_Information )
-    REFERENCES tbcndb.Medical_Informaiton (MedicalID )
+    REFERENCES 12ac3d03.Medical_Information (MedicalID )
     ON DELETE RESTRICT
     ON UPDATE CASCADE
   -- CONSTRAINT (PROJECT Child OVER Parent_Guardian) DIFFERENCE (PROJECT Parent_Guardian OVER ParentID) IS empty --at least 1 parent
@@ -214,8 +181,8 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Child
 ENGINE = InnoDB;
 
 
--- Table tbcndb.Parent_Guardian
-CREATE  TABLE IF NOT EXISTS tbcndb.Parent_Guardian 
+-- Table 12ac3d03.Parent_Guardian
+CREATE  TABLE IF NOT EXISTS 12ac3d03.Parent_Guardian 
 (
   Parent_ID INT NOT NULL AUTO_INCREMENT ,
   First_Name VARCHAR(45) NOT NULL ,
@@ -233,30 +200,31 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Parent_Guardian
   PRIMARY KEY (Parent_ID) ,
   CONSTRAINT fk_Spouse
     FOREIGN KEY (Spouse )
-    REFERENCES tbcndb.Parent_Guardian (Parent_ID )
+    REFERENCES 12ac3d03.Parent_Guardian (Parent_ID )
     ON DELETE SET NULL
     ON UPDATE CASCADE,
-  CONSTRAINT fk_Home_Address
+  CONSTRAINT fk_Parent_Home_Address
     FOREIGN KEY (Home_Address )
-    REFERENCES tbcndb.Address (Address_1 )
+    REFERENCES 12ac3d03.Address (Address_1 )
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
-  CONSTRAINT fk_Work_Address
+  CONSTRAINT fk_Parent_Work_Address
     FOREIGN KEY (Work_Address )
-    REFERENCES tbcndb.Address (Address_1 )
+    REFERENCES 12ac3d03.Address (Address_1 )
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
-  CONSTRAINT fk_Children
+  CONSTRAINT fk_Parents_Children
     FOREIGN KEY (Children)
-    REFERENCES tbcndb.Child_has_Parent_Guardian (ChildID)
+    REFERENCES 12ac3d03.Child_has_Parent_Guardian (ChildID)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
   -- CONSTRAINT SELECT (JOIN Emergency_Contact AND Parent_Guardian WHERE ParentID = ContactID) IS empty -- Parent can't be Emergency_Contact
+ 
 )
 ENGINE = InnoDB;
 
--- Table tbcndb.Invoice
-CREATE  TABLE IF NOT EXISTS tbcndb.Invoice 
+-- Table 12ac3d03.Invoice
+CREATE  TABLE IF NOT EXISTS 12ac3d03.Invoice 
 (
   InvoiceID INT NOT NULL AUTO_INCREMENT ,
   Child VARCHAR(8) NOT NULL ,
@@ -275,22 +243,23 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Invoice
   Payment_Method ENUM('Card', 'Cash', 'Checque', 'BACS', 'Voucher') NOT NULL ,
   Total DECIMAL NOT NULL ,
   PRIMARY KEY (InvoiceID) ,
-  CONSTRAINT fk_Child
+  CONSTRAINT fk_Invoice_Child
     FOREIGN KEY (Child )
-    REFERENCES tbcndb.Child (Birth_Certificate_Number )
+    REFERENCES 12ac3d03.Child (Birth_Certificate_Number )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT fk_Paying_Parent
     FOREIGN KEY (Paying_Parent )
-    REFERENCES tbcndb.Parent_Guardian (Parent_ID )
+    REFERENCES 12ac3d03.Parent_Guardian (Parent_ID )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
+ 
 )
 ENGINE = InnoDB;
 
 
--- Table tbcndb.Supplier.  Neglected - chosen to focus on smaller portion of problem
-CREATE  TABLE IF NOT EXISTS tbcndb.Supplier 
+-- Table 12ac3d03.Supplier.  Neglected - chosen to focus on smaller portion of problem
+CREATE  TABLE IF NOT EXISTS 12ac3d03.Supplier 
 (
   SupplierID INT NOT NULL AUTO_INCREMENT ,
   PRIMARY KEY (SupplierID)
@@ -298,11 +267,46 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Supplier
 ENGINE = InnoDB;
 
 
--- Table tbcndb.Supplier_Invoice.  Neglected - chosen to focus on smaller portion of problem
-CREATE  TABLE IF NOT EXISTS tbcndb.Supplier_Invoice 
+-- Table 12ac3d03.Supplier_Invoice.  Neglected - chosen to focus on smaller portion of problem
+CREATE  TABLE IF NOT EXISTS 12ac3d03.Supplier_Invoice 
 (
   Supplier_InvoiceID INT NOT NULL AUTO_INCREMENT ,
   PRIMARY KEY (Supplier_InvoiceID) 
+)
+ENGINE = InnoDB;
+
+-- Table 12ac3d03.Emergency_Contact
+CREATE  TABLE IF NOT EXISTS 12ac3d03.Emergency_Contact 
+(
+  Contact_ID INT NOT NULL  ,
+  Title VARCHAR(4) NULL ,
+  Firs_tName VARCHAR(45) NOT NULL ,
+  Last_Name VARCHAR(45) NOT NULL ,
+  Relationship VARCHAR(45) NULL ,
+  Home_Phone VARCHAR(12) NOT NULL ,
+  Work_Phone VARCHAR(12) NULL ,
+  Mobile_Phone VARCHAR(11) NULL ,
+  Address VARCHAR(255) NOT NULL ,
+  Work_Address VARCHAR(255) NOT NULL ,
+  Gender ENUM('M', 'F'),
+  Email VARCHAR(45) NULL CHECK (Email LIKE '*@*.*') , -- Do this at Database level?
+  Child VARCHAR(8) NOT NULL ,
+  PRIMARY KEY (Contact_ID) ,
+   CONSTRAINT fk_EC_Address
+    FOREIGN KEY (Address )
+    REFERENCES 12ac3d03.Address (Address_1 )
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_EC_Work_Address
+    FOREIGN KEY (Work_Address )
+    REFERENCES 12ac3d03.Address (Address_1 )
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_EC_Child
+    FOREIGN KEY (Child )
+    REFERENCES 12ac3d03.Child_has_Emergency_Contact (ChildID )
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 )
 ENGINE = InnoDB;
 
