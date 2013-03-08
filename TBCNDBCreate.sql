@@ -42,7 +42,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.EmegencyContact
   Address VARCHAR(255) NOT NULL ,
   Work_Address VARCHAR(255) NOT NULL ,
   Gender ENUM('M', 'F'),
-  Email VARCHAR(45) NULL ,
+  Email VARCHAR(45) NULL CHECK (Email LIKE '*@*.*') , -- Do this at Database level?
   Child VARCHAR(8) NOT NULL ,
   PRIMARY KEY (Contact_ID) ,
   CONSTRAINT fk_Address
@@ -59,7 +59,8 @@ CREATE  TABLE IF NOT EXISTS tbcndb.EmegencyContact
     FOREIGN KEY (Child )
     REFERENCES tbcndb.Child_has_EmegencyContact (ChildID )
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION
+)
 ENGINE = InnoDB;
 
 
@@ -93,7 +94,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Employee
   Salary DOUBLE NULL ,
   Home_Phone VARCHAR(12) NOT NULL ,
   Mobile_Phone VARCHAR(11) NULL ,
-  Email VARCHAR(45) NOT NULL ,
+  Email VARCHAR(45) NOT NULL CHECK (Email LIKE '*@*.*') ,
   Training TEXT NULL ,
   Medical_Information INT NOT NULL ,
   Emergency_Contact INT NOT NULL ,
@@ -114,7 +115,8 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Employee
     FOREIGN KEY (HomeAddress )
     REFERENCES tbcndb.Address (Address_1 )
     ON DELETE RESTRICT
-    ON UPDATE CASCADE
+    ON UPDATE CASCADE ,
+  CONSTRAINT CHECK (Holidays_Taken <= Holidays_Entitled) -- Use trigger for MySQL
 )
 ENGINE = InnoDB;
 
@@ -125,11 +127,10 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Department
   Min_Age TINYINT NOT NULL ,
   Max_Age TINYINT NOT NULL ,
   Min_Ratio TINYINT NOT NULL ,
-  Weekly_Fee DECIMAL NOT NULL ,
-  Daily_Fee DECIMAL NOT NULL ,
-  Tea_Fee DECIMAL NULL ,
-  PRIMARY KEY (Min_Age, Max_Age) ,
-  CONSTRAINT CHECK (Weekly_Fee > 0 AND Daily_Fee > 0 AND Tea_Fee > 0) -- 'Incompatible with MySQL, use Trigger to emulate'
+  Weekly_Fee DECIMAL NOT NULL CHECK (Weekly_Fee > 0),
+  Daily_Fee DECIMAL NOT NULL CHECK (Daily_Fee > 0),
+  Tea_Fee DECIMAL NULL CHECK (Tea_Fee > 0),
+  PRIMARY KEY (Min_Age, Max_Age)
 )
 ENGINE = InnoDB;
 
@@ -138,7 +139,7 @@ ENGINE = InnoDB;
 CREATE  TABLE IF NOT EXISTS tbcndb.Room 
 (
   Name VARCHAR(45) NOT NULL ,
-  Max Capacity INT NOT NULL ,
+  Max_Capacity INT NOT NULL ,
   Minimum_Ratio INT NOT NULL ,
   Minimum_Age TINYINT NOT NULL ,
   Maximum_Age TINYINT NOT NULL ,
@@ -233,7 +234,7 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Parent_Guardian
   Home_Address VARCHAR(255) NOT NULL ,
   Work_Address VARCHAR(255) NOT NULL ,
   Spouse INT NULL ,
-  Email VARCHAR(45) NULL ,
+  Email VARCHAR(45) NULL CHECK (Email LIKE '*@*.*') ,
   Children VARCHAR(8) NOT NULL ,
   PRIMARY KEY (Parent_ID) ,
   CONSTRAINT fk_Spouse
@@ -252,10 +253,11 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Parent_Guardian
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT fk_Children
-    FOREIGN KEY ()
-    REFERENCES tbcndb.Child_has_Parent_Guardian ()
+    FOREIGN KEY (Children)
+    REFERENCES tbcndb.Child_has_Parent_Guardian (ChildID)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON UPDATE NO ACTION ,
+  CONSTRAINT SELECT (JOIN Emergency_Contact AND Parent_Guardian WHERE ParentID = ContactID) IS empty -- FIXME
 )
 ENGINE = InnoDB;
 
@@ -269,14 +271,14 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Invoice
   Weekly_Fee DECIMAL NOT NULL ,
   Month_Text ENUM('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec') NOT NULL ,
   No_of_Weeks TINYINT NOT NULL ,
-  Percent_Discount DECIMAL NOT NULL ,
+  Percent_Discount DECIMAL NOT NULL CHECK (Percent_Discount >= 0 AND Percent_Discount <= 100) , -- 'Incompatible with MySQL, use Trigger to emulate',
   Discount DECIMAL NOT NULL ,
   Net_Fee DECIMAL NOT NULL ,
   Extra_Days TINYINT NULL ,
   Teas TINYINT NULL ,
   Late_Pay DECIMAL NULL ,
   Arrears DECIMAL NULL ,
-  Payment_Method ENUM(Card, Cash, Checque, BACS, Voucher) NOT NULL ,
+  Payment_Method ENUM('Card', 'Cash', 'Checque', 'BACS', 'Voucher') NOT NULL ,
   Total DECIMAL NOT NULL ,
   PRIMARY KEY (InvoiceID) ,
   CONSTRAINT fk_Child
@@ -289,21 +291,20 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Invoice
     REFERENCES tbcndb.Parent_Guardian (Parent_ID )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
-  CONSTRAINT Check (Percent_Discount >= 0 OR Percent_Discount <= 100)  -- 'Incompatible with MySQL, use Trigger to emulate'
-)
-ENGINE = InnoDB
-
-
--- Table tbcndb.Supplier
-CREATE  TABLE IF NOT EXISTS tbcndb.Supplier 
-(
-  SupplierID INT NOT NULL AUTO_INCREMENT ,
-  PRIMARY KEY (SupplierID) ,
 )
 ENGINE = InnoDB;
 
 
--- Table tbcndb.Supplier_Invoice
+-- Table tbcndb.Supplier.  Neglected - chosen to focus on smaller portion of problem
+CREATE  TABLE IF NOT EXISTS tbcndb.Supplier 
+(
+  SupplierID INT NOT NULL AUTO_INCREMENT ,
+  PRIMARY KEY (SupplierID)
+)
+ENGINE = InnoDB;
+
+
+-- Table tbcndb.Supplier_Invoice.  Neglected - chosen to focus on smaller portion of problem
 CREATE  TABLE IF NOT EXISTS tbcndb.Supplier_Invoice 
 (
   Supplier_InvoiceID INT NOT NULL AUTO_INCREMENT ,
@@ -311,21 +312,31 @@ CREATE  TABLE IF NOT EXISTS tbcndb.Supplier_Invoice
 )
 ENGINE = InnoDB;
 
---DOB Constraint Trigger 
-CREATE OR REPLACE TRIGGER check_birth_date
-  BEFORE INSERT OR UPDATE ON Employee, Child,  
+DELIMITER $$
+-- DOB Constraint Trigger 
+CREATE TRIGGER check_birth_date
+  BEFORE INSERT ON Employee
   FOR EACH ROW
 BEGIN
-  IF( :new.DOB < date '1900-01-01' or 
-      :new.DOB > sysdate )
+  IF( new.DOB < date '1900-01-01' or 
+      new.DOB > sysdate )
   THEN
-    RAISE_APPLICATION_ERROR( 
-      -20001, 
-      'Employee or Child date of birth must be later than Jan 1, 1900 and earlier than today' 
-	 );
+    CALL raise_application_error(-20001, 'DOB must be after 1900 and before the current date.');
   END IF;
-END;
+END $$
 
+-- Staff holiday constraints Trigger
+CREATE TRIGGER check_staff_holidays
+  BEFORE INSERT ON Employee
+  FOR EACH ROW
+BEGIN
+  IF( Holidays_Taken > Holidays_Entitled )
+  THEN
+    CALL raise_application_error(-20001, 'Employee must not take more holidays than they\'re entitled to.');
+  END IF;
+END $$
+
+DELIMITER ;
 
 USE tbcndb ;
 
