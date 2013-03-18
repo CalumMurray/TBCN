@@ -48,61 +48,61 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChildInfo.cs">
+    <Compile Include="frmChildReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChildInfo.Designer.cs">
-      <DependentUpon>ChildInfo.cs</DependentUpon>
+    <Compile Include="frmChildReport.Designer.cs">
+      <DependentUpon>frmChildReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeInfo.cs">
+    <Compile Include="frmEmployeeReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmployeeInfo.Designer.cs">
-      <DependentUpon>EmployeeInfo.cs</DependentUpon>
+    <Compile Include="frmEmployeeReport.Designer.cs">
+      <DependentUpon>frmEmployeeReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="ParentInfo.cs">
+    <Compile Include="frmParentReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ParentInfo.Designer.cs">
-      <DependentUpon>ParentInfo.cs</DependentUpon>
+    <Compile Include="frmParentReport.Designer.cs">
+      <DependentUpon>frmParentReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditEmployee.cs">
+    <Compile Include="frmEditEmplyee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditEmployee.Designer.cs">
-      <DependentUpon>EditEmployee.cs</DependentUpon>
+    <Compile Include="frmEditEmplyee.Designer.cs">
+      <DependentUpon>frmEditEmplyee.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditParent.cs">
+    <Compile Include="frmEditParent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditParent.Designer.cs">
-      <DependentUpon>EditParent.cs</DependentUpon>
+    <Compile Include="frmEditParent.Designer.cs">
+      <DependentUpon>frmEditParent.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditChild.cs">
+    <Compile Include="frmEditChild.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditChild.Designer.cs">
-      <DependentUpon>EditChild.cs</DependentUpon>
+    <Compile Include="frmEditChild.Designer.cs">
+      <DependentUpon>frmEditChild.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ChildInfo.resx">
-      <DependentUpon>ChildInfo.cs</DependentUpon>
+    <EmbeddedResource Include="frmChildReport.resx">
+      <DependentUpon>frmChildReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeInfo.resx">
-      <DependentUpon>EmployeeInfo.cs</DependentUpon>
+    <EmbeddedResource Include="frmEditChild.resx">
+      <DependentUpon>frmEditChild.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ParentInfo.resx">
-      <DependentUpon>ParentInfo.cs</DependentUpon>
+    <EmbeddedResource Include="frmEditEmplyee.resx">
+      <DependentUpon>frmEditEmplyee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditEmployee.resx">
-      <DependentUpon>EditEmployee.cs</DependentUpon>
+    <EmbeddedResource Include="frmEditParent.resx">
+      <DependentUpon>frmEditParent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditParent.resx">
-      <DependentUpon>EditParent.cs</DependentUpon>
+    <EmbeddedResource Include="frmEmployeeReport.resx">
+      <DependentUpon>frmEmployeeReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditChild.resx">
-      <DependentUpon>EditChild.cs</DependentUpon>
+    <EmbeddedResource Include="frmParentReport.resx">
+      <DependentUpon>frmParentReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
