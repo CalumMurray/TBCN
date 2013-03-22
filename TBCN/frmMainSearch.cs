@@ -15,5 +15,12 @@ namespace TBCN
         {
             InitializeComponent();
         }
+
+        private void btnChildSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

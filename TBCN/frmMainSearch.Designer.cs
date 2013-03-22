@@ -44,6 +44,7 @@
             this.btnChildSearch.TabIndex = 0;
             this.btnChildSearch.Text = "Search Children";
             this.btnChildSearch.UseVisualStyleBackColor = true;
+            this.btnChildSearch.Click += new System.EventHandler(this.btnChildSearch_Click);
             // 
             // txtChildSearch
             // 
