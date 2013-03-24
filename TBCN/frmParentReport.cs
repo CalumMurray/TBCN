@@ -16,6 +16,11 @@ namespace TBCN
             InitializeComponent();
         }
 
+        private void frmParentReport_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
 
     }

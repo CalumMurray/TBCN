@@ -223,7 +223,7 @@
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "john@other.com";
             // 
-            // frmChildReport
+            // frmParentReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -247,8 +247,9 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Name = "frmChildReport";
+            this.Name = "frmParentReport";
             this.Text = "Parent Information";
+            this.Load += new System.EventHandler(this.frmParentReport_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

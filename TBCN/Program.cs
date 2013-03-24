@@ -15,7 +15,7 @@ namespace TBCN
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMainSearch());
+            Application.Run(new frmEditChild());
         }
     }
 }

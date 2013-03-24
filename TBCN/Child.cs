@@ -9,14 +9,15 @@ namespace TBCN
     //Entity DAO class representing a Child domain business object
     class Child
     {
-        public String BirthCertNumber { get; set; } //TODO: replace with ID?
+        public int ChildID { get; set; } 
         public String FirstName { get; set; }
         public String LastName { get; set; }
         //public blob image { get; set;};
         public char Gender { get; set; }
-        public Date DOB { get; set; }   //Date?
+        //public Date DOB { get; set; }   //Date?
+        public Child Sibling { get; set; }
         public String FirstLanguage { get; set; }
-        public Room RoomAttending { get; set; }
+        public String RoomAttending { get; set; }
         public Parent Parent { get; set; }
         public EmergencyContact EmerContact { get; set; }
         public DateTime DateApplied { get; set; }

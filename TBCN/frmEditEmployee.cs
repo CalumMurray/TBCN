@@ -16,6 +16,18 @@ namespace TBCN
             InitializeComponent();
         }
 
+        private void frmEditEmployee_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
 
     }
 }

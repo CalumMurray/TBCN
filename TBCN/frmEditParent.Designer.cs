@@ -380,7 +380,7 @@
             this.label19.TabIndex = 63;
             this.label19.Text = "Work address:";
             // 
-            // frmAddChild
+            // frmEditParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -423,8 +423,8 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.Name = "frmAddChild";
-            this.Text = "Edit a Child";
+            this.Name = "frmEditParent";
+            this.Text = "Edit a Parent";
             this.ResumeLayout(false);
             this.PerformLayout();
 

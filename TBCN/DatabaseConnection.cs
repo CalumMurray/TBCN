@@ -13,7 +13,7 @@ namespace TBCN
     class DatabaseConnection
     {
         private const string connStr = "SERVER=arlia.computing.dundee.ac.uk;USER=12ac3u03;DATABASE=12ac3d03;PORT=3306;PASSWORD=ab123c;";
-        private MySqlConnection connection;
+        protected MySqlConnection connection;
 
         public DatabaseConnection()
         {
@@ -50,11 +50,12 @@ namespace TBCN
 
         //TODO: Entity Framework and Linq?
 
+        //TODO: Indexes
         //TODO: Prepared Statements!
         //TODO: Stored Procedures!
         //TODO: Locks/Logs/Priveleges/Views
 
-        //ExecuteNonQuery(): Used to execute a command that will not return any data, for example Insert, update or delete.
+        //ExecuteNonQuery(): Used to execute a childCommand that will not return any data, for example Insert, update or delete.
         //ExecuteReader(): Returns 0 or more results e.g. SELECT
 
 
@@ -69,10 +70,10 @@ namespace TBCN
                 //open connection
                 OpenConnection();
 
-                //create command and assign the query and connection from the constructor
+                //create childCommand and assign the query and connection from the constructor
                 MySqlCommand cmd = new MySqlCommand(sqlInsertString, connection);
 
-                //Execute command
+                //Execute childCommand
                 Console.WriteLine("Executing Insert: [ " + sqlInsertString + "].");
                 cmd.ExecuteNonQuery();
                 
@@ -93,10 +94,10 @@ namespace TBCN
                 //open connection
                 OpenConnection();
 
-                //create command and assign the query and connection from the constructor
+                //create childCommand and assign the query and connection from the constructor
                 MySqlCommand cmd = new MySqlCommand(sqlUpdateString, connection);
 
-                //Execute command
+                //Execute childCommand
                 Console.WriteLine("Executing Update: [ " + sqlUpdateString + "].");
                 cmd.ExecuteNonQuery();
 
@@ -117,10 +118,10 @@ namespace TBCN
                 //open connection
                 OpenConnection();
 
-                //create command and assign the query and connection from the constructor
+                //create childCommand and assign the query and connection from the constructor
                 MySqlCommand cmd = new MySqlCommand(sqlDeleteString, connection);
 
-                //Execute command
+                //Execute childCommand
                 Console.WriteLine("Executing Delete: [ " + sqlDeleteString + "].");
                 cmd.ExecuteNonQuery();
 
@@ -156,7 +157,7 @@ namespace TBCN
                 //Create Command
                 MySqlCommand cmd = new MySqlCommand(sqlSelectString, connection);
                 
-                //Create a data reader and Execute the command
+                //Create a data reader and Execute the childCommand
                 Console.WriteLine("Executing Select: [ " + sqlSelectString + "].");
                 MySqlDataReader dataReader = cmd.ExecuteReader();
 
