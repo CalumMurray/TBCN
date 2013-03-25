@@ -71,7 +71,6 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(113, 20);
             this.txtFirstName.TabIndex = 0;
-            
             // 
             // label1
             // 
@@ -98,7 +97,6 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(113, 20);
             this.txtLastName.TabIndex = 7;
-            
             // 
             // label3
             // 
@@ -179,7 +177,6 @@
             this.txtExtra.Name = "txtExtra";
             this.txtExtra.Size = new System.Drawing.Size(113, 20);
             this.txtExtra.TabIndex = 23;
-            
             // 
             // label11
             // 
@@ -197,7 +194,6 @@
             this.txtTeas.Name = "txtTeas";
             this.txtTeas.Size = new System.Drawing.Size(113, 20);
             this.txtTeas.TabIndex = 25;
-            
             // 
             // cmbGender
             // 
@@ -327,6 +323,13 @@
             // 
             this.cmbRoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbRoom.FormattingEnabled = true;
+            this.cmbRoom.Items.AddRange(new object[] {
+            "Baby Room",
+            "Polar Room",
+            "Panda Room",
+            "Teddy\'s Transformers",
+            "Daisy\'s Discoverers",
+            "Oakley\'s Explorers"});
             this.cmbRoom.Location = new System.Drawing.Point(218, 141);
             this.cmbRoom.Name = "cmbRoom";
             this.cmbRoom.Size = new System.Drawing.Size(113, 21);
@@ -417,6 +420,7 @@
             this.btnAddParent.TabIndex = 40;
             this.btnAddParent.Text = "Parent/Guardians";
             this.btnAddParent.UseVisualStyleBackColor = true;
+            this.btnAddParent.Click += new System.EventHandler(this.btnAddParent_Click);
             // 
             // btnAddEC
             // 
@@ -427,6 +431,7 @@
             this.btnAddEC.TabIndex = 41;
             this.btnAddEC.Text = "Emergency Contacts";
             this.btnAddEC.UseVisualStyleBackColor = true;
+            this.btnAddEC.Click += new System.EventHandler(this.btnAddEC_Click);
             // 
             // btnAddSibling
             // 
@@ -455,6 +460,7 @@
             this.btnCancel.TabIndex = 44;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAddMedical
             // 
@@ -464,6 +470,7 @@
             this.btnAddMedical.TabIndex = 45;
             this.btnAddMedical.Text = "Medical Information";
             this.btnAddMedical.UseVisualStyleBackColor = true;
+            this.btnAddMedical.Click += new System.EventHandler(this.btnAddMedical_Click);
             // 
             // btnAddPhoto
             // 
@@ -474,6 +481,7 @@
             this.btnAddPhoto.TabIndex = 46;
             this.btnAddPhoto.Text = "Attach photograph";
             this.btnAddPhoto.UseVisualStyleBackColor = true;
+            this.btnAddPhoto.Click += new System.EventHandler(this.btnAddPhoto_Click);
             // 
             // frmEditChild
             // 

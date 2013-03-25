@@ -11,10 +11,27 @@ namespace TBCN
 {
     public partial class frmEditParent : Form
     {
-        public frmEditParent()
+        private Database dbConnection;
+
+        private static Parent parent;
+        public static Parent AddedParent
         {
-            InitializeComponent();
+            get;
+            set;
         }
 
+        
+
+        public frmEditParent(String title)
+        {
+            InitializeComponent();
+            this.Text = title;
+            dbConnection = new Database();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            parent = new Parent();
+        }
     }
 }

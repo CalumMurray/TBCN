@@ -7,7 +7,7 @@ using System.Text;
 namespace TBCN
 {
     //Entity DAO class representing a Room Department domain business object
-    class Department
+    public class Department
     {
         public int MaxAge { get; set; }
         public int MinAge { get; set; }

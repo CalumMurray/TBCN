@@ -65,7 +65,6 @@
   <ItemGroup>
     <Compile Include="Address.cs" />
     <Compile Include="Child.cs" />
-    <Compile Include="ChildDBConnection.cs" />
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="Department.cs" />
     <Compile Include="EmergencyContact.cs" />

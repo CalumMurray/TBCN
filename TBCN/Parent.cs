@@ -7,7 +7,7 @@ using System.Text;
 namespace TBCN
 {
     //Entity DAO class representing a Parent domain business object
-    class Parent
+    public class Parent
     {
         public int Parent_ID { get; set; }
         public String FirstName { get; set; }
@@ -17,11 +17,12 @@ namespace TBCN
         public String WorkPhone { get; set; }
         public String HomePhone { get; set; }
         public String MobilePhone { get; set; }
-        public Address Address { get; set; }
-        public Parent Spouse { get; set; }
+        public int HomeAddress { get; set; }
+        public int WorkAddress { get; set; }
+        public int Spouse { get; set; }
         public String Email { get; set; }
-        public List<Child> ChildrenAttending { get; set; }
-        public Invoice invoice{ get; set; }
+        //public List<Child> ChildrenAttending { get; set; }
+        //public Invoice invoice{ get; set; }
 
     }
 }

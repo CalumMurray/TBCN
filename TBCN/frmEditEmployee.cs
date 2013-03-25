@@ -11,9 +11,11 @@ namespace TBCN
 {
     public partial class frmEditEmployee : Form
     {
+        private Database dbConnection;
         public frmEditEmployee()
         {
             InitializeComponent();
+            dbConnection = new Database();
         }
 
         private void frmEditEmployee_Load(object sender, EventArgs e)
@@ -25,6 +27,7 @@ namespace TBCN
         {
 
         }
+
 
 
 

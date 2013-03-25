@@ -11,15 +11,28 @@ namespace TBCN
 {
     public partial class frmMainSearch : Form
     {
+        private Database dbConnection;
+
         public frmMainSearch()
         {
             InitializeComponent();
+            dbConnection = new Database();
         }
 
         private void btnChildSearch_Click(object sender, EventArgs e)
         {
 
         }
+
+
+
+        private void btnAddChild_Click(object sender, EventArgs e)
+        {
+            frmEditChild addChildForm = new frmEditChild();
+            addChildForm.ShowDialog();
+        }
+
+
 
 
     }

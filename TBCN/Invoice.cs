@@ -7,7 +7,7 @@ using System.Text;
 namespace TBCN
 {
     //Entity DAO class representing an Invoice domain business object
-    class Invoice
+    public class Invoice
     {
         public int InvoiceID { get; set; }
         public Child Child { get; set; }

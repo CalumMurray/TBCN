@@ -7,7 +7,7 @@ using System.Text;
 namespace TBCN
 {
     //Entity DAO class representing an Emergency Contact domain business object
-    class EmergencyContact
+    public class EmergencyContact
     {
         public int Contact_ID { get; set; }
         public String FirstName { get; set; }
