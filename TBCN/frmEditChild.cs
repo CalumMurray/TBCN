@@ -51,7 +51,7 @@ namespace TBCN
             //parents.Add(frmEditParent.AddedParent);
 
             //Add to Database
-            dbConnection.insertChild(newChild, parent1/*, emergencyContacts[0]*/);
+            dbConnection.insertChild(newChild, parent1, emergencyContacts[0]);
         }
 
         private bool validateForm()
@@ -90,14 +90,10 @@ namespace TBCN
             
             //Get attendance //TODO: Number of specific days
             Control[] attendanceBoxes = this.Controls.Find("chk", false);
-            bool[] days = new bool[5];
-            int i = 0;
-            foreach (Control checkBox in attendanceBoxes)
-            {
-                if (((CheckBox)checkBox).Checked)
-                    i++;
-            }
-            newChild.Attendance = i;
+            
+            for (int i = 0; i < attendanceBoxes.Length; i++)
+                newChild.Attendance[i] = ((CheckBox)attendanceBoxes[i]).Checked;
+
 
             return newChild;
         }
