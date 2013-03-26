@@ -52,13 +52,13 @@ SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `12ac3d03`.`Emergency_Contact` (
   `Contact_ID` INT NOT NULL AUTO_INCREMENT ,
   `Title` VARCHAR(4) NULL ,
-  `Firs_tName` VARCHAR(45) NOT NULL ,
+  `First_Name` VARCHAR(45) NOT NULL ,
   `Last_Name` VARCHAR(45) NOT NULL ,
   `Relationship` VARCHAR(45) NULL ,
   `Home_Phone` VARCHAR(12) NOT NULL ,
   `Work_Phone` VARCHAR(12) NULL ,
   `Mobile_Phone` VARCHAR(11) NULL ,
-  `Address` VARCHAR(255) NOT NULL ,
+  `Home_Address` VARCHAR(255) NOT NULL ,
   `Work_Address` VARCHAR(255) NULL ,
   `Gender` ENUM('M', 'F') NULL ,
   `Email` VARCHAR(45) NULL ,
@@ -67,7 +67,7 @@ CREATE  TABLE IF NOT EXISTS `12ac3d03`.`Emergency_Contact` (
   INDEX `fk_EC_Address_idx` (`Address` ASC) ,
   INDEX `fk_EC_Work_Address_idx` (`Work_Address` ASC) ,
   CONSTRAINT `fk_EC_Address`
-    FOREIGN KEY (`Address` )
+    FOREIGN KEY (`Home_Address` )
     REFERENCES `12ac3d03`.`Address` (`Address_1` )
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
@@ -106,17 +106,18 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `12ac3d03`.`Employee` (
   `National_Insurance_Number` VARCHAR(9) NOT NULL ,
-  `FirstName` VARCHAR(45) NOT NULL ,
-  `LastName` VARCHAR(45) NOT NULL ,
+  `First_Name` VARCHAR(45) NOT NULL ,
+  `Last_Name` VARCHAR(45) NOT NULL ,
+  `Position` VARCHAR(45) NULL ,
   `Gender` ENUM('M', 'F') NOT NULL ,
   `Date_Started` DATE NOT NULL  ,
   `Date_Finished` DATE NULL  ,
   `PVG_Date` DATE NOT NULL  ,
   `Holidays_Entitled` SMALLINT NOT NULL ,
   `Holidays_Taken` SMALLINT NULL ,
-  `HoursPerWeek` SMALLINT NOT NULL ,
-  `HomeAddress` VARCHAR(255) NOT NULL ,
-  `DateOfBirth` DATE NOT NULL  ,
+  `Hours` SMALLINT NOT NULL ,
+  `Home_Address` VARCHAR(255) NOT NULL ,
+  `DOB` DATE NOT NULL  ,
   `Salary` DOUBLE NULL ,
   `Home_Phone` VARCHAR(12) NOT NULL ,
   `Mobile_Phone` VARCHAR(11) NULL ,
@@ -140,7 +141,7 @@ CREATE  TABLE IF NOT EXISTS `12ac3d03`.`Employee` (
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Employee_Address`
-    FOREIGN KEY (`HomeAddress` )
+    FOREIGN KEY (`Home_Address` )
     REFERENCES `12ac3d03`.`Address` (`Address_1` )
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
@@ -224,7 +225,7 @@ CREATE  TABLE IF NOT EXISTS `12ac3d03`.`Child` (
   `Sibling` INT NULL ,
   `Date_Applied` DATE NOT NULL ,
   `Date_Left` DATE NULL ,
-  `Days_Per_Week` TINYINT NOT NULL ,
+  `Attendance` TINYINT NOT NULL ,
   `Extra_Days` TINYINT NULL ,
   `Teas` TINYINT NULL ,
   `Medical_Information` INT NOT NULL ,
