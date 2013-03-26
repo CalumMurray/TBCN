@@ -51,7 +51,7 @@ namespace TBCN
             //parents.Add(frmEditParent.AddedParent);
 
             //Add to Database
-            dbConnection.addChild(newChild, parent1/*, emergencyContacts[0]*/);
+            dbConnection.insertChild(newChild, parent1/*, emergencyContacts[0]*/);
         }
 
         private bool validateForm()

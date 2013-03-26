@@ -15,6 +15,12 @@ namespace TBCN
         private const string connStr = "SERVER=arlia.computing.dundee.ac.uk;USER=12ac3u03;DATABASE=12ac3d03;PORT=3306;PASSWORD=ab123c;";
         private MySqlConnection connection;
         private MySqlCommand insertCommand;
+        private MySqlCommand selectCommand;
+
+        private int childID;
+        private int parentID;
+        private int contactID;
+
 
         public Database()
         {
@@ -59,12 +65,11 @@ namespace TBCN
         //TODO: Prepared Statements!
         //TODO: Stored Procedures!
         //TODO: Locks/Logs/Priveleges/Views
+        //TODO: Transactions!
 
-        //ExecuteNonQuery(): Used to execute a insertCommand that will not return any data, for example Insert, update or delete.
-        //ExecuteReader(): Returns 0 or more results e.g. SELECT
+        /*--------------INSERTS---------------*/
 
-
-        public bool addChild(Child childToAdd, Parent parent/*, EmergencyContact ec*/)
+        public bool insertChild(Child childToAdd, Parent parent, EmergencyContact ec)
         {
             if (!OpenConnection())
                 return false;
@@ -74,20 +79,15 @@ namespace TBCN
             {
 
                 insertCommand.Connection = connection;
-                MySqlCommand ParentChildLinkCommand = new MySqlCommand(null, connection);
-                MySqlCommand parentCommand = new MySqlCommand(null, connection);
-                MySqlCommand ecCommand = new MySqlCommand(null, connection);
-                MySqlCommand ecChildLinkCommand = new MySqlCommand(null, connection);
+                MySqlCommand idCommand = new MySqlCommand("SELECT LAST_INSERT_ID()", connection);
+                
                 insertCommand.Transaction = transaction;
-                ParentChildLinkCommand.Transaction = transaction;
-                parentCommand.Transaction = transaction;
-                ecCommand.Transaction = transaction;
-                ecChildLinkCommand.Transaction = transaction;
 
                 // Create and prepare an SQL statement.
                 insertCommand.CommandText = @"INSERT INTO Child (First_Name, Last_Name, Gender, DOB, First_Language, Room_Attending, Sibling, Date_Applied, Date_Left, Days_Per_Week, Extra_Days, Teas, Medical_Information) 
-                                             VALUES (@firstname, @lastname, @gender, @dob, @firstlanguage, @roomattending, @sibling, @dateapplied, @dateleft, @attendance, @extra, @teas, @medical)";
+                                             VALUES (@firstname, @lastname, @gender, @dob, @firstlanguage, @roomattending, @sibling, @dateapplied, @dateleft, @attendance, @extra, @teas, @medical);";
 
+                //Fill in prepared statement parameters
                 MySqlParameter fNameParam = new MySqlParameter("@firstname", childToAdd.FirstName);
                 MySqlParameter lNameParam = new MySqlParameter("@lastname", childToAdd.LastName);
                 MySqlParameter genderParam = new MySqlParameter("@gender", childToAdd.Gender);
@@ -116,17 +116,29 @@ namespace TBCN
                 insertCommand.Parameters.Add(teasParam);
                 insertCommand.Parameters.Add(medicalParam);
 
-                // Call Prepare after setting the Commandtext and Parameters.
+                // Prepare statement
+                Console.WriteLine("Executing: [ " + insertCommand.ToString() + "].");
                 insertCommand.Prepare();
                 insertCommand.ExecuteNonQuery();
 
-                addParent(parent);
+                
 
+                childID = (int)idCommand.ExecuteScalar();
+                insertParent(parent);
+                parentID = (int)idCommand.ExecuteScalar();
+                linkParentChild(childToAdd, parent);
+
+                insertEmergencyContact(ec);
+                contactID = (int)idCommand.ExecuteScalar();
+
+                linkECChild(ec, childToAdd);
+
+                //Perform transaction
                 transaction.Commit();
             }
             catch (MySqlException mysqle)
             {
-                transaction.Rollback();
+                transaction.Rollback(); //Something went wrong, rollback
                 return false;
             }
 
@@ -134,11 +146,11 @@ namespace TBCN
 
         }
 
-        public void addParent(Parent parentToAdd)
+        public void insertParent(Parent parentToAdd)
         {
             insertCommand.Connection = connection;
             insertCommand.CommandText = @"INSERT INTO parent_guardian (First_Name, Last_Name, Title, Gender, Work_Phone, Home_Phone, Mobil_Phone, Home_Address, Work_Address, Spouse, Email)
-                                         VALUES (@firstname, @lastname, @title, @gender, @workphone, @homephone, @mobilephone, @homeaddress, @workaddress, @spouse, @email)";
+                                         VALUES (@firstname, @lastname, @title, @gender, @workphone, @homephone, @mobilephone, @homeaddress, @workaddress, @spouse, @email);";
 
             MySqlParameter fNameParam = new MySqlParameter("@firstname", parentToAdd.FirstName);
             MySqlParameter lNameParam = new MySqlParameter("@lastname", parentToAdd.LastName);
@@ -150,7 +162,7 @@ namespace TBCN
             MySqlParameter homeAddrParam = new MySqlParameter("@homeaddress", parentToAdd.HomeAddress);
             MySqlParameter workAddrParamParam = new MySqlParameter("@workaddress", parentToAdd.WorkAddress);//?
             MySqlParameter spouseParam = new MySqlParameter("@spouse", parentToAdd.Spouse);
-            MySqlParameter emailParam = new MySqlParameter("@teas", parentToAdd.Email);
+            MySqlParameter emailParam = new MySqlParameter("@email", parentToAdd.Email);
 
             insertCommand.Parameters.Add(fNameParam);
             insertCommand.Parameters.Add(lNameParam);
@@ -165,92 +177,250 @@ namespace TBCN
             insertCommand.Parameters.Add(emailParam);
 
             // Call Prepare after setting the Commandtext and Parameters.
+            Console.WriteLine("Executing: [ " + insertCommand.ToString() + "].");
+            insertCommand.Prepare();
+            insertCommand.ExecuteNonQuery();
+
+            
+        }
+
+        public void linkParentChild(Child childToAdd, Parent parent)
+        {
+            insertCommand.Connection = connection;
+            insertCommand.CommandText = "INSERT INTO child_has_parent_guardian VALUES (@parentID, @childID);";
+            insertCommand.Parameters.Add(new MySqlParameter("@parentID", parentID));
+            insertCommand.Parameters.Add(new MySqlParameter("@childID", childID));
+
+            Console.WriteLine("Executing: [ " + insertCommand.ToString() + "].");
             insertCommand.Prepare();
             insertCommand.ExecuteNonQuery();
         }
 
-        public void addEmergencyContact(EmergencyContact ecToAdd)
+        public void insertEmergencyContact(EmergencyContact ecToAdd)
         {
-
-        }
-
-        public void linkParentChild(Parent parentToAdd, Child childToAdd)
-        {
+            insertCommand.Connection = connection;
+            insertCommand.CommandText = @"INSERT INTO emergency_contact (First_Name, Last_Name, Title, Gender, Relationship, Home_Phone, Work_Phone, Mobile_Phone, Home_Address, Work_Address, Email)
+                                         VALUES (@firstname, @lastname, @title, @gender, @relationship, @homephone, @workphone, @mobilephone, @homeaddress, @workaddress, @email);";
 
 
+            MySqlParameter fNameParam = new MySqlParameter("@firstname", ecToAdd.FirstName);
+            MySqlParameter lNameParam = new MySqlParameter("@lastname", ecToAdd.LastName);
+            MySqlParameter genderParam = new MySqlParameter("@gender", ecToAdd.Gender);
+            MySqlParameter titleParam = new MySqlParameter("@title", ecToAdd.Title);
+            MySqlParameter relParam = new MySqlParameter("@relationship", ecToAdd.Relationship);
+            MySqlParameter workPhoneParam = new MySqlParameter("@workphone", ecToAdd.WorkPhone); 
+            MySqlParameter homePhoneParam = new MySqlParameter("@homephone", ecToAdd.HomePhone);
+            MySqlParameter mobilePhoneParam = new MySqlParameter("@mobilephone", ecToAdd.MobilePhone);
+            MySqlParameter homeAddrParam = new MySqlParameter("@homeaddress", ecToAdd.HomeAddress);
+            MySqlParameter workAddrParamParam = new MySqlParameter("@workaddress", ecToAdd.WorkAddress);
+            MySqlParameter emailParam = new MySqlParameter("@email", ecToAdd.Email);
+
+            insertCommand.Parameters.Add(fNameParam);
+            insertCommand.Parameters.Add(lNameParam);
+            insertCommand.Parameters.Add(genderParam);
+            insertCommand.Parameters.Add(titleParam);
+            insertCommand.Parameters.Add(relParam);
+            insertCommand.Parameters.Add(workPhoneParam);
+            insertCommand.Parameters.Add(homePhoneParam);
+            insertCommand.Parameters.Add(mobilePhoneParam);
+            insertCommand.Parameters.Add(homeAddrParam);
+            insertCommand.Parameters.Add(workAddrParamParam);
+            insertCommand.Parameters.Add(emailParam);
+
+            Console.WriteLine("Executing: [ " + insertCommand.ToString() + "].");
+            insertCommand.Prepare();
+            insertCommand.ExecuteNonQuery();
         }
 
         public void linkECChild(EmergencyContact ecToAdd, Child childToAdd)
         {
+            insertCommand.Connection = connection;
+            insertCommand.CommandText = "INSERT INTO child_has_emergency_contact VALUES (@contactID, @childID);";
 
+            insertCommand.Parameters.Add(new MySqlParameter("@contactID", contactID));
+            insertCommand.Parameters.Add(new MySqlParameter("@childID", childID));
 
+            Console.WriteLine("Executing: [ " + insertCommand.ToString() + "].");
+            insertCommand.Prepare();
+            insertCommand.ExecuteNonQuery();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //INSERT statement
-        public void Insert(String sqlInsertString)
+        public void insertAttendance(Child childToAdd)
         {
+            insertCommand.Connection = connection;
+            insertCommand.CommandText = "INSERT INTO attendance VALUES (@child, @monday, @tuesday, @wednesday, @thursday, @friday);";
 
-            //string query = "INSERT INTO tableinfo (name, age) VALUES('John Smith', '33')";
+            insertCommand.Parameters.Add(new MySqlParameter("@child", childID));
+            insertCommand.Parameters.Add(new MySqlParameter("@monday", childToAdd.Attendance[0]));
+            insertCommand.Parameters.Add(new MySqlParameter("@tuesday", childToAdd.Attendance[1]));
+            insertCommand.Parameters.Add(new MySqlParameter("@wednesday", childToAdd.Attendance[2]));
+            insertCommand.Parameters.Add(new MySqlParameter("@thursday", childToAdd.Attendance[3]));
+            insertCommand.Parameters.Add(new MySqlParameter("@friday", childToAdd.Attendance[4]));
 
-            try
-            {
-                //open connection
-                OpenConnection();
-
-                //create insertCommand and assign the query and connection from the constructor
-                MySqlCommand cmd = new MySqlCommand(sqlInsertString, connection);
-
-                //Execute insertCommand
-                Console.WriteLine("Executing Insert: [ " + sqlInsertString + "].");
-                cmd.ExecuteNonQuery();
-                
-                //close connection
-                this.CloseConnection();
-            }
-            catch (MySqlException msqle)
-            {
-                Console.WriteLine(msqle.ToString());
-            }
+            Console.WriteLine("Executing: [ " + insertCommand.ToString() + "].");
+            insertCommand.Prepare();
+            insertCommand.ExecuteNonQuery();
         }
+
+        /*--------------SELECTS---------------*/
+
+        public Child selectChild(Child childToSelect)
+        {
+            if (!OpenConnection())
+                return null;
+
+            selectCommand = new MySqlCommand(null, connection);
+            selectCommand.CommandText = "SELECT * FROM child WHERE Child_ID = @childID;";
+            selectCommand.Parameters.Add(new MySqlParameter("@childID", childToSelect.ChildID));
+
+            Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
+            selectCommand.Prepare();
+            MySqlDataReader childReader = selectCommand.ExecuteReader();
+
+            //Package into Child domain entity object
+            Child newChild = new Child();
+            while (childReader.Read())
+            {
+                //TODO: Use "childReader["ChildID"]" syntax instead?
+
+                newChild.ChildID = childReader.GetInt32(0);
+                newChild.FirstName = childReader.GetString(1);
+                newChild.LastName = childReader.GetString(2);
+                newChild.Gender = childReader.GetChar(3);
+                newChild.DOB = childReader.GetDateTime(4);
+                newChild.FirstLanguage = childReader.GetString(5);
+                newChild.RoomAttending = childReader.GetString(6);
+                //newChild.Sibling = childReader.Get7
+                newChild.DateApplied = childReader.GetDateTime(8);
+                newChild.DateLeft = childReader.GetDateTime(9);
+               // newChild.Attendance = childReader.GetInt32(10);
+                newChild.ExtraDays = childReader.GetInt16(11);
+                newChild.Teas = childReader.GetInt16(12);
+                //newChild.MedicalInformation = childReader.GetIny(13);
+               // newChild.Parents = 
+                //newChild.EmergencyContacts = 
+            }
+            childReader.Close();
+
+            CloseConnection();
+
+            return newChild;
+        }
+
+        public Parent selectParent(Parent parentToSelect)
+        {
+            if (!OpenConnection())
+                return null;
+
+            selectCommand = new MySqlCommand(null, connection);
+            selectCommand.CommandText = "SELECT * FROM parent_guardian WHERE ParentID = @parentID;";
+            selectCommand.Parameters.Add(new MySqlParameter("@parentID", parentToSelect.ParentID));
+
+            Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
+            selectCommand.Prepare();
+            MySqlDataReader parentReader = selectCommand.ExecuteReader();
+
+            //Package into Child domain entity object
+            Parent newParent = new Parent();
+            while (parentReader.Read())
+            {
+                newParent.ParentID = parentReader.GetInt32(0);
+                newParent.FirstName = parentReader.GetString(1);
+                newParent.LastName = parentReader.GetString(2);
+                newParent.Title = parentReader.GetString(3);
+                newParent.Gender = parentReader.GetChar(4);
+                newParent.HomePhone = parentReader.GetString(5);
+                newParent.WorkPhone = parentReader.GetString(6);
+                newParent.MobilePhone = parentReader.GetString(7);
+               // newEC.HomeAddress = attendanceReader.GetString(8);
+                //newEC.WorkAddress = attendanceReader.GetString(9);
+                //newEC.Spouse = attendanceReader.GetInt16(10);
+                newParent.Email = parentReader.GetString(11);
+            }
+            parentReader.Close();
+
+            CloseConnection();
+
+            return newParent;
+        }
+
+        public EmergencyContact selectEmergencyContact(EmergencyContact ecToSelect)
+        {
+            if (!OpenConnection())
+                return null;
+
+            selectCommand = new MySqlCommand(null, connection);
+            selectCommand.CommandText = "SELECT * FROM emergency_contact WHERE ContactID = @contactID;";
+            selectCommand.Parameters.Add(new MySqlParameter("@contactID", ecToSelect.ContactID));
+
+            Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
+            selectCommand.Prepare();
+            MySqlDataReader ECReader = selectCommand.ExecuteReader();
+
+            //Package into Child domain entity object
+            EmergencyContact newEC = new EmergencyContact();
+            while (ECReader.Read())
+            {
+                newEC.ContactID = ECReader.GetInt32(0);
+                newEC.Title = ECReader.GetString(1);
+                newEC.FirstName = ECReader.GetString(2);
+                newEC.LastName = ECReader.GetString(3);
+                newEC.Relationship = ECReader.GetString(4);
+                newEC.HomePhone = ECReader.GetString(5);
+                newEC.WorkPhone = ECReader.GetString(6);
+                newEC.MobilePhone = ECReader.GetString(7);
+                //newEC.HomeAddress = attendanceReader.GetString(8);
+                //newEC.WorkAddress = attendanceReader.GetString(9);
+                newEC.Gender = ECReader.GetChar(10);
+                newEC.Email = ECReader.GetString(11);
+            }
+            ECReader.Close();
+
+            CloseConnection();
+
+            return newEC;
+        }
+
+
+        //Get a child's attendance
+        public bool[] selectAttendance(int childID)
+        {
+            if (!OpenConnection())
+                return null;
+
+            selectCommand = new MySqlCommand(null, connection);
+            selectCommand.CommandText = "SELECT * FROM attendance WHERE ChildID = @childID;";
+            selectCommand.Parameters.Add(new MySqlParameter("@childID", childID));
+
+            Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
+            selectCommand.Prepare();
+            MySqlDataReader attendanceReader = selectCommand.ExecuteReader();
+
+            //Package into Child domain entity object
+            bool[] attendanceArray = new bool[5];
+            while (attendanceReader.Read())
+            {
+                for (int i = 0; i < attendanceArray.Length; i++)
+                    attendanceArray[i] = attendanceReader.GetBoolean(i);
+            }
+            attendanceReader.Close();
+
+            CloseConnection();
+
+            return attendanceArray;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
         //UPDATE statement
         public void Update(String sqlUpdateString)
@@ -360,43 +530,7 @@ namespace TBCN
             return null;
         }
 
-        //count statement
-        public int Count(String query)
-        {
-            
-            int count = -1;
 
-            //Open Connection
-            try
-            {
-                OpenConnection();
 
-                //Create Mysql Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                //ExecuteScalar will return one value
-                count = int.Parse(cmd.ExecuteScalar().ToString());
-
-                //close Connection
-                CloseConnection();
-
-                return count;
-            }
-            catch (MySqlException msqle)
-            {
-                Console.WriteLine(msqle.ToString());
-            }
-            return -1;
-        }
-
-        //Backup
-        public void Backup()
-        {
-        }
-
-        //Restore
-        public void Restore()
-        {
-        }
     }
 }

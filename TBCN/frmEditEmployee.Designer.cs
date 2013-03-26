@@ -376,7 +376,7 @@
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(54, 13);
             this.label18.TabIndex = 65;
-            this.label18.Text = "Address 1";
+            this.label18.Text = "HomeAddress 1";
             // 
             // label19
             // 

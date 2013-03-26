@@ -344,6 +344,22 @@ ENGINE = InnoDB;
 
 SHOW WARNINGS;
 
+CREATE  TABLE IF NOT EXISTS `12ac3d03`.`Attendance` (
+	Child_ID INT NOT NULL ,
+	Monday BOOL ,
+	Tuesday BOOL ,
+	Wednesday BOOL ,
+	Thursday BOOL ,
+	Friday BOOL ,
+	PRIMARY KEY (`Child_ID`) ,
+	CONSTRAINT `fk_Child_Attendance`
+	  FOREIGN KEY (`Child_ID`)
+	  REFERENCES `12ac3d03`.`Child` (`Child_ID` )
+	  ON DELETE CASCADE
+      ON UPDATE CASCADE
+)
+ENGINE = InnoDB;
+
 -- -----------------------------------------------------
 -- Table `12ac3d03`.`Supplier`
 -- -----------------------------------------------------

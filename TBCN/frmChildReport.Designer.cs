@@ -134,7 +134,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 13);
             this.label8.TabIndex = 8;
-            this.label8.Text = "Home Address:";
+            this.label8.Text = "Home HomeAddress:";
             // 
             // label9
             // 

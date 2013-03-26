@@ -9,7 +9,7 @@ namespace TBCN
     //Entity DAO class representing a Parent domain business object
     public class Parent
     {
-        public int Parent_ID { get; set; }
+        public int ParentID { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }
         public String Title { get; set; }

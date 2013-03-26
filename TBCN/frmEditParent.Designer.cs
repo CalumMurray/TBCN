@@ -271,7 +271,7 @@
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(77, 13);
             this.label19.TabIndex = 63;
-            this.label19.Text = "Work Address:";
+            this.label19.Text = "Work HomeAddress:";
             // 
             // label10
             // 
@@ -344,7 +344,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 13);
             this.label8.TabIndex = 63;
-            this.label8.Text = "Home Address:";
+            this.label8.Text = "Home HomeAddress:";
             // 
             // label9
             // 

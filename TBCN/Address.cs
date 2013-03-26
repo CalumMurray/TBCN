@@ -6,7 +6,7 @@ using System.Text;
 
 namespace TBCN
 {
-    //Entity DAO class representing an Address domain business object
+    //Entity DAO class representing an HomeAddress domain business object
     public class Address
     {
         public String Address1 { get; set; } //TODO: replace with ID?

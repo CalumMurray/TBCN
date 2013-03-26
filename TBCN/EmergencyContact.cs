@@ -9,7 +9,7 @@ namespace TBCN
     //Entity DAO class representing an Emergency Contact domain business object
     public class EmergencyContact
     {
-        public int Contact_ID { get; set; }
+        public int ContactID { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }
         public String Title { get; set; }
@@ -18,10 +18,10 @@ namespace TBCN
         public String WorkPhone { get; set; }
         public String HomePhone { get; set; }
         public String MobilePhone { get; set; }
-        public Address Address { get; set; }
+        public Address HomeAddress { get; set; }
         public Address WorkAddress { get; set; }
-        public Parent Spouse { get; set; }
         public String Email { get; set; }
+
         public Employee EmployeeContact { get; set; }
         public Child ChildContact { get; set; }
 

@@ -20,7 +20,7 @@ namespace TBCN
         public String RoomAttending { get; set; }
         public DateTime DateApplied { get; set; }
         public DateTime DateLeft { get; set; }
-        public int Attendance { get; set; }     //List days?
+        public bool[] Attendance { get; set; }     
         public int ExtraDays { get; set; }
         public int Teas { get; set; }
         public int MedicalID { get; set; }
@@ -29,5 +29,11 @@ namespace TBCN
         public List<int> Parents { get; set; }
         public List<int> EmergencyContacts { get; set; }
 
+
+        public Child()
+        {
+            Attendance = new bool[5];
+            //TODO: Initialise others?
+        }
     }
 }
