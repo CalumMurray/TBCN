@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 
 namespace TBCN
@@ -12,7 +13,7 @@ namespace TBCN
         public int ChildID { get; set; } 
         public String FirstName { get; set; }
         public String LastName { get; set; }
-        //public blob image { get; set;};
+        public Image image { get; set;}
         public char Gender { get; set; }
         public DateTime DOB { get; set; }   //Date?
         public Child Sibling { get; set; }
@@ -26,8 +27,8 @@ namespace TBCN
         public int MedicalID { get; set; }
 
         //??
-        public List<int> Parents { get; set; }
-        public List<int> EmergencyContacts { get; set; }
+        public List<Parent> Parents { get; set; }
+        public List<EmergencyContact> EmergencyContacts { get; set; }
 
     }
 }
