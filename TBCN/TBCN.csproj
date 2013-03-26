@@ -72,12 +72,6 @@
     <Compile Include="Invoice.cs" />
     <Compile Include="MedicalInformation.cs" />
     <Compile Include="Room.cs" />
-    <Compile Include="Test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Test.Designer.cs">
-      <DependentUpon>Test.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmChildReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,9 +122,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TBCNDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Test.resx">
-      <DependentUpon>Test.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="_12ac3d03DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_12ac3d03DataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmChildReport.resx">
       <DependentUpon>frmChildReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,6 +177,17 @@
     </None>
     <None Include="TBCNDataSet.xss">
       <DependentUpon>TBCNDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_12ac3d03DataSet.xsc">
+      <DependentUpon>_12ac3d03DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_12ac3d03DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_12ac3d03DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_12ac3d03DataSet.xss">
+      <DependentUpon>_12ac3d03DataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

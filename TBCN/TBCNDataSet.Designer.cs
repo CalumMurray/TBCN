@@ -2135,14 +2135,14 @@ namespace TBCN {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnParent_ID = base.Columns["ParentID"];
+                this.columnParent_ID = base.Columns["Parent_ID"];
                 this.columnChildID = base.Columns["ChildID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnParent_ID = new global::System.Data.DataColumn("ParentID", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnParent_ID = new global::System.Data.DataColumn("Parent_ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnParent_ID);
                 this.columnChildID = new global::System.Data.DataColumn("ChildID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnChildID);
@@ -2872,7 +2872,7 @@ namespace TBCN {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnContact_ID = base.Columns["ContactID"];
+                this.columnContact_ID = base.Columns["Contact_ID"];
                 this.columnTitle = base.Columns["Title"];
                 this.columnFirs_tName = base.Columns["Firs_tName"];
                 this.columnLast_Name = base.Columns["Last_Name"];
@@ -2890,7 +2890,7 @@ namespace TBCN {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnContact_ID = new global::System.Data.DataColumn("ContactID", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnContact_ID = new global::System.Data.DataColumn("Contact_ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnContact_ID);
                 this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTitle);
@@ -4711,7 +4711,7 @@ namespace TBCN {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnParent_ID = base.Columns["ParentID"];
+                this.columnParent_ID = base.Columns["Parent_ID"];
                 this.columnFirst_Name = base.Columns["First_Name"];
                 this.columnLast_Name = base.Columns["Last_Name"];
                 this.columnTitle = base.Columns["Title"];
@@ -4729,7 +4729,7 @@ namespace TBCN {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnParent_ID = new global::System.Data.DataColumn("ParentID", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnParent_ID = new global::System.Data.DataColumn("Parent_ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnParent_ID);
                 this.columnFirst_Name = new global::System.Data.DataColumn("First_Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFirst_Name);
@@ -6259,14 +6259,14 @@ namespace TBCN {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnContact_ID = base.Columns["ContactID"];
+                this.columnContact_ID = base.Columns["Contact_ID"];
                 this.columnChild_ID = base.Columns["Child_ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnContact_ID = new global::System.Data.DataColumn("ContactID", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnContact_ID = new global::System.Data.DataColumn("Contact_ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnContact_ID);
                 this.columnChild_ID = new global::System.Data.DataColumn("Child_ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnChild_ID);
@@ -11863,12 +11863,12 @@ namespace TBCN.TBCNDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "child_has_parent_guardian";
-            tableMapping.ColumnMappings.Add("ParentID", "ParentID");
+            tableMapping.ColumnMappings.Add("Parent_ID", "Parent_ID");
             tableMapping.ColumnMappings.Add("ChildID", "ChildID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `child_has_parent_guardian` WHERE ((`ParentID` = @Original_Parent_ID" +
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `child_has_parent_guardian` WHERE ((`Parent_ID` = @Original_Parent_ID" +
                 ") AND (`ChildID` = @Original_ChildID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -11876,7 +11876,7 @@ namespace TBCN.TBCNDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "ParentID";
+            param.SourceColumn = "Parent_ID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -11889,15 +11889,15 @@ namespace TBCN.TBCNDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `child_has_parent_guardian` (`ParentID`, `ChildID`) VALUES (@Parent_" +
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `child_has_parent_guardian` (`Parent_ID`, `ChildID`) VALUES (@Parent_" +
                 "ID, @ChildID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@ParentID";
+            param.ParameterName = "@Parent_ID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "ParentID";
+            param.SourceColumn = "Parent_ID";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@ChildID";
@@ -11908,16 +11908,16 @@ namespace TBCN.TBCNDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `child_has_parent_guardian` SET `ParentID` = @ParentID, `ChildID` = @Chi" +
-                "ldID WHERE ((`ParentID` = @Original_Parent_ID) AND (`ChildID` = @Original_Child" +
+            this._adapter.UpdateCommand.CommandText = "UPDATE `child_has_parent_guardian` SET `Parent_ID` = @Parent_ID, `ChildID` = @Chi" +
+                "ldID WHERE ((`Parent_ID` = @Original_Parent_ID) AND (`ChildID` = @Original_Child" +
                 "ID))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@ParentID";
+            param.ParameterName = "@Parent_ID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "ParentID";
+            param.SourceColumn = "Parent_ID";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@ChildID";
@@ -11931,7 +11931,7 @@ namespace TBCN.TBCNDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "ParentID";
+            param.SourceColumn = "Parent_ID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -11957,7 +11957,7 @@ namespace TBCN.TBCNDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ParentID, ChildID, Child_ID FROM child_has_parent_guardian";
+            this._commandCollection[0].CommandText = "SELECT Parent_ID, ChildID, Child_ID FROM child_has_parent_guardian";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -12768,7 +12768,7 @@ namespace TBCN.TBCNDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "emergency_contact";
-            tableMapping.ColumnMappings.Add("ContactID", "ContactID");
+            tableMapping.ColumnMappings.Add("Contact_ID", "Contact_ID");
             tableMapping.ColumnMappings.Add("Title", "Title");
             tableMapping.ColumnMappings.Add("Firs_tName", "Firs_tName");
             tableMapping.ColumnMappings.Add("Last_Name", "Last_Name");
@@ -12784,14 +12784,14 @@ namespace TBCN.TBCNDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `emergency_contact` WHERE ((`ContactID` = @Original_Contact_ID) AND ((@IsNull_Title = 1 AND `Title` IS NULL) OR (`Title` = @Original_Title)) AND (`Firs_tName` = @Original_Firs_tName) AND (`Last_Name` = @Original_Last_Name) AND ((@IsNull_Relationship = 1 AND `Relationship` IS NULL) OR (`Relationship` = @Original_Relationship)) AND (`Home_Phone` = @Original_Home_Phone) AND ((@IsNull_Work_Phone = 1 AND `Work_Phone` IS NULL) OR (`Work_Phone` = @Original_Work_Phone)) AND ((@IsNull_Mobile_Phone = 1 AND `Mobile_Phone` IS NULL) OR (`Mobile_Phone` = @Original_Mobile_Phone)) AND (`Address` = @Original_Address) AND (`Work_Address` = @Original_Work_Address) AND ((@IsNull_Gender = 1 AND `Gender` IS NULL) OR (`Gender` = @Original_Gender)) AND ((@IsNull_Email = 1 AND `Email` IS NULL) OR (`Email` = @Original_Email)) AND (`Child` = @Original_Child))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `emergency_contact` WHERE ((`Contact_ID` = @Original_Contact_ID) AND ((@IsNull_Title = 1 AND `Title` IS NULL) OR (`Title` = @Original_Title)) AND (`Firs_tName` = @Original_Firs_tName) AND (`Last_Name` = @Original_Last_Name) AND ((@IsNull_Relationship = 1 AND `Relationship` IS NULL) OR (`Relationship` = @Original_Relationship)) AND (`Home_Phone` = @Original_Home_Phone) AND ((@IsNull_Work_Phone = 1 AND `Work_Phone` IS NULL) OR (`Work_Phone` = @Original_Work_Phone)) AND ((@IsNull_Mobile_Phone = 1 AND `Mobile_Phone` IS NULL) OR (`Mobile_Phone` = @Original_Mobile_Phone)) AND (`Address` = @Original_Address) AND (`Work_Address` = @Original_Work_Address) AND ((@IsNull_Gender = 1 AND `Gender` IS NULL) OR (`Gender` = @Original_Gender)) AND ((@IsNull_Email = 1 AND `Email` IS NULL) OR (`Email` = @Original_Email)) AND (`Child` = @Original_Child))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Original_Contact_ID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "ContactID";
+            param.SourceColumn = "Contact_ID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -12946,14 +12946,14 @@ namespace TBCN.TBCNDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO `emergency_contact` (`ContactID`, `Title`, `Firs_tName`, `Last_Name`, `Relationship`, `Home_Phone`, `Work_Phone`, `Mobile_Phone`, `Address`, `Work_Address`, `Gender`, `Email`, `Child`) VALUES (@ContactID, @Title, @Firs_tName, @Last_Name, @Relationship, @Home_Phone, @Work_Phone, @Mobile_Phone, @Address, @Work_Address, @Gender, @Email, @Child)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO `emergency_contact` (`Contact_ID`, `Title`, `Firs_tName`, `Last_Name`, `Relationship`, `Home_Phone`, `Work_Phone`, `Mobile_Phone`, `Address`, `Work_Address`, `Gender`, `Email`, `Child`) VALUES (@Contact_ID, @Title, @Firs_tName, @Last_Name, @Relationship, @Home_Phone, @Work_Phone, @Mobile_Phone, @Address, @Work_Address, @Gender, @Email, @Child)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@ContactID";
+            param.ParameterName = "@Contact_ID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "ContactID";
+            param.SourceColumn = "Contact_ID";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Title";
@@ -13041,14 +13041,14 @@ namespace TBCN.TBCNDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `emergency_contact` SET `ContactID` = @ContactID, `Title` = @Title, `Firs_tName` = @Firs_tName, `Last_Name` = @Last_Name, `Relationship` = @Relationship, `Home_Phone` = @Home_Phone, `Work_Phone` = @Work_Phone, `Mobile_Phone` = @Mobile_Phone, `Address` = @Address, `Work_Address` = @Work_Address, `Gender` = @Gender, `Email` = @Email, `Child` = @Child WHERE ((`ContactID` = @Original_Contact_ID) AND ((@IsNull_Title = 1 AND `Title` IS NULL) OR (`Title` = @Original_Title)) AND (`Firs_tName` = @Original_Firs_tName) AND (`Last_Name` = @Original_Last_Name) AND ((@IsNull_Relationship = 1 AND `Relationship` IS NULL) OR (`Relationship` = @Original_Relationship)) AND (`Home_Phone` = @Original_Home_Phone) AND ((@IsNull_Work_Phone = 1 AND `Work_Phone` IS NULL) OR (`Work_Phone` = @Original_Work_Phone)) AND ((@IsNull_Mobile_Phone = 1 AND `Mobile_Phone` IS NULL) OR (`Mobile_Phone` = @Original_Mobile_Phone)) AND (`Address` = @Original_Address) AND (`Work_Address` = @Original_Work_Address) AND ((@IsNull_Gender = 1 AND `Gender` IS NULL) OR (`Gender` = @Original_Gender)) AND ((@IsNull_Email = 1 AND `Email` IS NULL) OR (`Email` = @Original_Email)) AND (`Child` = @Original_Child))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `emergency_contact` SET `Contact_ID` = @Contact_ID, `Title` = @Title, `Firs_tName` = @Firs_tName, `Last_Name` = @Last_Name, `Relationship` = @Relationship, `Home_Phone` = @Home_Phone, `Work_Phone` = @Work_Phone, `Mobile_Phone` = @Mobile_Phone, `Address` = @Address, `Work_Address` = @Work_Address, `Gender` = @Gender, `Email` = @Email, `Child` = @Child WHERE ((`Contact_ID` = @Original_Contact_ID) AND ((@IsNull_Title = 1 AND `Title` IS NULL) OR (`Title` = @Original_Title)) AND (`Firs_tName` = @Original_Firs_tName) AND (`Last_Name` = @Original_Last_Name) AND ((@IsNull_Relationship = 1 AND `Relationship` IS NULL) OR (`Relationship` = @Original_Relationship)) AND (`Home_Phone` = @Original_Home_Phone) AND ((@IsNull_Work_Phone = 1 AND `Work_Phone` IS NULL) OR (`Work_Phone` = @Original_Work_Phone)) AND ((@IsNull_Mobile_Phone = 1 AND `Mobile_Phone` IS NULL) OR (`Mobile_Phone` = @Original_Mobile_Phone)) AND (`Address` = @Original_Address) AND (`Work_Address` = @Original_Work_Address) AND ((@IsNull_Gender = 1 AND `Gender` IS NULL) OR (`Gender` = @Original_Gender)) AND ((@IsNull_Email = 1 AND `Email` IS NULL) OR (`Email` = @Original_Email)) AND (`Child` = @Original_Child))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@ContactID";
+            param.ParameterName = "@Contact_ID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "ContactID";
+            param.SourceColumn = "Contact_ID";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Title";
@@ -13139,7 +13139,7 @@ namespace TBCN.TBCNDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "ContactID";
+            param.SourceColumn = "Contact_ID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -13307,7 +13307,7 @@ namespace TBCN.TBCNDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT `ContactID`, `Title`, `Firs_tName`, `Last_Name`, `Relationship`, `Home_Ph" +
+            this._commandCollection[0].CommandText = "SELECT `Contact_ID`, `Title`, `Firs_tName`, `Last_Name`, `Relationship`, `Home_Ph" +
                 "one`, `Work_Phone`, `Mobile_Phone`, `Address`, `Work_Address`, `Gender`, `Email`" +
                 ", `Child` FROM `emergency_contact`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
@@ -16872,7 +16872,7 @@ namespace TBCN.TBCNDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "parent_guardian";
-            tableMapping.ColumnMappings.Add("ParentID", "ParentID");
+            tableMapping.ColumnMappings.Add("Parent_ID", "Parent_ID");
             tableMapping.ColumnMappings.Add("First_Name", "First_Name");
             tableMapping.ColumnMappings.Add("Last_Name", "Last_Name");
             tableMapping.ColumnMappings.Add("Title", "Title");
@@ -16888,14 +16888,14 @@ namespace TBCN.TBCNDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `parent_guardian` WHERE ((`ParentID` = @Original_Parent_ID) AND (`First_Name` = @Original_First_Name) AND (`Last_Name` = @Original_Last_Name) AND ((@IsNull_Title = 1 AND `Title` IS NULL) OR (`Title` = @Original_Title)) AND (`Gender` = @Original_Gender) AND (`Home_Phone` = @Original_Home_Phone) AND (`Work_Phone` = @Original_Work_Phone) AND ((@IsNull_Mobile_Phone = 1 AND `Mobile_Phone` IS NULL) OR (`Mobile_Phone` = @Original_Mobile_Phone)) AND (`Home_Address` = @Original_Home_Address) AND (`Work_Address` = @Original_Work_Address) AND ((@IsNull_Spouse = 1 AND `Spouse` IS NULL) OR (`Spouse` = @Original_Spouse)) AND ((@IsNull_Email = 1 AND `Email` IS NULL) OR (`Email` = @Original_Email)) AND (`Children` = @Original_Children))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `parent_guardian` WHERE ((`Parent_ID` = @Original_Parent_ID) AND (`First_Name` = @Original_First_Name) AND (`Last_Name` = @Original_Last_Name) AND ((@IsNull_Title = 1 AND `Title` IS NULL) OR (`Title` = @Original_Title)) AND (`Gender` = @Original_Gender) AND (`Home_Phone` = @Original_Home_Phone) AND (`Work_Phone` = @Original_Work_Phone) AND ((@IsNull_Mobile_Phone = 1 AND `Mobile_Phone` IS NULL) OR (`Mobile_Phone` = @Original_Mobile_Phone)) AND (`Home_Address` = @Original_Home_Address) AND (`Work_Address` = @Original_Work_Address) AND ((@IsNull_Spouse = 1 AND `Spouse` IS NULL) OR (`Spouse` = @Original_Spouse)) AND ((@IsNull_Email = 1 AND `Email` IS NULL) OR (`Email` = @Original_Email)) AND (`Children` = @Original_Children))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Original_Parent_ID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "ParentID";
+            param.SourceColumn = "Parent_ID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -17120,7 +17120,7 @@ namespace TBCN.TBCNDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `parent_guardian` SET `First_Name` = @First_Name, `Last_Name` = @Last_Name, `Title` = @Title, `Gender` = @Gender, `Home_Phone` = @Home_Phone, `Work_Phone` = @Work_Phone, `Mobile_Phone` = @Mobile_Phone, `Home_Address` = @Home_Address, `Work_Address` = @Work_Address, `Spouse` = @Spouse, `Email` = @Email, `Children` = @Children WHERE ((`ParentID` = @Original_Parent_ID) AND (`First_Name` = @Original_First_Name) AND (`Last_Name` = @Original_Last_Name) AND ((@IsNull_Title = 1 AND `Title` IS NULL) OR (`Title` = @Original_Title)) AND (`Gender` = @Original_Gender) AND (`Home_Phone` = @Original_Home_Phone) AND (`Work_Phone` = @Original_Work_Phone) AND ((@IsNull_Mobile_Phone = 1 AND `Mobile_Phone` IS NULL) OR (`Mobile_Phone` = @Original_Mobile_Phone)) AND (`Home_Address` = @Original_Home_Address) AND (`Work_Address` = @Original_Work_Address) AND ((@IsNull_Spouse = 1 AND `Spouse` IS NULL) OR (`Spouse` = @Original_Spouse)) AND ((@IsNull_Email = 1 AND `Email` IS NULL) OR (`Email` = @Original_Email)) AND (`Children` = @Original_Children))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `parent_guardian` SET `First_Name` = @First_Name, `Last_Name` = @Last_Name, `Title` = @Title, `Gender` = @Gender, `Home_Phone` = @Home_Phone, `Work_Phone` = @Work_Phone, `Mobile_Phone` = @Mobile_Phone, `Home_Address` = @Home_Address, `Work_Address` = @Work_Address, `Spouse` = @Spouse, `Email` = @Email, `Children` = @Children WHERE ((`Parent_ID` = @Original_Parent_ID) AND (`First_Name` = @Original_First_Name) AND (`Last_Name` = @Original_Last_Name) AND ((@IsNull_Title = 1 AND `Title` IS NULL) OR (`Title` = @Original_Title)) AND (`Gender` = @Original_Gender) AND (`Home_Phone` = @Original_Home_Phone) AND (`Work_Phone` = @Original_Work_Phone) AND ((@IsNull_Mobile_Phone = 1 AND `Mobile_Phone` IS NULL) OR (`Mobile_Phone` = @Original_Mobile_Phone)) AND (`Home_Address` = @Original_Home_Address) AND (`Work_Address` = @Original_Work_Address) AND ((@IsNull_Spouse = 1 AND `Spouse` IS NULL) OR (`Spouse` = @Original_Spouse)) AND ((@IsNull_Email = 1 AND `Email` IS NULL) OR (`Email` = @Original_Email)) AND (`Children` = @Original_Children))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@First_Name";
@@ -17211,7 +17211,7 @@ namespace TBCN.TBCNDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "ParentID";
+            param.SourceColumn = "Parent_ID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -17361,7 +17361,7 @@ namespace TBCN.TBCNDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT `ParentID`, `First_Name`, `Last_Name`, `Title`, `Gender`, `Home_Phone`, `" +
+            this._commandCollection[0].CommandText = "SELECT `Parent_ID`, `First_Name`, `Last_Name`, `Title`, `Gender`, `Home_Phone`, `" +
                 "Work_Phone`, `Mobile_Phone`, `Home_Address`, `Work_Address`, `Spouse`, `Email`, " +
                 "`Children` FROM `parent_guardian`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
@@ -19829,12 +19829,12 @@ namespace TBCN.TBCNDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "child_has_emergency_contact1";
-            tableMapping.ColumnMappings.Add("ContactID", "ContactID");
+            tableMapping.ColumnMappings.Add("Contact_ID", "Contact_ID");
             tableMapping.ColumnMappings.Add("Child_ID", "Child_ID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `child_has_emergency_contact` WHERE ((`ContactID` = @Original_Contac" +
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `child_has_emergency_contact` WHERE ((`Contact_ID` = @Original_Contac" +
                 "t_ID) AND (`Child_ID` = @Original_Child_ID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -19842,7 +19842,7 @@ namespace TBCN.TBCNDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "ContactID";
+            param.SourceColumn = "Contact_ID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -19855,15 +19855,15 @@ namespace TBCN.TBCNDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `child_has_emergency_contact` (`ContactID`, `Child_ID`) VALUES (@Con" +
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `child_has_emergency_contact` (`Contact_ID`, `Child_ID`) VALUES (@Con" +
                 "tact_ID, @Child_ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@ContactID";
+            param.ParameterName = "@Contact_ID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "ContactID";
+            param.SourceColumn = "Contact_ID";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Child_ID";
@@ -19874,16 +19874,16 @@ namespace TBCN.TBCNDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `child_has_emergency_contact` SET `ContactID` = @ContactID, `Child_ID` =" +
-                " @Child_ID WHERE ((`ContactID` = @Original_Contact_ID) AND (`Child_ID` = @Origi" +
+            this._adapter.UpdateCommand.CommandText = "UPDATE `child_has_emergency_contact` SET `Contact_ID` = @Contact_ID, `Child_ID` =" +
+                " @Child_ID WHERE ((`Contact_ID` = @Original_Contact_ID) AND (`Child_ID` = @Origi" +
                 "nal_Child_ID))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@ContactID";
+            param.ParameterName = "@Contact_ID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "ContactID";
+            param.SourceColumn = "Contact_ID";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Child_ID";
@@ -19897,7 +19897,7 @@ namespace TBCN.TBCNDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "ContactID";
+            param.SourceColumn = "Contact_ID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -19923,7 +19923,7 @@ namespace TBCN.TBCNDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT `ContactID`, `Child_ID` FROM `child_has_emergency_contact`";
+            this._commandCollection[0].CommandText = "SELECT `Contact_ID`, `Child_ID` FROM `child_has_emergency_contact`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
