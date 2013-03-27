@@ -19,10 +19,15 @@ namespace TBCN
         public String MobilePhone { get; set; }
         public Address HomeAddress { get; set; }
         public Address WorkAddress { get; set; }
-        public int Spouse { get; set; }
+        public Parent Spouse { get; set; }
         public String Email { get; set; }
-        //public List<Child> ChildrenAttending { get; set; }
+        public List<Child> ChildrenAttending { get; set; }
         //public Invoice invoice{ get; set; }
 
+
+        public Parent()
+        {
+            ChildrenAttending = new List<Child>();
+        }
     }
 }

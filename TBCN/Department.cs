@@ -16,5 +16,6 @@ namespace TBCN
         public Decimal TeaFee { get; set; }
         public int MinimumRatio { get; set; }
 
+
     }
 }

@@ -60,5 +60,6 @@ namespace TBCN
             lblMedical.Text = employee.Medical.ToString();
         }
 
+    
     }
 }

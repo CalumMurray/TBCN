@@ -178,6 +178,7 @@
             this.lblMedical.Size = new System.Drawing.Size(63, 13);
             this.lblMedical.TabIndex = 17;
             this.lblMedical.Text = "Has asthma";
+            this.lblMedical.Click += new System.EventHandler(this.lblMedical_Click);
             // 
             // lblEC2
             // 
@@ -315,6 +316,7 @@
             this.lblTraining.Size = new System.Drawing.Size(43, 13);
             this.lblTraining.TabIndex = 33;
             this.lblTraining.Text = "First aid";
+            this.lblTraining.Click += new System.EventHandler(this.lblTraining_Click);
             // 
             // label26
             // 
