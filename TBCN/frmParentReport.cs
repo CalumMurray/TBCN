@@ -11,9 +11,16 @@ namespace TBCN
 {
     public partial class frmParentReport : Form
     {
-        public frmParentReport()
+        public frmParentReport(String title, Parent parent)
         {
             InitializeComponent();
+            this.Text = title;
+        }
+
+        public frmParentReport(String title, EmergencyContact ec)
+        {
+            InitializeComponent();
+            this.Text = title;
         }
 
         private void frmParentReport_Load(object sender, EventArgs e)

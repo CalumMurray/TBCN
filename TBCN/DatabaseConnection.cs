@@ -71,7 +71,7 @@ namespace TBCN
         //TODO: Generate Invoices!
         //TODO: Notify children should be moved up room
 
-        /*--------------INSERTS---------------*/
+        /*--------------INSERTS/UPDATES---------------*/
 
         public bool insertChild(Child childToAdd, Parent parent, EmergencyContact ec)
         {
@@ -673,7 +673,7 @@ namespace TBCN
         }
 
         /*---------------------DELETES----------------------------*/
-        //TODO: Check Foreign Key Constraints.  May not allow deletions in certain order.
+        //TODO: Check Foreign Key Constraints.  May not allow deletions in certain order. Transaction?
 
         public bool deleteChild(int childID)
         {

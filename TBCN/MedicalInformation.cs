@@ -15,5 +15,13 @@ namespace TBCN
         public String Other { get; set; }
         public String Doctor { get; set; }
         public Address DoctorAddress { get; set; }
+
+        
+        public override String ToString()
+        {
+            return "Allergies: " + Allergies + "\nMedication: " + Medication + "\nDoctor: " + Doctor + "\nAddress: " + DoctorAddress;
+                           
+            
+        }
     }
 }
