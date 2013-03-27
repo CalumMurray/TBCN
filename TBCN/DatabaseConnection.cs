@@ -381,7 +381,7 @@ namespace TBCN
 
         /*--------------SELECTS---------------*/
 
-        public Child selectChild(int childIDToSelect)
+        public Child searchChildren(int childIDToSelect)
         {
             if (!OpenConnection())
                 return null;
@@ -602,7 +602,7 @@ namespace TBCN
 
                 //Get children
                 foreach (int childID in selectParentsChildIDs(newParent.ParentID))
-                    newParent.ChildrenAttending.Add(selectChild(childID));
+                    newParent.ChildrenAttending.Add(searchChildren(childID));
 
 
             }
@@ -647,7 +647,7 @@ namespace TBCN
 
                 //Get children
                 foreach (int childID in selectContactsChildIDs(newEC.ContactID))
-                    newEC.ChildrenAttending.Add(selectChild(childID));
+                    newEC.ChildrenAttending.Add(searchChildren(childID));
 
                 newEC.Employee = selectEmployee(ECReader.GetString(31));    //Joined employee's "Emergency_Contact" field
             }
@@ -658,48 +658,48 @@ namespace TBCN
             return newEC;
         }
 
-        public Employee selectContactsEmployee(int contactID)
-        {
-            if (!OpenConnection())
-                return null;
+        //public Employee selectContactsEmployee(int contactID)
+        //{
+        //    if (!OpenConnection())
+        //        return null;
 
-            selectCommand = new MySqlCommand(null, connection);
-            selectCommand.CommandText = "SELECT * FROM emergency_contact WHERE Contact_ID = @contactID;";
-            selectCommand.Parameters.Add(new MySqlParameter("@contactID", contactID));
+        //    selectCommand = new MySqlCommand(null, connection);
+        //    selectCommand.CommandText = "SELECT * FROM emergency_contact WHERE Contact_ID = @contactID;";
+        //    selectCommand.Parameters.Add(new MySqlParameter("@contactID", contactID));
 
-            Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
-            selectCommand.Prepare();
-            MySqlDataReader ECReader = selectCommand.ExecuteReader();
+        //    Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
+        //    selectCommand.Prepare();
+        //    MySqlDataReader ECReader = selectCommand.ExecuteReader();
 
-            //Package into EmergencyContact domain entity object
-            EmergencyContact newEC = new EmergencyContact();
-            while (ECReader.Read())
-            {
-                newEC.ContactID = ECReader.GetInt32(0);
-                newEC.Title = ECReader.GetString(1);
-                newEC.FirstName = ECReader.GetString(2);
-                newEC.LastName = ECReader.GetString(3);
-                newEC.Relationship = ECReader.GetString(4);
-                newEC.HomePhone = ECReader.GetString(5);
-                newEC.WorkPhone = ECReader.GetString(6);
-                newEC.MobilePhone = ECReader.GetString(7);
-                newEC.HomeAddress = selectAddress(ECReader.GetString(8));
-                newEC.WorkAddress = selectAddress(ECReader.GetString(9));
-                newEC.Gender = ECReader.GetChar(10);
-                newEC.Email = ECReader.GetString(11);
+        //    //Package into EmergencyContact domain entity object
+        //    EmergencyContact newEC = new EmergencyContact();
+        //    while (ECReader.Read())
+        //    {
+        //        newEC.ContactID = ECReader.GetInt32(0);
+        //        newEC.Title = ECReader.GetString(1);
+        //        newEC.FirstName = ECReader.GetString(2);
+        //        newEC.LastName = ECReader.GetString(3);
+        //        newEC.Relationship = ECReader.GetString(4);
+        //        newEC.HomePhone = ECReader.GetString(5);
+        //        newEC.WorkPhone = ECReader.GetString(6);
+        //        newEC.MobilePhone = ECReader.GetString(7);
+        //        newEC.HomeAddress = selectAddress(ECReader.GetString(8));
+        //        newEC.WorkAddress = selectAddress(ECReader.GetString(9));
+        //        newEC.Gender = ECReader.GetChar(10);
+        //        newEC.Email = ECReader.GetString(11);
 
-                //Get children
-                foreach (int childID in selectContactsChildIDs(newEC.ContactID))
-                    newEC.ChildrenAttending.Add(selectChild(childID));
+        //        //Get children
+        //        foreach (int childID in selectContactsChildIDs(newEC.ContactID))
+        //            newEC.ChildrenAttending.Add(searchChildren(childID));
 
-                //newEC.Employee = selectEmployee(ECReader.GetString(5)
-            }
-            ECReader.Close();
+        //        //newEC.Employee = selectEmployee(ECReader.GetString(5)
+        //    }
+        //    ECReader.Close();
 
-            CloseConnection();
+        //    CloseConnection();
 
-            return newEC;
-        }
+        //    return newEC;
+        //}
 
         //Get a child's attendance
         public bool[] selectAttendance(int childID)
@@ -777,7 +777,117 @@ namespace TBCN
 
         }
 
-        public void
+        public List<Child> searchChildren(string childName)
+        {
+            if (!OpenConnection())
+                return null;
+
+            String[] names = new String[2];
+            if (childName.Contains(' '))
+                names = childName.Split(' ');
+
+            selectCommand = new MySqlCommand(null, connection);
+            selectCommand.CommandText = @"SELECT * FROM child WHERE First_Name = @name
+                                                                OR Last_Name = @name
+                                                                OR (First_Name = @firstname
+                                                                    AND Last_Name = @lastname);";
+            selectCommand.Parameters.Add(new MySqlParameter("@name", childName));
+            selectCommand.Parameters.Add(new MySqlParameter("@firstname", names[0]));
+            selectCommand.Parameters.Add(new MySqlParameter("@lastname", names[1]));
+
+            Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
+            selectCommand.Prepare();
+            MySqlDataReader childrenReader = selectCommand.ExecuteReader();
+
+            //Package into Employee domain entity object
+            List<Child> children = new List<Child>();
+            while (childrenReader.Read())
+            {
+                Child newChild = new Child();
+                newChild.ChildID = childrenReader.GetInt32(0);
+                newChild.FirstName = childrenReader.GetString(1);
+                newChild.LastName = childrenReader.GetString(2);
+                newChild.Gender = childrenReader.GetChar(3);
+                newChild.DOB = childrenReader.GetDateTime(4);
+                newChild.FirstLanguage = childrenReader.GetString(5);
+                newChild.RoomAttending = childrenReader.GetString(6);
+                //newChild.Sibling = childReader.Get7
+                newChild.DateApplied = childrenReader.GetDateTime(8);
+                newChild.DateLeft = childrenReader.GetDateTime(9);
+                newChild.Attendance = selectAttendance(newChild.ChildID);
+                newChild.ExtraDays = childrenReader.GetInt16(11);
+                newChild.Teas = childrenReader.GetInt16(12);
+                newChild.MedicalInfo = selectMedicalInformation(childrenReader.GetInt16(13));
+
+                //Get parents
+                foreach (int parentID in selectChildsParentIDs(newChild.ChildID))
+                    newChild.Parents.Add(selectParent(parentID));
+
+                //Get Emergency Contacts
+                foreach (int contactID in selectChildsContactIDs(newChild.ChildID))
+                    newChild.EmergencyContacts.Add(selectEmergencyContact(contactID));
+
+                children.Add(newChild);
+            }
+            childrenReader.Close();
+
+            return children;
+        }
+
+        public List<Employee> searchStaff(string staffSearchString)
+        {
+            if (!OpenConnection())
+                return null;
+
+            String[] names = new String[2];
+            if (staffSearchString.Contains(' '))
+                names = staffSearchString.Split(' ');
+
+            selectCommand = new MySqlCommand(null, connection);
+            selectCommand.CommandText = @"SELECT * FROM employee WHERE First_Name = @searchString
+                                                                OR Last_Name = @searchString
+                                                                OR (First_Name = @firstname
+                                                                    AND Last_Name = @lastname)
+                                                                OR National_Insurance_Number = @searchString;";
+            selectCommand.Parameters.Add(new MySqlParameter("@name", staffSearchString));
+            selectCommand.Parameters.Add(new MySqlParameter("@firstname", names[0]));
+            selectCommand.Parameters.Add(new MySqlParameter("@lastname", names[1]));
+
+            Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
+            selectCommand.Prepare();
+            MySqlDataReader staffReader = selectCommand.ExecuteReader();
+
+            //Package into Employee domain entity object
+            List<Employee> staff = new List<Employee>();
+            while (staffReader.Read())
+            {
+                Employee newEmployee = new Employee();
+                newEmployee.NINo = staffReader.GetString(0);
+                newEmployee.FirstName = staffReader.GetString(1);
+                newEmployee.LastName = staffReader.GetString(2);
+                newEmployee.Gender = staffReader.GetChar(3);
+                newEmployee.DateStarted = staffReader.GetDateTime(4);
+                newEmployee.DateFinished = staffReader.GetDateTime(5);
+                newEmployee.PVGDate = staffReader.GetDateTime(6);
+                newEmployee.HolidaysEntitled = staffReader.GetInt32(7);
+                newEmployee.HolidaysTaken = staffReader.GetInt32(8);
+                newEmployee.WeeksHours = staffReader.GetInt32(9);
+                newEmployee.Address = selectAddress(staffReader.GetString(10));
+                newEmployee.DOB = staffReader.GetDateTime(11);
+                newEmployee.Salary = staffReader.GetInt32(12);
+                newEmployee.HomePhone = staffReader.GetString(13);
+                newEmployee.MobilePhone = staffReader.GetString(14);
+                newEmployee.Email = staffReader.GetString(15);
+                newEmployee.Training = staffReader.GetString(16);
+                newEmployee.Medical = selectMedicalInformation(staffReader.GetInt16(17));
+                newEmployee.EmergencyContact = selectEmergencyContact(staffReader.GetInt16(18));              
+
+                staff.Add(newEmployee);
+            }
+            staffReader.Close();
+
+            return staff;
+        }
 
         /*---------------------DELETES----------------------------*/
         //TODO: Check Foreign Key Constraints.  May not allow deletions in certain order. Transaction?
@@ -846,5 +956,8 @@ namespace TBCN
 
 
 
+
+
+        
     }
 }

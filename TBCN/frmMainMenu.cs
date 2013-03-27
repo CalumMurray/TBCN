@@ -11,96 +11,71 @@ namespace TBCN
 {
     public partial class frmMainMenu : Form
     {
-        TestMain data;
+        Database db;
 
         public frmMainMenu()
         {
             InitializeComponent();
-            data = new TestMain();
+            db = new Database();
         }
 
-        private void textBox1_Enter(object sender, EventArgs e)
+        private void frmMainMenu_Load(object sender, EventArgs e)
         {
-            if (txtChildren.Text == "Enter child name to search for...")
-            {
-                txtChildren.Clear();
-                txtChildren.ForeColor = Color.Black;
-            }
+            // TODO: This line of code loads data into the '_12ac3d03DataSet.child' table. You can move, or remove it, as needed.
+            
+            //TOOD: Issue Invoice every month.
+
+            //TODO: Check children for room moves
+
+            //TODO: Check renewal of PVG (3 years)
         }
 
-        private void textBox1_Leave(object sender, EventArgs e)
+        private void frmMainMenu_Load_1(object sender, EventArgs e)
         {
-            if (txtChildren.Text == "")
-            {
-                txtChildren.ForeColor = Color.Gray;
-                txtChildren.Text = "Enter child name to search for...";
-            }
+
         }
 
-        private void textBox2_Enter(object sender, EventArgs e)
+        private void btnChildren_Click(object sender, EventArgs e)
         {
-            if (txtStaff.Text == "Enter staff member name to search for...")
-            {
-                txtStaff.Clear();
-                txtStaff.ForeColor = Color.Black;
-            }
+            String childName = txtChildren.Text;
+            List<Child> foundChildren = db.searchChildren(childName);
+
+
         }
 
-        private void textBox2_Leave(object sender, EventArgs e)
+        private void btnStaff_Click(object sender, EventArgs e)
         {
-            if (txtStaff.Text == "")
-            {
-                txtStaff.ForeColor = Color.Gray;
-                txtStaff.Text = "Enter staff member name to search for...";
-            }
+            String staffSearchString = txtStaff.Text;
+            List<Employee> foundStaff = db.searchStaff(staffSearchString);
         }
 
-        private void textBox3_Enter(object sender, EventArgs e)
+        private void btnParents_Click(object sender, EventArgs e)
         {
-            if (txtParents.Text == "Enter parent name to search for...")
-            {
-                txtParents.Clear();
-                txtParents.ForeColor = Color.Black;
-            }
+            String parentSearchString = txtParents.Text;
+            //List<Parent> foundStaff = db.searchParent(parentSearchString);
         }
 
-        private void textBox3_Leave(object sender, EventArgs e)
+        private void tabControl_SelectIndexChanged(object sender, EventArgs e) 
         {
-            if (txtParents.Text == "")
-            {
-                txtParents.ForeColor = Color.Gray;
-                txtParents.Text = "Enter parent name to search for...";
-            }
+            //if (((TabControl)sender).SelectedIndex == 0/1/2)
+
         }
 
-        private void tabPage1_Enter(object sender, EventArgs e)
+        private void btnAddChild_Click(object sender, EventArgs e)
         {
-            lstChildren.Items.Clear();
-
-            foreach (Child child in data.children)
-            {
-                lstChildren.Items.Add(child.FirstName + " " + child.LastName);
-            }
+            new frmEditChild().ShowDialog();
         }
 
-        private void tabParents_Enter(object sender, EventArgs e)
+        private void btnAddEmployee_Click(object sender, EventArgs e)
         {
-            lstParents.Items.Clear();
-
-            foreach (Parent parent in data.parents)
-            {
-                lstParents.Items.Add(parent.FirstName + " " + parent.LastName);
-            }
+            new frmEditEmployee().ShowDialog();
         }
 
-        private void tabStaff_Enter(object sender, EventArgs e)
+        private void btnAddParent_Click(object sender, EventArgs e)
         {
-            lstStaff.Items.Clear();
-
-            foreach (Employee employee in data.employees)
-            {
-                lstParents.Items.Add(employee.FirstName + " " + employee.LastName);
-            }
+            new frmEditParent("Add a Parent/Contact").ShowDialog();
         }
+
+        
     }
 }
