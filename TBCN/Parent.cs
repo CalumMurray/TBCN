@@ -21,8 +21,13 @@ namespace TBCN
         public Address WorkAddress { get; set; }
         public Parent Spouse { get; set; }
         public String Email { get; set; }
-        //public List<Child> ChildrenAttending { get; set; }
+        public List<Child> ChildrenAttending { get; set; }
         //public Invoice invoice{ get; set; }
 
+
+        public Parent()
+        {
+            ChildrenAttending = new List<Child>();
+        }
     }
 }

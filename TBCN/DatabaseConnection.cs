@@ -64,12 +64,14 @@ namespace TBCN
 
         //TODO: Indexes
         //TODO: Prepared Statements!
-        //TODO: Stored Procedures!
-        //TODO: Locks/Logs/Priveleges/VIEWS
-        //TODO: Transactions!
+        //TODO: Locks/Logs/Priveleges
 
-        //TODO: Generate Invoices!
-        //TODO: Notify children should be moved up room
+        //TODO: STORED PROCEDURES!
+        //TODO: VIEWS for levels of access!
+
+        //TODO: TRANSACTIONS!
+        //TODO: Joins instead of multiple selects?
+
 
         /*--------------INSERTS/UPDATES---------------*/
 
@@ -126,7 +128,7 @@ namespace TBCN
                 insertCommand.ExecuteNonQuery();
 
 
-                //childID = (int)idCommand.ExecuteScalar();
+                //parentID = (int)idCommand.ExecuteScalar();
                 //insertAttendance(childToAdd);
                 //insertParent(parent);
                 //parentID = (int)idCommand.ExecuteScalar();
@@ -193,9 +195,9 @@ namespace TBCN
         public void linkParentChild(Child childToAdd, Parent parent)
         {
             insertCommand.Connection = connection;
-            insertCommand.CommandText = "INSERT INTO child_has_parent_guardian VALUES (@contactID, @childID);";
+            insertCommand.CommandText = "INSERT INTO child_has_parent_guardian VALUES (@contactID, @parentID);";
             insertCommand.Parameters.Add(new MySqlParameter("@contactID", parentID));
-            insertCommand.Parameters.Add(new MySqlParameter("@childID", childID));
+            insertCommand.Parameters.Add(new MySqlParameter("@parentID", childID));
 
             Console.WriteLine("Executing: [ " + insertCommand.ToString() + "].");
             insertCommand.Prepare();
@@ -242,10 +244,10 @@ namespace TBCN
         public void linkECChild(EmergencyContact ecToAdd, Child childToAdd)
         {
             insertCommand.Connection = connection;
-            insertCommand.CommandText = "INSERT INTO child_has_emergency_contact VALUES (@contactID, @childID);";
+            insertCommand.CommandText = "INSERT INTO child_has_emergency_contact VALUES (@contactID, @parentID);";
 
             insertCommand.Parameters.Add(new MySqlParameter("@contactID", contactID));
-            insertCommand.Parameters.Add(new MySqlParameter("@childID", childID));
+            insertCommand.Parameters.Add(new MySqlParameter("@parentID", childID));
 
             Console.WriteLine("Executing: [ " + insertCommand.ToString() + "].");
             insertCommand.Prepare();
@@ -385,8 +387,8 @@ namespace TBCN
                 return null;
 
             selectCommand = new MySqlCommand(null, connection);
-            selectCommand.CommandText = "SELECT * FROM child WHERE Child_ID = @childID;";
-            selectCommand.Parameters.Add(new MySqlParameter("@childID", childIDToSelect));
+            selectCommand.CommandText = @"SELECT * FROM child WHERE Child_ID = @childid;";
+            selectCommand.Parameters.Add(new MySqlParameter("@childid", childIDToSelect));
 
             Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
             selectCommand.Prepare();
@@ -442,13 +444,35 @@ namespace TBCN
             selectCommand.Prepare();
             MySqlDataReader parentReader = selectCommand.ExecuteReader();
 
-            //Package into Child domain entity object
+            //Get list of parent ids
             List<int> parentIDs = new List<int>();
             while (parentReader.Read())
             {
                 parentIDs.Add(parentReader.GetInt32(0));
             }
             return parentIDs;
+        }
+
+        private List<int> selectParentsChildIDs(int parentID)
+        {
+            if (!OpenConnection())
+                return null;
+
+            selectCommand = new MySqlCommand(null, connection);
+            selectCommand.CommandText = "SELECT * FROM child_has_parent_guardian WHERE Parent_ID = @parentID;";
+            selectCommand.Parameters.Add(new MySqlParameter("@parentID", parentID));
+
+            Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
+            selectCommand.Prepare();
+            MySqlDataReader childReader = selectCommand.ExecuteReader();
+
+            //Get list of Child ids
+            List<int> childIDs = new List<int>();
+            while (childReader.Read())
+            {
+                childIDs.Add(childReader.GetInt32(1));
+            }
+            return childIDs;
         }
 
         private List<int> selectChildsContactIDs(int childID)
@@ -464,7 +488,7 @@ namespace TBCN
             selectCommand.Prepare();
             MySqlDataReader ecReader = selectCommand.ExecuteReader();
 
-            //Package into Child domain entity object
+            //Get list of emergency contact ids
             List<int> contactIDs = new List<int>();
             while (ecReader.Read())
             {
@@ -472,6 +496,30 @@ namespace TBCN
             }
             return contactIDs;
         }
+
+        private List<int> selectContactsChildIDs(int contactID)
+        {
+            if (!OpenConnection())
+                return null;
+
+            selectCommand = new MySqlCommand(null, connection);
+            selectCommand.CommandText = "SELECT * FROM child_has_emergency_contact WHERE Contact_ID = @contactID;";
+            selectCommand.Parameters.Add(new MySqlParameter("@contactID", contactID));
+
+            Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
+            selectCommand.Prepare();
+            MySqlDataReader childReader = selectCommand.ExecuteReader();
+
+            //get list of child ids
+            List<int> childIDs = new List<int>();
+            while (childReader.Read())
+            {
+                childIDs.Add(childReader.GetInt32(1));
+            }
+            return childIDs;
+        }
+
+
 
         private MedicalInformation selectMedicalInformation(int medicalID)
         {
@@ -528,8 +576,8 @@ namespace TBCN
                 return null;
 
             selectCommand = new MySqlCommand(null, connection);
-            selectCommand.CommandText = "SELECT * FROM parent_guardian WHERE ParentID = @contactID;";
-            selectCommand.Parameters.Add(new MySqlParameter("@contactID", parentIDToSelect));
+            selectCommand.CommandText = "SELECT * FROM parent_guardian WHERE ParentID = @parentID;";
+            selectCommand.Parameters.Add(new MySqlParameter("@parentID", parentIDToSelect));
 
             Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
             selectCommand.Prepare();
@@ -549,8 +597,14 @@ namespace TBCN
                 newParent.MobilePhone = parentReader.GetString(7);
                 newParent.HomeAddress = selectAddress(parentReader.GetString(8));
                 newParent.WorkAddress = selectAddress(parentReader.GetString(9));
-                //newParent.Spouse = parentReader.GetInt16(10);
+                //newParent.Spouse = childReader.GetInt16(10);
                 newParent.Email = parentReader.GetString(11);
+
+                //Get children
+                foreach (int childID in selectParentsChildIDs(newParent.ParentID))
+                    newParent.ChildrenAttending.Add(selectChild(childID));
+
+
             }
             parentReader.Close();
 
@@ -565,7 +619,9 @@ namespace TBCN
                 return null;
 
             selectCommand = new MySqlCommand(null, connection);
-            selectCommand.CommandText = "SELECT * FROM emergency_contact WHERE ContactID = @contactID;";
+            selectCommand.CommandText = @"SELECT * FROM emergency_contact WHERE Contact_ID = @contactID
+                                        INNER JOIN employee ON emergency_contact.Contact_ID = employee.Emergency_Contact
+                                        WHERE Contact_ID = @contactID;";
             selectCommand.Parameters.Add(new MySqlParameter("@contactID", ecIDToSelect));
 
             Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
@@ -588,6 +644,12 @@ namespace TBCN
                 newEC.WorkAddress = selectAddress(ECReader.GetString(9));
                 newEC.Gender = ECReader.GetChar(10);
                 newEC.Email = ECReader.GetString(11);
+
+                //Get children
+                foreach (int childID in selectContactsChildIDs(newEC.ContactID))
+                    newEC.ChildrenAttending.Add(selectChild(childID));
+
+                newEC.Employee = selectEmployee(ECReader.GetString(31));    //Joined employee's "Emergency_Contact" field
             }
             ECReader.Close();
 
@@ -596,6 +658,48 @@ namespace TBCN
             return newEC;
         }
 
+        public Employee selectContactsEmployee(int contactID)
+        {
+            if (!OpenConnection())
+                return null;
+
+            selectCommand = new MySqlCommand(null, connection);
+            selectCommand.CommandText = "SELECT * FROM emergency_contact WHERE Contact_ID = @contactID;";
+            selectCommand.Parameters.Add(new MySqlParameter("@contactID", contactID));
+
+            Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
+            selectCommand.Prepare();
+            MySqlDataReader ECReader = selectCommand.ExecuteReader();
+
+            //Package into EmergencyContact domain entity object
+            EmergencyContact newEC = new EmergencyContact();
+            while (ECReader.Read())
+            {
+                newEC.ContactID = ECReader.GetInt32(0);
+                newEC.Title = ECReader.GetString(1);
+                newEC.FirstName = ECReader.GetString(2);
+                newEC.LastName = ECReader.GetString(3);
+                newEC.Relationship = ECReader.GetString(4);
+                newEC.HomePhone = ECReader.GetString(5);
+                newEC.WorkPhone = ECReader.GetString(6);
+                newEC.MobilePhone = ECReader.GetString(7);
+                newEC.HomeAddress = selectAddress(ECReader.GetString(8));
+                newEC.WorkAddress = selectAddress(ECReader.GetString(9));
+                newEC.Gender = ECReader.GetChar(10);
+                newEC.Email = ECReader.GetString(11);
+
+                //Get children
+                foreach (int childID in selectContactsChildIDs(newEC.ContactID))
+                    newEC.ChildrenAttending.Add(selectChild(childID));
+
+                //newEC.Employee = selectEmployee(ECReader.GetString(5)
+            }
+            ECReader.Close();
+
+            CloseConnection();
+
+            return newEC;
+        }
 
         //Get a child's attendance
         public bool[] selectAttendance(int childID)
@@ -604,8 +708,8 @@ namespace TBCN
                 return null;
 
             selectCommand = new MySqlCommand(null, connection);
-            selectCommand.CommandText = "SELECT * FROM attendance WHERE ChildID = @childID;";
-            selectCommand.Parameters.Add(new MySqlParameter("@childID", childID));
+            selectCommand.CommandText = "SELECT * FROM attendance WHERE ChildID = @parentID;";
+            selectCommand.Parameters.Add(new MySqlParameter("@parentID", childID));
 
             Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
             selectCommand.Prepare();
@@ -663,14 +767,17 @@ namespace TBCN
                 newEmployee.Email = employeeReader.GetString(15);
                 newEmployee.Training = employeeReader.GetString(16);
                 newEmployee.Medical = selectMedicalInformation(employeeReader.GetInt32(17));
-                //newEmployee.EmergencyContacts = GetInt32(18)
+                newEmployee.EmergencyContact = selectEmergencyContact(employeeReader.GetInt32(18));
             }
             employeeReader.Close();
 
             CloseConnection();
 
             return newEmployee;
+
         }
+
+        public void
 
         /*---------------------DELETES----------------------------*/
         //TODO: Check Foreign Key Constraints.  May not allow deletions in certain order. Transaction?
@@ -734,6 +841,10 @@ namespace TBCN
 
             return (CloseConnection());
         }
+
+
+
+
 
     }
 }

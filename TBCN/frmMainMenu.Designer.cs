@@ -45,6 +45,8 @@
             this.tabStaff.SuspendLayout();
             this.tabChildren.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._12ac3d03DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.childBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabParents
@@ -193,14 +195,47 @@
             this.tabControl1.Location = new System.Drawing.Point(13, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(477, 315);
+            this.tabControl1.Size = new System.Drawing.Size(663, 409);
             this.tabControl1.TabIndex = 0;
+            // 
+            // _12ac3d03DataSet
+            // 
+            this._12ac3d03DataSet.DataSetName = "_12ac3d03DataSet";
+            this._12ac3d03DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // childBindingSource
+            // 
+            this.childBindingSource.DataMember = "child";
+            this.childBindingSource.DataSource = this._12ac3d03DataSet;
+            // 
+            // childTableAdapter
+            // 
+            this.childTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.addressTableAdapter = null;
+            this.tableAdapterManager.attendanceTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.child_has_emergency_contactTableAdapter = null;
+            this.tableAdapterManager.child_has_parent_guardianTableAdapter = null;
+            this.tableAdapterManager.childTableAdapter = this.childTableAdapter;
+            this.tableAdapterManager.departmentTableAdapter = null;
+            this.tableAdapterManager.emergency_contactTableAdapter = null;
+            this.tableAdapterManager.employeeTableAdapter = null;
+            this.tableAdapterManager.invoiceTableAdapter = null;
+            this.tableAdapterManager.medical_informationTableAdapter = null;
+            this.tableAdapterManager.parent_guardianTableAdapter = null;
+            this.tableAdapterManager.roomTableAdapter = null;
+            this.tableAdapterManager.supplier_invoiceTableAdapter = null;
+            this.tableAdapterManager.supplierTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = TBCN._12ac3d03DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 340);
+            this.ClientSize = new System.Drawing.Size(688, 434);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmMainMenu";
             this.Text = "frmMainMenu";
@@ -211,6 +246,8 @@
             this.tabChildren.ResumeLayout(false);
             this.tabChildren.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._12ac3d03DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.childBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -22,6 +22,12 @@ namespace TBCN
         public Address WorkAddress { get; set; }
         public String Email { get; set; }
 
+        public List<Child> ChildrenAttending { get; set; }
+        public Employee Employee { get; set; }
 
+        public EmergencyContact()
+        {
+            ChildrenAttending = new List<Child>();
+        }
     }
 }
