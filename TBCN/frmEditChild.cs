@@ -151,9 +151,9 @@ namespace TBCN
             parent1.WorkPhone = "120338194";
             parent1.HomePhone = "843975823";
             parent1.MobilePhone = "234345434";
-            parent1.HomeAddress = 1;
-            parent1.WorkAddress = 2;
-            parent1.Spouse = 4;
+            //parent1.HomeAddress = 1;
+            //parent1.WorkAddress = 2;
+            //parent1.Spouse = 4;
             parent1.Email = "Calum@email.com";
 
             parent2.FirstName = "Joyce";
@@ -163,9 +163,9 @@ namespace TBCN
             parent2.WorkPhone = "120338194";
             parent2.HomePhone = "843975823";
             parent2.MobilePhone = "234345434";
-            parent2.HomeAddress = 1;
-            parent2.WorkAddress = 3;
-            parent2.Spouse = 3;
+            //parent2.HomeAddress = 1;
+            //parent2.WorkAddress = 3;
+            //parent2.Spouse = 3;
             parent2.Email = "Joyce@email.com";
 
         }
