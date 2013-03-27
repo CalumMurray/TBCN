@@ -49,6 +49,9 @@
             this.lblEC2 = new System.Windows.Forms.LinkLabel();
             this.lblEC1 = new System.Windows.Forms.LinkLabel();
             this.lblECsTitle = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,25 +105,25 @@
             // lblDOB
             // 
             this.lblDOB.AutoSize = true;
-            this.lblDOB.Location = new System.Drawing.Point(14, 122);
+            this.lblDOB.Location = new System.Drawing.Point(151, 123);
             this.lblDOB.Name = "lblDOB";
-            this.lblDOB.Size = new System.Drawing.Size(98, 13);
+            this.lblDOB.Size = new System.Drawing.Size(69, 13);
             this.lblDOB.TabIndex = 5;
-            this.lblDOB.Text = "DOB: 8 June, 2008";
+            this.lblDOB.Text = "8 June, 2008";
             // 
             // lblLanguage
             // 
             this.lblLanguage.AutoSize = true;
-            this.lblLanguage.Location = new System.Drawing.Point(14, 135);
+            this.lblLanguage.Location = new System.Drawing.Point(151, 145);
             this.lblLanguage.Name = "lblLanguage";
-            this.lblLanguage.Size = new System.Drawing.Size(116, 13);
+            this.lblLanguage.Size = new System.Drawing.Size(41, 13);
             this.lblLanguage.TabIndex = 6;
-            this.lblLanguage.Text = "First language:  English";
+            this.lblLanguage.Text = "English";
             // 
             // lblAttendance
             // 
             this.lblAttendance.AutoSize = true;
-            this.lblAttendance.Location = new System.Drawing.Point(14, 148);
+            this.lblAttendance.Location = new System.Drawing.Point(151, 169);
             this.lblAttendance.Name = "lblAttendance";
             this.lblAttendance.Size = new System.Drawing.Size(85, 13);
             this.lblAttendance.TabIndex = 7;
@@ -129,7 +132,7 @@
             // lblAddressTitle
             // 
             this.lblAddressTitle.AutoSize = true;
-            this.lblAddressTitle.Location = new System.Drawing.Point(14, 180);
+            this.lblAddressTitle.Location = new System.Drawing.Point(14, 198);
             this.lblAddressTitle.Name = "lblAddressTitle";
             this.lblAddressTitle.Size = new System.Drawing.Size(79, 13);
             this.lblAddressTitle.TabIndex = 8;
@@ -138,7 +141,7 @@
             // lblAddress1
             // 
             this.lblAddress1.AutoSize = true;
-            this.lblAddress1.Location = new System.Drawing.Point(151, 180);
+            this.lblAddress1.Location = new System.Drawing.Point(151, 198);
             this.lblAddress1.Name = "lblAddress1";
             this.lblAddress1.Size = new System.Drawing.Size(75, 13);
             this.lblAddress1.TabIndex = 9;
@@ -147,7 +150,7 @@
             // lblCity
             // 
             this.lblCity.AutoSize = true;
-            this.lblCity.Location = new System.Drawing.Point(151, 193);
+            this.lblCity.Location = new System.Drawing.Point(151, 211);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(45, 13);
             this.lblCity.TabIndex = 10;
@@ -156,7 +159,7 @@
             // lblCounty
             // 
             this.lblCounty.AutoSize = true;
-            this.lblCounty.Location = new System.Drawing.Point(151, 206);
+            this.lblCounty.Location = new System.Drawing.Point(151, 224);
             this.lblCounty.Name = "lblCounty";
             this.lblCounty.Size = new System.Drawing.Size(65, 13);
             this.lblCounty.TabIndex = 11;
@@ -165,7 +168,7 @@
             // lblPostCode
             // 
             this.lblPostCode.AutoSize = true;
-            this.lblPostCode.Location = new System.Drawing.Point(151, 219);
+            this.lblPostCode.Location = new System.Drawing.Point(151, 237);
             this.lblPostCode.Name = "lblPostCode";
             this.lblPostCode.Size = new System.Drawing.Size(52, 13);
             this.lblPostCode.TabIndex = 12;
@@ -174,7 +177,7 @@
             // lblParentsTitle
             // 
             this.lblParentsTitle.AutoSize = true;
-            this.lblParentsTitle.Location = new System.Drawing.Point(14, 240);
+            this.lblParentsTitle.Location = new System.Drawing.Point(14, 258);
             this.lblParentsTitle.Name = "lblParentsTitle";
             this.lblParentsTitle.Size = new System.Drawing.Size(46, 13);
             this.lblParentsTitle.TabIndex = 13;
@@ -183,7 +186,7 @@
             // lblParent1
             // 
             this.lblParent1.AutoSize = true;
-            this.lblParent1.Location = new System.Drawing.Point(151, 239);
+            this.lblParent1.Location = new System.Drawing.Point(151, 257);
             this.lblParent1.Name = "lblParent1";
             this.lblParent1.Size = new System.Drawing.Size(59, 13);
             this.lblParent1.TabIndex = 14;
@@ -194,7 +197,7 @@
             // lblParent2
             // 
             this.lblParent2.AutoSize = true;
-            this.lblParent2.Location = new System.Drawing.Point(151, 252);
+            this.lblParent2.Location = new System.Drawing.Point(151, 270);
             this.lblParent2.Name = "lblParent2";
             this.lblParent2.Size = new System.Drawing.Size(66, 13);
             this.lblParent2.TabIndex = 15;
@@ -204,7 +207,7 @@
             // lblMedical
             // 
             this.lblMedical.AutoSize = true;
-            this.lblMedical.Location = new System.Drawing.Point(14, 309);
+            this.lblMedical.Location = new System.Drawing.Point(14, 327);
             this.lblMedical.Name = "lblMedical";
             this.lblMedical.Size = new System.Drawing.Size(101, 13);
             this.lblMedical.TabIndex = 16;
@@ -213,7 +216,7 @@
             // lblMedicalInfo
             // 
             this.lblMedicalInfo.AutoSize = true;
-            this.lblMedicalInfo.Location = new System.Drawing.Point(151, 309);
+            this.lblMedicalInfo.Location = new System.Drawing.Point(151, 327);
             this.lblMedicalInfo.Name = "lblMedicalInfo";
             this.lblMedicalInfo.Size = new System.Drawing.Size(63, 13);
             this.lblMedicalInfo.TabIndex = 17;
@@ -222,7 +225,7 @@
             // lblEC2
             // 
             this.lblEC2.AutoSize = true;
-            this.lblEC2.Location = new System.Drawing.Point(151, 285);
+            this.lblEC2.Location = new System.Drawing.Point(151, 303);
             this.lblEC2.Name = "lblEC2";
             this.lblEC2.Size = new System.Drawing.Size(64, 13);
             this.lblEC2.TabIndex = 21;
@@ -232,7 +235,7 @@
             // lblEC1
             // 
             this.lblEC1.AutoSize = true;
-            this.lblEC1.Location = new System.Drawing.Point(151, 272);
+            this.lblEC1.Location = new System.Drawing.Point(151, 290);
             this.lblEC1.Name = "lblEC1";
             this.lblEC1.Size = new System.Drawing.Size(59, 13);
             this.lblEC1.TabIndex = 20;
@@ -242,17 +245,44 @@
             // lblECsTitle
             // 
             this.lblECsTitle.AutoSize = true;
-            this.lblECsTitle.Location = new System.Drawing.Point(14, 273);
+            this.lblECsTitle.Location = new System.Drawing.Point(14, 291);
             this.lblECsTitle.Name = "lblECsTitle";
             this.lblECsTitle.Size = new System.Drawing.Size(107, 13);
             this.lblECsTitle.TabIndex = 19;
             this.lblECsTitle.Text = "Emergency contacts:";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 169);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Attendance:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 123);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "DOB:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 145);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "FirstLanguage:";
+            // 
             // frmChildReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 348);
+            this.ClientSize = new System.Drawing.Size(266, 381);
             this.Controls.Add(this.lblEC2);
             this.Controls.Add(this.lblEC1);
             this.Controls.Add(this.lblECsTitle);
@@ -266,8 +296,11 @@
             this.Controls.Add(this.lblCity);
             this.Controls.Add(this.lblAddress1);
             this.Controls.Add(this.lblAddressTitle);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblAttendance);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.lblLanguage);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.lblDOB);
             this.Controls.Add(this.lblAge);
             this.Controls.Add(this.lblGender);
@@ -306,5 +339,8 @@
         private System.Windows.Forms.LinkLabel lblEC2;
         private System.Windows.Forms.LinkLabel lblEC1;
         private System.Windows.Forms.Label lblECsTitle;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

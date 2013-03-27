@@ -91,5 +91,8 @@ namespace TBCN
 
             lblMedicalInfo.Text = child.MedicalInfo.ToString();
         }
+
+
+
     }
 }

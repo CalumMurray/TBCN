@@ -524,6 +524,7 @@
             this.Controls.Add(this.txtFirstName);
             this.Name = "frmEditChild";
             this.Text = "Edit a Child";
+            this.Load += new System.EventHandler(this.frmEditChild_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

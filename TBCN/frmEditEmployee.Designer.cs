@@ -217,6 +217,7 @@
             this.btnCancel.TabIndex = 44;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // dtpLeaveDate
             // 
@@ -374,7 +375,7 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(356, 43);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(54, 13);
+            this.label18.Size = new System.Drawing.Size(82, 13);
             this.label18.TabIndex = 65;
             this.label18.Text = "HomeAddress 1";
             // 

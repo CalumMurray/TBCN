@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.tabParents = new System.Windows.Forms.TabPage();
+            this.btnAddParent = new System.Windows.Forms.Button();
             this.btnParents = new System.Windows.Forms.Button();
             this.txtParents = new System.Windows.Forms.TextBox();
             this.lstParents = new System.Windows.Forms.ListBox();
             this.tabStaff = new System.Windows.Forms.TabPage();
+            this.btnAddEmployee = new System.Windows.Forms.Button();
             this.btnStaff = new System.Windows.Forms.Button();
             this.txtStaff = new System.Windows.Forms.TextBox();
             this.lstStaff = new System.Windows.Forms.ListBox();
             this.tabChildren = new System.Windows.Forms.TabPage();
+            this.btnAddChild = new System.Windows.Forms.Button();
             this.btnChildren = new System.Windows.Forms.Button();
             this.txtChildren = new System.Windows.Forms.TextBox();
             this.lstChildren = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.btnAddChild = new System.Windows.Forms.Button();
-            this.btnAddEmployee = new System.Windows.Forms.Button();
-            this.btnAddParent = new System.Windows.Forms.Button();
             this.tabParents.SuspendLayout();
             this.tabStaff.SuspendLayout();
             this.tabChildren.SuspendLayout();
@@ -63,6 +63,16 @@
             this.tabParents.TabIndex = 2;
             this.tabParents.Text = "Parents/Contacts";
             this.tabParents.UseVisualStyleBackColor = true;
+            // 
+            // btnAddParent
+            // 
+            this.btnAddParent.Location = new System.Drawing.Point(368, 289);
+            this.btnAddParent.Name = "btnAddParent";
+            this.btnAddParent.Size = new System.Drawing.Size(112, 23);
+            this.btnAddParent.TabIndex = 6;
+            this.btnAddParent.Text = "Add Parent/Contact";
+            this.btnAddParent.UseVisualStyleBackColor = true;
+            this.btnAddParent.Click += new System.EventHandler(this.btnAddParent_Click);
             // 
             // btnParents
             // 
@@ -108,6 +118,16 @@
             this.tabStaff.Text = "Staff";
             this.tabStaff.UseVisualStyleBackColor = true;
             // 
+            // btnAddEmployee
+            // 
+            this.btnAddEmployee.Location = new System.Drawing.Point(376, 289);
+            this.btnAddEmployee.Name = "btnAddEmployee";
+            this.btnAddEmployee.Size = new System.Drawing.Size(98, 23);
+            this.btnAddEmployee.TabIndex = 6;
+            this.btnAddEmployee.Text = "Add Employee";
+            this.btnAddEmployee.UseVisualStyleBackColor = true;
+            this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
+            // 
             // btnStaff
             // 
             this.btnStaff.Location = new System.Drawing.Point(388, 263);
@@ -151,6 +171,17 @@
             this.tabChildren.TabIndex = 0;
             this.tabChildren.Text = "Children";
             this.tabChildren.UseVisualStyleBackColor = true;
+            this.tabChildren.Click += new System.EventHandler(this.tabChildren_Click);
+            // 
+            // btnAddChild
+            // 
+            this.btnAddChild.Location = new System.Drawing.Point(388, 289);
+            this.btnAddChild.Name = "btnAddChild";
+            this.btnAddChild.Size = new System.Drawing.Size(75, 23);
+            this.btnAddChild.TabIndex = 3;
+            this.btnAddChild.Text = "Add Child";
+            this.btnAddChild.UseVisualStyleBackColor = true;
+            this.btnAddChild.Click += new System.EventHandler(this.btnAddChild_Click);
             // 
             // btnChildren
             // 
@@ -196,36 +227,6 @@
             this.tabControl1.Size = new System.Drawing.Size(663, 409);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectIndexChanged);
-            // 
-            // btnAddChild
-            // 
-            this.btnAddChild.Location = new System.Drawing.Point(388, 289);
-            this.btnAddChild.Name = "btnAddChild";
-            this.btnAddChild.Size = new System.Drawing.Size(75, 23);
-            this.btnAddChild.TabIndex = 3;
-            this.btnAddChild.Text = "Add Child";
-            this.btnAddChild.UseVisualStyleBackColor = true;
-            this.btnAddChild.Click += new System.EventHandler(this.btnAddChild_Click);
-            // 
-            // btnAddEmployee
-            // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(376, 289);
-            this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(98, 23);
-            this.btnAddEmployee.TabIndex = 6;
-            this.btnAddEmployee.Text = "Add Employee";
-            this.btnAddEmployee.UseVisualStyleBackColor = true;
-            this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
-            // 
-            // btnAddParent
-            // 
-            this.btnAddParent.Location = new System.Drawing.Point(368, 289);
-            this.btnAddParent.Name = "btnAddParent";
-            this.btnAddParent.Size = new System.Drawing.Size(112, 23);
-            this.btnAddParent.TabIndex = 6;
-            this.btnAddParent.Text = "Add Parent/Contact";
-            this.btnAddParent.UseVisualStyleBackColor = true;
-            this.btnAddParent.Click += new System.EventHandler(this.btnAddParent_Click);
             // 
             // frmMainMenu
             // 

@@ -144,6 +144,7 @@
             this.btnCancel.TabIndex = 44;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtTitle
             // 
@@ -269,7 +270,7 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(483, 180);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(77, 13);
+            this.label19.Size = new System.Drawing.Size(105, 13);
             this.label19.TabIndex = 63;
             this.label19.Text = "Work HomeAddress:";
             // 
@@ -342,7 +343,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(481, 20);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 13);
+            this.label8.Size = new System.Drawing.Size(107, 13);
             this.label8.TabIndex = 63;
             this.label8.Text = "Home HomeAddress:";
             // 

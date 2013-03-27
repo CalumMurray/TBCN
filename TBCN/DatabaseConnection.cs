@@ -6,6 +6,7 @@ using System.Text;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Data.SqlTypes;
 
 namespace TBCN
 {
@@ -13,10 +14,10 @@ namespace TBCN
     public class Database
     {
         private const string connStr = "SERVER=arlia.computing.dundee.ac.uk;USER=12ac3u03;DATABASE=12ac3d03;PORT=3306;PASSWORD=ab123c;";
-        private MySqlConnection connection;
-        private MySqlCommand insertCommand;
-        private MySqlCommand selectCommand;
-        private MySqlCommand deleteCommand;
+        //private MySqlConnection connection;
+        //private MySqlCommand insertCommand;
+        //private MySqlCommand selectCommand;
+        //private MySqlCommand deleteCommand;
 
         private int childID;
         private int parentID;
@@ -25,12 +26,13 @@ namespace TBCN
 
         public Database()
         {
-            connection = new MySqlConnection(connStr);
-            insertCommand = new MySqlCommand();
+            //connection = new MySqlConnection(connStr);
+            //insertCommand = new MySqlCommand();
         }
 
-        public bool OpenConnection()
+        public MySqlConnection OpenConnection()
         {
+            MySqlConnection connection = new MySqlConnection(connStr);
             try
             {
                 Console.WriteLine("Connecting to MySQL...");
@@ -39,12 +41,12 @@ namespace TBCN
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return false;
+                return null;
             }
-            return true;
+            return connection;
         }
 
-        public bool CloseConnection()
+        public bool CloseConnection(MySqlConnection connection)
         {
             try
             {
@@ -77,14 +79,14 @@ namespace TBCN
 
         public bool insertChild(Child childToAdd, Parent parent, EmergencyContact ec)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return false;
 
             MySqlTransaction transaction = connection.BeginTransaction();
             try
             {
-
-                insertCommand.Connection = connection;
+                MySqlCommand insertCommand = new MySqlCommand(null, connection);
                 MySqlCommand idCommand = new MySqlCommand("SELECT LAST_INSERT_ID()", connection);
                 
                 insertCommand.Transaction = transaction;
@@ -130,6 +132,7 @@ namespace TBCN
 
                 //parentID = (int)idCommand.ExecuteScalar();
                 //insertAttendance(childToAdd);
+                //insertMedical(childToAdd.MedicalInfo);
                 //insertParent(parent);
                 //parentID = (int)idCommand.ExecuteScalar();
                 //linkParentChild(childToAdd, parent);
@@ -148,13 +151,17 @@ namespace TBCN
                 return false;
             }
 
-            return (CloseConnection()); //Successful or not
+            return (CloseConnection(connection)); //Successful or not
 
         }
 
         public void insertParent(Parent parentToAdd)
         {
-            insertCommand.Connection = connection;
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
+                return;
+
+            MySqlCommand insertCommand = new MySqlCommand(null, connection);
             insertCommand.CommandText = @"INSERT INTO parent_guardian 
                                         VALUES (@id, @firstname, @lastname, @title, @gender, @workphone, @homephone, @mobilephone, @homeaddress, @workaddress, @spouse, @email)
                                         ON DUPLICATE KEY UPDATE;";
@@ -189,12 +196,16 @@ namespace TBCN
             insertCommand.Prepare();
             insertCommand.ExecuteNonQuery();
 
-            
+            CloseConnection(connection);
         }
 
         public void linkParentChild(Child childToAdd, Parent parent)
         {
-            insertCommand.Connection = connection;
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
+                return;
+
+            MySqlCommand insertCommand = new MySqlCommand(null, connection);
             insertCommand.CommandText = "INSERT INTO child_has_parent_guardian VALUES (@contactID, @parentID);";
             insertCommand.Parameters.Add(new MySqlParameter("@contactID", parentID));
             insertCommand.Parameters.Add(new MySqlParameter("@parentID", childID));
@@ -202,11 +213,17 @@ namespace TBCN
             Console.WriteLine("Executing: [ " + insertCommand.ToString() + "].");
             insertCommand.Prepare();
             insertCommand.ExecuteNonQuery();
+
+            CloseConnection(connection);
         }
 
         public void insertEmergencyContact(EmergencyContact ecToAdd)
         {
-            insertCommand.Connection = connection;
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
+                return;
+
+            MySqlCommand insertCommand = new MySqlCommand(null, connection);
             insertCommand.CommandText = @"INSERT INTO emergency_contact
                                         VALUES (@id, @firstname, @lastname, @title, @gender, @relationship, @homephone, @workphone, @mobilephone, @homeaddress, @workaddress, @email)
                                         ON DUPLICATE KEY UPDATE;";
@@ -239,11 +256,17 @@ namespace TBCN
             Console.WriteLine("Executing: [ " + insertCommand.ToString() + "].");
             insertCommand.Prepare();
             insertCommand.ExecuteNonQuery();
+
+            CloseConnection(connection);
         }
 
         public void linkECChild(EmergencyContact ecToAdd, Child childToAdd)
         {
-            insertCommand.Connection = connection;
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
+                return;
+
+            MySqlCommand insertCommand = new MySqlCommand(null, connection);
             insertCommand.CommandText = "INSERT INTO child_has_emergency_contact VALUES (@contactID, @parentID);";
 
             insertCommand.Parameters.Add(new MySqlParameter("@contactID", contactID));
@@ -252,11 +275,17 @@ namespace TBCN
             Console.WriteLine("Executing: [ " + insertCommand.ToString() + "].");
             insertCommand.Prepare();
             insertCommand.ExecuteNonQuery();
+
+            CloseConnection(connection);
         }
 
         public void insertAttendance(Child childToAdd)
         {
-            insertCommand.Connection = connection;
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
+                return;
+
+            MySqlCommand insertCommand = new MySqlCommand(null, connection);
             insertCommand.CommandText = @"INSERT INTO attendance VALUES (@child, @monday, @tuesday, @wednesday, @thursday, @friday)
                                         ON DUPLICATE KEY UPDATE;";
 
@@ -270,11 +299,17 @@ namespace TBCN
             Console.WriteLine("Executing: [ " + insertCommand.ToString() + "].");
             insertCommand.Prepare();
             insertCommand.ExecuteNonQuery();
+
+            CloseConnection(connection);
         }
 
         public void insertAddress(Address addressToAdd)
         {
-            insertCommand.Connection = connection;
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
+                return;
+
+            MySqlCommand insertCommand = new MySqlCommand(null, connection);
             insertCommand.CommandText = @"INSERT INTO address VALUES (@address1, @city, @county, @postcode, @country)
                                         ON DUPLICATE KEY UPDATE;";
 
@@ -287,11 +322,17 @@ namespace TBCN
             Console.WriteLine("Executing: [ " + insertCommand.ToString() + "].");
             insertCommand.Prepare();
             insertCommand.ExecuteNonQuery();
+
+            CloseConnection(connection);
         }
 
         public void insertMedical(MedicalInformation medicalToAdd)
         {
-            insertCommand.Connection = connection;
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
+                return;
+
+            MySqlCommand insertCommand = new MySqlCommand(null, connection);
             insertCommand.CommandText = @"INSERT INTO medical_information VALUES (@medicalid, @allergies, @medication, @other, @doctor, @doctoraddress)
                                         ON DUPLICATE KEY UPDATE;";
 
@@ -305,17 +346,20 @@ namespace TBCN
             Console.WriteLine("Executing: [ " + insertCommand.ToString() + "].");
             insertCommand.Prepare();
             insertCommand.ExecuteNonQuery();
+
+            CloseConnection(connection);
         }
 
         public bool insertEmployee(Employee employeeToAdd)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return false;
 
             try
             {
 
-                insertCommand.Connection = connection;
+                MySqlCommand insertCommand = new MySqlCommand(null, connection);
 
                 // Create and prepare an SQL statement.
                 insertCommand.CommandText = @"INSERT INTO employee 
@@ -375,7 +419,7 @@ namespace TBCN
                 return false;
             }
 
-            return (CloseConnection()); //Successful or not
+            return (CloseConnection(connection)); //Successful or not
 
         }
 
@@ -383,10 +427,11 @@ namespace TBCN
 
         public Child searchChildren(int childIDToSelect)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return null;
 
-            selectCommand = new MySqlCommand(null, connection);
+            MySqlCommand selectCommand = new MySqlCommand(null, connection);
             selectCommand.CommandText = @"SELECT * FROM child WHERE Child_ID = @childid;";
             selectCommand.Parameters.Add(new MySqlParameter("@childid", childIDToSelect));
 
@@ -426,17 +471,19 @@ namespace TBCN
             }
             childReader.Close();
 
-            CloseConnection();
+            CloseConnection(connection);
 
             return newChild;
         }
 
         private List<int> selectChildsParentIDs(int childID)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return null;
 
-            selectCommand = new MySqlCommand(null, connection);
+
+            MySqlCommand selectCommand = new MySqlCommand(null, connection);
             selectCommand.CommandText = "SELECT * FROM child_has_parent_guardian WHERE Child_ID = @childID;";
             selectCommand.Parameters.Add(new MySqlParameter("@childID", childID));
 
@@ -450,15 +497,18 @@ namespace TBCN
             {
                 parentIDs.Add(parentReader.GetInt32(0));
             }
+
+            CloseConnection(connection);
             return parentIDs;
         }
 
         private List<int> selectParentsChildIDs(int parentID)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return null;
 
-            selectCommand = new MySqlCommand(null, connection);
+            MySqlCommand selectCommand = new MySqlCommand(null, connection);
             selectCommand.CommandText = "SELECT * FROM child_has_parent_guardian WHERE Parent_ID = @parentID;";
             selectCommand.Parameters.Add(new MySqlParameter("@parentID", parentID));
 
@@ -472,15 +522,18 @@ namespace TBCN
             {
                 childIDs.Add(childReader.GetInt32(1));
             }
-            return childIDs;
+
+            CloseConnection(connection);
+            return childIDs;            
         }
 
         private List<int> selectChildsContactIDs(int childID)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return null;
 
-            selectCommand = new MySqlCommand(null, connection);
+            MySqlCommand selectCommand = new MySqlCommand(null, connection);
             selectCommand.CommandText = "SELECT * FROM child_has_emergency_contact WHERE Child_ID = @childID;";
             selectCommand.Parameters.Add(new MySqlParameter("@childID", childID));
 
@@ -494,15 +547,20 @@ namespace TBCN
             {
                 contactIDs.Add(ecReader.GetInt32(0));
             }
+
+            CloseConnection(connection);
             return contactIDs;
+
+            
         }
 
         private List<int> selectContactsChildIDs(int contactID)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return null;
 
-            selectCommand = new MySqlCommand(null, connection);
+            MySqlCommand selectCommand = new MySqlCommand(null, connection);
             selectCommand.CommandText = "SELECT * FROM child_has_emergency_contact WHERE Contact_ID = @contactID;";
             selectCommand.Parameters.Add(new MySqlParameter("@contactID", contactID));
 
@@ -516,17 +574,22 @@ namespace TBCN
             {
                 childIDs.Add(childReader.GetInt32(1));
             }
+
+            CloseConnection(connection);
             return childIDs;
+
+            
         }
 
 
 
         private MedicalInformation selectMedicalInformation(int medicalID)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return null;
 
-            selectCommand = new MySqlCommand(null, connection);
+            MySqlCommand selectCommand = new MySqlCommand(null, connection);
             selectCommand.CommandText = "SELECT * FROM medical_information WHERE Medical_ID = @medicalID;";
             selectCommand.Parameters.Add(new MySqlParameter("@medicalID", medicalID));
 
@@ -537,21 +600,26 @@ namespace TBCN
             while (medicalReader.Read())
             {
                 newMedical.MedicalID = medicalID;
-                newMedical.Allergies = medicalReader.GetString(1);
-                newMedical.Medication = medicalReader.GetString(2);
-                newMedical.Other = medicalReader.GetString(3);
+                newMedical.Allergies = SafeGetString(medicalReader, 1);
+                newMedical.Medication = SafeGetString(medicalReader, 2);
+                newMedical.Other = SafeGetString(medicalReader, 3);
                 newMedical.Doctor = medicalReader.GetString(4);
                 newMedical.DoctorAddress = selectAddress(medicalReader.GetString(5));
             }
+
+            CloseConnection(connection);
             return newMedical;
+
+           
         }
 
         private Address selectAddress(String address1)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return null;
 
-            selectCommand = new MySqlCommand(null, connection);
+            MySqlCommand selectCommand = new MySqlCommand(null, connection);
             selectCommand.CommandText = "SELECT * FROM address WHERE Address_1 = @address1;";
             selectCommand.Parameters.Add(new MySqlParameter("@address1", address1));
 
@@ -567,16 +635,23 @@ namespace TBCN
                 newAddress.PostCode = addressReader.GetString(3);
                 newAddress.Country = addressReader.GetString(4);
             }
+
+            CloseConnection(connection);
+
+
             return newAddress;
+
+            
         }
 
         public Parent selectParent(int parentIDToSelect)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return null;
 
-            selectCommand = new MySqlCommand(null, connection);
-            selectCommand.CommandText = "SELECT * FROM parent_guardian WHERE ParentID = @parentID;";
+            MySqlCommand selectCommand = new MySqlCommand(null, connection);
+            selectCommand.CommandText = "SELECT * FROM parent_guardian WHERE Parent_ID = @parentID;";
             selectCommand.Parameters.Add(new MySqlParameter("@parentID", parentIDToSelect));
 
             Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
@@ -608,17 +683,18 @@ namespace TBCN
             }
             parentReader.Close();
 
-            CloseConnection();
+            CloseConnection(connection);
 
             return newParent;
         }
 
         public EmergencyContact selectEmergencyContact(int ecIDToSelect)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return null;
 
-            selectCommand = new MySqlCommand(null, connection);
+            MySqlCommand selectCommand = new MySqlCommand(null, connection);
             selectCommand.CommandText = @"SELECT * FROM emergency_contact WHERE Contact_ID = @contactID
                                         INNER JOIN employee ON emergency_contact.Contact_ID = employee.Emergency_Contact
                                         WHERE Contact_ID = @contactID;";
@@ -653,7 +729,7 @@ namespace TBCN
             }
             ECReader.Close();
 
-            CloseConnection();
+            CloseConnection(connection);
 
             return newEC;
         }
@@ -704,11 +780,12 @@ namespace TBCN
         //Get a child's attendance
         public bool[] selectAttendance(int childID)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return null;
 
-            selectCommand = new MySqlCommand(null, connection);
-            selectCommand.CommandText = "SELECT * FROM attendance WHERE ChildID = @parentID;";
+            MySqlCommand selectCommand = new MySqlCommand(null, connection);
+            selectCommand.CommandText = "SELECT * FROM attendance WHERE Child_ID = @parentID;";
             selectCommand.Parameters.Add(new MySqlParameter("@parentID", childID));
 
             Console.WriteLine("Executing: [ " + selectCommand.ToString() + "].");
@@ -724,7 +801,7 @@ namespace TBCN
             }
             attendanceReader.Close();
 
-            CloseConnection();
+            CloseConnection(connection);
 
             return attendanceArray;
         }
@@ -732,10 +809,11 @@ namespace TBCN
 
         public Employee selectEmployee(String employeeNINo)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return null;
 
-            selectCommand = new MySqlCommand(null, connection);
+            MySqlCommand selectCommand = new MySqlCommand(null, connection);
             selectCommand.CommandText = "SELECT * FROM employee WHERE National_Insurance_Number = @nino;";
             selectCommand.Parameters.Add(new MySqlParameter("@nino", employeeNINo));
 
@@ -771,7 +849,7 @@ namespace TBCN
             }
             employeeReader.Close();
 
-            CloseConnection();
+            CloseConnection(connection);
 
             return newEmployee;
 
@@ -779,14 +857,15 @@ namespace TBCN
 
         public List<Child> searchChildren(string childName)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return null;
 
             String[] names = new String[2];
             if (childName.Contains(' '))
                 names = childName.Split(' ');
 
-            selectCommand = new MySqlCommand(null, connection);
+            MySqlCommand selectCommand = new MySqlCommand(null, connection);
             selectCommand.CommandText = @"SELECT * FROM child WHERE First_Name = @name
                                                                 OR Last_Name = @name
                                                                 OR (First_Name = @firstname
@@ -799,51 +878,61 @@ namespace TBCN
             selectCommand.Prepare();
             MySqlDataReader childrenReader = selectCommand.ExecuteReader();
 
-            //Package into Employee domain entity object
+
             List<Child> children = new List<Child>();
-            while (childrenReader.Read())
+            try
             {
-                Child newChild = new Child();
-                newChild.ChildID = childrenReader.GetInt32(0);
-                newChild.FirstName = childrenReader.GetString(1);
-                newChild.LastName = childrenReader.GetString(2);
-                newChild.Gender = childrenReader.GetChar(3);
-                newChild.DOB = childrenReader.GetDateTime(4);
-                newChild.FirstLanguage = childrenReader.GetString(5);
-                newChild.RoomAttending = childrenReader.GetString(6);
-                //newChild.Sibling = childReader.Get7
-                newChild.DateApplied = childrenReader.GetDateTime(8);
-                newChild.DateLeft = childrenReader.GetDateTime(9);
-                newChild.Attendance = selectAttendance(newChild.ChildID);
-                newChild.ExtraDays = childrenReader.GetInt16(11);
-                newChild.Teas = childrenReader.GetInt16(12);
-                newChild.MedicalInfo = selectMedicalInformation(childrenReader.GetInt16(13));
+                //Package into list of children
 
-                //Get parents
-                foreach (int parentID in selectChildsParentIDs(newChild.ChildID))
-                    newChild.Parents.Add(selectParent(parentID));
+                while (childrenReader.Read())
+                {
+                    Child newChild = new Child();
+                    newChild.ChildID = childrenReader.GetInt32(0);
+                    newChild.FirstName = childrenReader.GetString(1);
+                    newChild.LastName = childrenReader.GetString(2);
+                    newChild.Gender = childrenReader.GetChar(3);
+                    newChild.DOB = childrenReader.GetDateTime(4);
+                    newChild.FirstLanguage = childrenReader.GetString(5);
+                    newChild.RoomAttending = childrenReader.GetString(6);
+                    //newChild.Sibling = childReader.Get7
+                    newChild.DateApplied = childrenReader.GetDateTime(8);
+                    newChild.DateLeft = SafeGetDateTime(childrenReader, 9);
+                    newChild.Attendance = selectAttendance(newChild.ChildID);
+                    newChild.ExtraDays = childrenReader.GetInt16(11);
+                    newChild.Teas = childrenReader.GetInt16(12);
+                    newChild.MedicalInfo = selectMedicalInformation(childrenReader.GetInt16(13));
 
-                //Get Emergency Contacts
-                foreach (int contactID in selectChildsContactIDs(newChild.ChildID))
-                    newChild.EmergencyContacts.Add(selectEmergencyContact(contactID));
+                    //Get parents
+                    foreach (int parentID in selectChildsParentIDs(newChild.ChildID))
+                        newChild.Parents.Add(selectParent(parentID));
 
-                children.Add(newChild);
+                    //Get Emergency Contacts
+                    foreach (int contactID in selectChildsContactIDs(newChild.ChildID))
+                        newChild.EmergencyContacts.Add(selectEmergencyContact(contactID));
+
+                    children.Add(newChild);
+                }
+
+                CloseConnection(connection);
+
+
             }
-            childrenReader.Close();
-
+            catch (SqlNullValueException sqlnve)
+            { }
             return children;
         }
 
         public List<Employee> searchStaff(string staffSearchString)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return null;
 
             String[] names = new String[2];
             if (staffSearchString.Contains(' '))
                 names = staffSearchString.Split(' ');
 
-            selectCommand = new MySqlCommand(null, connection);
+            MySqlCommand selectCommand = new MySqlCommand(null, connection);
             selectCommand.CommandText = @"SELECT * FROM employee WHERE First_Name = @searchString
                                                                 OR Last_Name = @searchString
                                                                 OR (First_Name = @firstname
@@ -885,7 +974,7 @@ namespace TBCN
                 staff.Add(newEmployee);
             }
             staffReader.Close();
-
+            CloseConnection(connection);
             return staff;
         }
 
@@ -894,69 +983,85 @@ namespace TBCN
 
         public bool deleteChild(int childID)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return false;
 
-            deleteCommand = new MySqlCommand(null, connection);
+            MySqlCommand deleteCommand = new MySqlCommand(null, connection);
             deleteCommand.CommandText = "DELETE FROM child WHERE Child_ID = @childid;";
             deleteCommand.Parameters.Add(new MySqlParameter("@childid", childID));
 
             deleteCommand.Prepare();
             deleteCommand.ExecuteNonQuery();
 
-            return (CloseConnection());
+            return (CloseConnection(connection));
         }
 
         public bool deleteParent(int parentID)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return false;
 
-            deleteCommand = new MySqlCommand(null, connection);
+            MySqlCommand deleteCommand = new MySqlCommand(null, connection);
             deleteCommand.CommandText = "DELETE FROM parent_guardian WHERE Parent_ID = @parentid;";
             deleteCommand.Parameters.Add(new MySqlParameter("@parentid", parentID));
 
             deleteCommand.Prepare();
             deleteCommand.ExecuteNonQuery();
 
-            return (CloseConnection());
+            return (CloseConnection(connection));
         }
 
         public bool deleteEmergencyContact(int contactID)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return false;
 
-            deleteCommand = new MySqlCommand(null, connection);
+            MySqlCommand deleteCommand = new MySqlCommand(null, connection);
             deleteCommand.CommandText = "DELETE FROM emergency_contact WHERE Contact_ID = @contactid;";
             deleteCommand.Parameters.Add(new MySqlParameter("@contactid", contactID));
 
             deleteCommand.Prepare();
             deleteCommand.ExecuteNonQuery();
 
-            return (CloseConnection());
+            return (CloseConnection(connection));
         }
 
         public bool deleteEmployee(String nino)
         {
-            if (!OpenConnection())
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
                 return false;
 
-            deleteCommand = new MySqlCommand(null, connection);
+            MySqlCommand deleteCommand = new MySqlCommand(null, connection);
             deleteCommand.CommandText = "DELETE FROM employee WHERE National_Insurance_Number = @nino;";
             deleteCommand.Parameters.Add(new MySqlParameter("@nino", nino));
 
             deleteCommand.Prepare();
             deleteCommand.ExecuteNonQuery();
 
-            return (CloseConnection());
+            return (CloseConnection(connection));
         }
 
 
 
+        public static String SafeGetString(MySqlDataReader reader, int colIndex)
+        {
+            if (!reader.IsDBNull(colIndex))
+                return reader.GetString(colIndex);
+            else
+                return string.Empty;
+        }
 
-
-
+        public static DateTime SafeGetDateTime(MySqlDataReader reader, int colIndex)
+        {
+            if (!reader.IsDBNull(colIndex))
+                return reader.GetDateTime(colIndex);
+            else
+                return default(DateTime);
+        }
 
         
     }

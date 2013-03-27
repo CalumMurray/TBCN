@@ -13,12 +13,8 @@ namespace TBCN
     {
         private Database dbConnection;
 
-        private static Parent parent;
-        public static Parent AddedParent
-        {
-            get;
-            set;
-        }
+        //private static Parent parent;
+        public static Parent AddedParent { get; set;}
 
         
 
@@ -31,7 +27,12 @@ namespace TBCN
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            parent = new Parent();
+            AddedParent = new Parent();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -39,7 +39,7 @@ namespace TBCN
         {
             String childName = txtChildren.Text;
             List<Child> foundChildren = db.searchChildren(childName);
-
+            lstChildren.Items.Add(foundChildren);
 
         }
 
@@ -74,6 +74,11 @@ namespace TBCN
         private void btnAddParent_Click(object sender, EventArgs e)
         {
             new frmEditParent("Add a Parent/Contact").ShowDialog();
+        }
+
+        private void tabChildren_Click(object sender, EventArgs e)
+        {
+
         }
 
         

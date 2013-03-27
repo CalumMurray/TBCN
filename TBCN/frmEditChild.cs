@@ -13,7 +13,7 @@ namespace TBCN
     {
         private Database dbConnection;
 
-        private static Child newChild;
+        //private static Child newChild;
         public static Child ChildAdded { get; set;  }
 
 
@@ -39,7 +39,7 @@ namespace TBCN
             if (!validateForm())
                 return;
 
-            Child newChild = constructChild();
+            ChildAdded = constructChild();
 
             testParents();
 
@@ -51,7 +51,7 @@ namespace TBCN
             //parents.Add(frmEditParent.AddedParent);
 
             //Add to Database
-            dbConnection.insertChild(newChild, parent1, emergencyContacts[0]);
+            dbConnection.insertChild(ChildAdded, parent1, emergencyContacts[0]);
         }
 
         private bool validateForm()
@@ -77,6 +77,7 @@ namespace TBCN
 
         private Child constructChild()
         {
+            Child newChild = new Child();
             newChild.FirstName = txtFirstName.Text;
             newChild.LastName = txtLastName.Text;
             newChild.Gender = cmbGender.Text[0];
@@ -167,6 +168,11 @@ namespace TBCN
             //parent2.WorkAddress = 3;
             //parent2.Spouse = 3;
             parent2.Email = "Joyce@email.com";
+
+        }
+
+        private void frmEditChild_Load(object sender, EventArgs e)
+        {
 
         }
     }
