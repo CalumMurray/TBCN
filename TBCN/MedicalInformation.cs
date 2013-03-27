@@ -10,8 +10,10 @@ namespace TBCN
     public class MedicalInformation
     {
         public int MedicalID { get; set; }
-        public List<String> Allergies { get; set; }
-        public List<String> Medication { get; set; }
-        //public int Doctor { get; set; }
+        public String Allergies { get; set; }
+        public String Medication { get; set; }
+        public String Other { get; set; }
+        public String Doctor { get; set; }
+        public Address DoctorAddress { get; set; }
     }
 }

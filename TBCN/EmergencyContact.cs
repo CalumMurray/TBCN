@@ -22,8 +22,6 @@ namespace TBCN
         public Address WorkAddress { get; set; }
         public String Email { get; set; }
 
-        public Employee EmployeeContact { get; set; }
-        public Child ChildContact { get; set; }
 
     }
 }

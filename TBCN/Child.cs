@@ -24,7 +24,7 @@ namespace TBCN
         public bool[] Attendance { get; set; }     
         public int ExtraDays { get; set; }
         public int Teas { get; set; }
-        public int MedicalID { get; set; }
+        public MedicalInformation MedicalInfo { get; set; }
 
         //??
         public List<Parent> Parents { get; set; }
@@ -34,7 +34,8 @@ namespace TBCN
         public Child()
         {
             Attendance = new bool[5];
-            //TODO: Initialise others?
+            Parents = new List<Parent>(2);
+            EmergencyContacts = new List<EmergencyContact>(2);
         }
     }
 }

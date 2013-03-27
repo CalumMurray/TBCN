@@ -9,10 +9,11 @@ namespace TBCN
     //Entity DAO class representing an HomeAddress domain business object
     public class Address
     {
-        public String Address1 { get; set; } //TODO: replace with ID?
+        public String Address1 { get; set; } 
         public String City { get; set; }
         public String County { get; set; }
         public String PostCode { get; set; }
+        public String Country { get; set; }
 
     }
 }

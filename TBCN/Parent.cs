@@ -17,8 +17,8 @@ namespace TBCN
         public String WorkPhone { get; set; }
         public String HomePhone { get; set; }
         public String MobilePhone { get; set; }
-        public int HomeAddress { get; set; }
-        public int WorkAddress { get; set; }
+        public Address HomeAddress { get; set; }
+        public Address WorkAddress { get; set; }
         public int Spouse { get; set; }
         public String Email { get; set; }
         //public List<Child> ChildrenAttending { get; set; }
