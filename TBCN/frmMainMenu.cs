@@ -11,7 +11,7 @@ namespace TBCN
 {
     public partial class frmMainMenu : Form
     {
-        public DataContainer DataContainer { get; set; }
+        DataContainer data;
         List<int> childIDList;
         List<string> staffIDList;
         List<int> parentIDList;
@@ -19,18 +19,18 @@ namespace TBCN
         public frmMainMenu()
         {
             InitializeComponent();
-            DataContainer = new DataContainer();
+            data = new DataContainer();
 
             childIDList = new List<int>();
             staffIDList = new List<string>();
             parentIDList = new List<int>();
-            DataContainer.loadItems();
+            data.loadItems();
         }
 
         private void frmMainMenu_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads DataContainer into the '_12ac3d03DataSet.child' table. You can move, or remove it, as needed.
-            
+            // TODO: This line of code loads data into the '_12ac3d03DataSet.child' table. You can move, or remove it, as needed.
+
             //TOOD: Issue Invoice every month.
 
             //TODO: Check children for room moves
@@ -38,14 +38,14 @@ namespace TBCN
             //TODO: Check renewal of PVG (3 years)
 
 
-            
+
         }
 
         private void btnChildren_Click(object sender, EventArgs e)
         {
-           // String childName = txtChildren.Text;
-           //List<Child> foundChildren = db.searchChildren(childName);
-           //lstChildren.Items.Add(foundChildren);
+            //String childName = txtChildren.Text;
+            //List<Child> foundChildren = db.searchChildren(childName);
+            //lstChildren.Items.Add(foundChildren);
 
         }
 
@@ -76,7 +76,7 @@ namespace TBCN
         {
             lstChildren.Items.Clear();
             childIDList = new List<int>();
-            foreach (Child child in DataContainer.children)
+            foreach (Child child in data.children)
             {
                 lstChildren.Items.Add(child.FirstName + " " + child.LastName);
                 childIDList.Add(child.ChildID);
@@ -86,37 +86,27 @@ namespace TBCN
         private void lstChildren_DoubleClick(object sender, EventArgs e)
         {
             Child selectedChild = null;
-            Parent childsParent = null;
-            EmergencyContact childsContact = null;
 
             try
             {
                 int childID = childIDList[lstChildren.SelectedIndex];
 
-                foreach (Child child in DataContainer.children)
+                foreach (Child child in data.children)
                 {
                     if (child.ChildID == childID)
+                    {
                         selectedChild = child;
+                    }
                 }
-                foreach (Parent parent in DataContainer.parents)
-                {
-                    if (parent.ParentID == selectedChild.ParentsIDs[0])
-                        childsParent = parent;
-                }
-                //foreach (EmergencyContact contact in DataContainer.emergencyContacts)
-                //{
-                //    if (contact.ContactID == selectedChild.EmergencyContactsIDs[0])
-                //        childsContact = contact;
-                //}
             }
-            catch (ArgumentOutOfRangeException error)
+            catch (ArgumentOutOfRangeException)
             {
                 selectedChild = null;
             }
 
             if (selectedChild != null)
             {
-                Form childReport = new frmChildReport(selectedChild, childsParent /*, childsContact*/);
+                Form childReport = new frmChildReport(selectedChild);
                 childReport.ShowDialog();
             }
         }
@@ -129,7 +119,7 @@ namespace TBCN
             {
                 string employeeID = staffIDList[lstStaff.SelectedIndex];
 
-                foreach (Employee employee in DataContainer.employees)
+                foreach (Employee employee in data.employees)
                 {
                     if (employee.NINo == employeeID)
                     {
@@ -137,9 +127,9 @@ namespace TBCN
                     }
                 }
             }
-            catch (ArgumentOutOfRangeException error)
+            catch (ArgumentOutOfRangeException)
             {
-                selectedEmployee= null;
+                selectedEmployee = null;
             }
 
             if (selectedEmployee != null)
@@ -152,30 +142,27 @@ namespace TBCN
         private void lstParents_DoubleClick(object sender, EventArgs e)
         {
             Parent selectedParent = null;
-            Child parentsChild = null;
+
             try
             {
                 int parentID = parentIDList[lstParents.SelectedIndex];
 
-                foreach (Parent parent in DataContainer.parents)
+                foreach (Parent parent in data.parents)
                 {
                     if (parent.ParentID == parentID)
+                    {
                         selectedParent = parent;
-                }
-                foreach (Child child in DataContainer.children)
-                {
-                    if (child.ChildID == selectedParent.ChildrenAttending[0])
-                        parentsChild = child;
+                    }
                 }
             }
-            catch (ArgumentOutOfRangeException error)
+            catch (ArgumentOutOfRangeException)
             {
                 selectedParent = null;
             }
 
             if (selectedParent != null)
             {
-                Form parentReport = new frmParentReport(selectedParent, parentsChild);
+                Form parentReport = new frmParentReport(selectedParent);
                 parentReport.ShowDialog();
             }
         }
@@ -184,7 +171,7 @@ namespace TBCN
         {
             lstParents.Items.Clear();
             parentIDList = new List<int>();
-            foreach (Parent parent in DataContainer.parents)
+            foreach (Parent parent in data.parents)
             {
                 lstParents.Items.Add(parent.FirstName + " " + parent.LastName);
                 parentIDList.Add(parent.ParentID);
@@ -195,16 +182,11 @@ namespace TBCN
         {
             lstStaff.Items.Clear();
             staffIDList = new List<string>();
-            foreach (Employee employee in DataContainer.employees)
+            foreach (Employee employee in data.employees)
             {
                 lstStaff.Items.Add(employee.FirstName + " " + employee.LastName);
                 staffIDList.Add(employee.NINo);
             }
-        }
-
-        private void frmMainMenu_Load_1(object sender, EventArgs e)
-        {
-
         }
 
 
