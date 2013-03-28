@@ -34,18 +34,18 @@
             this.txtParents = new System.Windows.Forms.TextBox();
             this.lstParents = new System.Windows.Forms.ListBox();
             this.tabStaff = new System.Windows.Forms.TabPage();
-            this.btnAddEmployee = new System.Windows.Forms.Button();
+            this.btnAddStaff = new System.Windows.Forms.Button();
             this.btnStaff = new System.Windows.Forms.Button();
             this.txtStaff = new System.Windows.Forms.TextBox();
             this.lstStaff = new System.Windows.Forms.ListBox();
             this.tabChildren = new System.Windows.Forms.TabPage();
+            this.btnCheckAges = new System.Windows.Forms.Button();
             this.btnAddChild = new System.Windows.Forms.Button();
             this.btnChildren = new System.Windows.Forms.Button();
             this.txtChildren = new System.Windows.Forms.TextBox();
             this.lstChildren = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCheckAges = new System.Windows.Forms.Button();
             this.tabParents.SuspendLayout();
             this.tabStaff.SuspendLayout();
             this.tabChildren.SuspendLayout();
@@ -61,106 +61,112 @@
             this.tabParents.Location = new System.Drawing.Point(4, 22);
             this.tabParents.Name = "tabParents";
             this.tabParents.Padding = new System.Windows.Forms.Padding(3);
-            this.tabParents.Size = new System.Drawing.Size(655, 443);
+            this.tabParents.Size = new System.Drawing.Size(450, 230);
             this.tabParents.TabIndex = 2;
             this.tabParents.Text = "Parents/Contacts";
             this.tabParents.UseVisualStyleBackColor = true;
+            this.tabParents.Enter += new System.EventHandler(this.tabParents_Enter);
             // 
             // btnAddParent
             // 
-            this.btnAddParent.Location = new System.Drawing.Point(270, 306);
+            this.btnAddParent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddParent.Location = new System.Drawing.Point(370, 197);
             this.btnAddParent.Name = "btnAddParent";
-            this.btnAddParent.Size = new System.Drawing.Size(112, 23);
-            this.btnAddParent.TabIndex = 6;
-            this.btnAddParent.Text = "Add Parent/Contact";
+            this.btnAddParent.Size = new System.Drawing.Size(74, 23);
+            this.btnAddParent.TabIndex = 8;
+            this.btnAddParent.Text = "Add Parent";
             this.btnAddParent.UseVisualStyleBackColor = true;
-            this.btnAddParent.Click += new System.EventHandler(this.btnAddParent_Click);
             // 
             // btnParents
             // 
-            this.btnParents.Location = new System.Drawing.Point(388, 263);
+            this.btnParents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnParents.Location = new System.Drawing.Point(370, 8);
             this.btnParents.Name = "btnParents";
             this.btnParents.Size = new System.Drawing.Size(74, 20);
-            this.btnParents.TabIndex = 5;
+            this.btnParents.TabIndex = 7;
             this.btnParents.Text = "Search";
             this.btnParents.UseVisualStyleBackColor = true;
-            this.btnParents.Click += new System.EventHandler(this.btnParents_Click);
             // 
             // txtParents
             // 
+            this.txtParents.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txtParents.ForeColor = System.Drawing.Color.Gray;
-            this.txtParents.Location = new System.Drawing.Point(188, 263);
+            this.txtParents.Location = new System.Drawing.Point(5, 8);
             this.txtParents.Name = "txtParents";
-            this.txtParents.Size = new System.Drawing.Size(194, 20);
-            this.txtParents.TabIndex = 4;
+            this.txtParents.Size = new System.Drawing.Size(359, 20);
+            this.txtParents.TabIndex = 6;
             this.txtParents.Text = "Enter parent name to search for...";
             // 
             // lstParents
             // 
-            this.lstParents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstParents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lstParents.FormattingEnabled = true;
-            this.lstParents.Location = new System.Drawing.Point(6, 6);
+            this.lstParents.Location = new System.Drawing.Point(5, 34);
             this.lstParents.Name = "lstParents";
-            this.lstParents.Size = new System.Drawing.Size(643, 251);
-            this.lstParents.TabIndex = 3;
-            this.lstParents.SelectedIndexChanged += new System.EventHandler(this.lstParents_SelectedIndexChanged);
+            this.lstParents.Size = new System.Drawing.Size(359, 186);
+            this.lstParents.TabIndex = 5;
+            this.lstParents.DoubleClick += new System.EventHandler(this.lstParents_DoubleClick);
             // 
             // tabStaff
             // 
-            this.tabStaff.Controls.Add(this.btnAddEmployee);
+            this.tabStaff.Controls.Add(this.btnAddStaff);
             this.tabStaff.Controls.Add(this.btnStaff);
             this.tabStaff.Controls.Add(this.txtStaff);
             this.tabStaff.Controls.Add(this.lstStaff);
             this.tabStaff.Location = new System.Drawing.Point(4, 22);
             this.tabStaff.Name = "tabStaff";
             this.tabStaff.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStaff.Size = new System.Drawing.Size(655, 443);
+            this.tabStaff.Size = new System.Drawing.Size(450, 230);
             this.tabStaff.TabIndex = 1;
             this.tabStaff.Text = "Staff";
             this.tabStaff.UseVisualStyleBackColor = true;
+            this.tabStaff.Enter += new System.EventHandler(this.tabStaff_Enter);
             // 
-            // btnAddEmployee
+            // btnAddStaff
             // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(284, 307);
-            this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(98, 23);
-            this.btnAddEmployee.TabIndex = 6;
-            this.btnAddEmployee.Text = "Add Employee";
-            this.btnAddEmployee.UseVisualStyleBackColor = true;
-            this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
+            this.btnAddStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddStaff.Location = new System.Drawing.Point(370, 197);
+            this.btnAddStaff.Name = "btnAddStaff";
+            this.btnAddStaff.Size = new System.Drawing.Size(74, 23);
+            this.btnAddStaff.TabIndex = 8;
+            this.btnAddStaff.Text = "Add Staff";
+            this.btnAddStaff.UseVisualStyleBackColor = true;
             // 
             // btnStaff
             // 
-            this.btnStaff.Location = new System.Drawing.Point(388, 263);
+            this.btnStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStaff.Location = new System.Drawing.Point(370, 8);
             this.btnStaff.Name = "btnStaff";
             this.btnStaff.Size = new System.Drawing.Size(74, 20);
-            this.btnStaff.TabIndex = 5;
+            this.btnStaff.TabIndex = 7;
             this.btnStaff.Text = "Search";
             this.btnStaff.UseVisualStyleBackColor = true;
-            this.btnStaff.Click += new System.EventHandler(this.btnStaff_Click);
             // 
             // txtStaff
             // 
+            this.txtStaff.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txtStaff.ForeColor = System.Drawing.Color.Gray;
-            this.txtStaff.Location = new System.Drawing.Point(175, 264);
+            this.txtStaff.Location = new System.Drawing.Point(5, 8);
             this.txtStaff.Name = "txtStaff";
-            this.txtStaff.Size = new System.Drawing.Size(207, 20);
-            this.txtStaff.TabIndex = 4;
-            this.txtStaff.Text = "Enter staff member name to search for...";
+            this.txtStaff.Size = new System.Drawing.Size(359, 20);
+            this.txtStaff.TabIndex = 6;
+            this.txtStaff.Text = "Enter employee name to search for...";
             // 
             // lstStaff
             // 
-            this.lstStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lstStaff.FormattingEnabled = true;
-            this.lstStaff.Location = new System.Drawing.Point(6, 6);
+            this.lstStaff.Location = new System.Drawing.Point(5, 34);
             this.lstStaff.Name = "lstStaff";
-            this.lstStaff.Size = new System.Drawing.Size(643, 251);
-            this.lstStaff.TabIndex = 3;
-            this.lstStaff.SelectedIndexChanged += new System.EventHandler(this.lstStaff_SelectedIndexChanged);
+            this.lstStaff.Size = new System.Drawing.Size(359, 186);
+            this.lstStaff.TabIndex = 5;
+            this.lstStaff.DoubleClick += new System.EventHandler(this.lstStaff_DoubleClick);
             // 
             // tabChildren
             // 
@@ -172,24 +178,37 @@
             this.tabChildren.Location = new System.Drawing.Point(4, 22);
             this.tabChildren.Name = "tabChildren";
             this.tabChildren.Padding = new System.Windows.Forms.Padding(3);
-            this.tabChildren.Size = new System.Drawing.Size(655, 443);
+            this.tabChildren.Size = new System.Drawing.Size(450, 230);
             this.tabChildren.TabIndex = 0;
             this.tabChildren.Text = "Children";
             this.tabChildren.UseVisualStyleBackColor = true;
+            this.tabChildren.Enter += new System.EventHandler(this.tabChildren_Enter);
+            // 
+            // btnCheckAges
+            // 
+            this.btnCheckAges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCheckAges.Location = new System.Drawing.Point(370, 166);
+            this.btnCheckAges.Name = "btnCheckAges";
+            this.btnCheckAges.Size = new System.Drawing.Size(74, 23);
+            this.btnCheckAges.TabIndex = 4;
+            this.btnCheckAges.Text = "Check Ages";
+            this.btnCheckAges.UseVisualStyleBackColor = true;
+            this.btnCheckAges.Click += new System.EventHandler(this.btnCheckAges_Click);
             // 
             // btnAddChild
             // 
-            this.btnAddChild.Location = new System.Drawing.Point(376, 289);
+            this.btnAddChild.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddChild.Location = new System.Drawing.Point(370, 195);
             this.btnAddChild.Name = "btnAddChild";
             this.btnAddChild.Size = new System.Drawing.Size(75, 23);
             this.btnAddChild.TabIndex = 3;
             this.btnAddChild.Text = "Add Child";
             this.btnAddChild.UseVisualStyleBackColor = true;
-            this.btnAddChild.Click += new System.EventHandler(this.btnAddChild_Click);
             // 
             // btnChildren
             // 
-            this.btnChildren.Location = new System.Drawing.Point(377, 263);
+            this.btnChildren.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChildren.Location = new System.Drawing.Point(370, 6);
             this.btnChildren.Name = "btnChildren";
             this.btnChildren.Size = new System.Drawing.Size(74, 20);
             this.btnChildren.TabIndex = 2;
@@ -199,68 +218,61 @@
             // 
             // txtChildren
             // 
+            this.txtChildren.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txtChildren.ForeColor = System.Drawing.Color.Gray;
-            this.txtChildren.Location = new System.Drawing.Point(197, 263);
+            this.txtChildren.Location = new System.Drawing.Point(6, 6);
             this.txtChildren.Name = "txtChildren";
-            this.txtChildren.Size = new System.Drawing.Size(174, 20);
+            this.txtChildren.Size = new System.Drawing.Size(358, 20);
             this.txtChildren.TabIndex = 1;
             this.txtChildren.Text = "Enter child name to search for...";
             // 
             // lstChildren
             // 
-            this.lstChildren.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstChildren.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lstChildren.FormattingEnabled = true;
-            this.lstChildren.Location = new System.Drawing.Point(6, 6);
+            this.lstChildren.Location = new System.Drawing.Point(6, 32);
             this.lstChildren.Name = "lstChildren";
-            this.lstChildren.Size = new System.Drawing.Size(643, 251);
+            this.lstChildren.Size = new System.Drawing.Size(358, 186);
             this.lstChildren.TabIndex = 0;
-            this.lstChildren.SelectedIndexChanged += new System.EventHandler(this.lstChildren_SelectedIndexChanged);
+            this.lstChildren.DoubleClick += new System.EventHandler(this.lstChildren_DoubleClick);
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabChildren);
             this.tabControl1.Controls.Add(this.tabStaff);
             this.tabControl1.Controls.Add(this.tabParents);
-            this.tabControl1.Location = new System.Drawing.Point(13, 72);
+            this.tabControl1.Location = new System.Drawing.Point(12, 50);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(663, 469);
+            this.tabControl1.Size = new System.Drawing.Size(458, 256);
             this.tabControl1.TabIndex = 0;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectIndexChanged);
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(150, 9);
+            this.label1.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(114, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(384, 45);
+            this.label1.Size = new System.Drawing.Size(254, 29);
             this.label1.TabIndex = 1;
             this.label1.Text = "Teddy Bear Club Nursery";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnCheckAges
-            // 
-            this.btnCheckAges.Location = new System.Drawing.Point(377, 318);
-            this.btnCheckAges.Name = "btnCheckAges";
-            this.btnCheckAges.Size = new System.Drawing.Size(75, 23);
-            this.btnCheckAges.TabIndex = 4;
-            this.btnCheckAges.Text = "Check Ages";
-            this.btnCheckAges.UseVisualStyleBackColor = true;
-            this.btnCheckAges.Click += new System.EventHandler(this.btnCheckAges_Click);
             // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 553);
+            this.ClientSize = new System.Drawing.Size(483, 315);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
+            this.MinimumSize = new System.Drawing.Size(319, 251);
             this.Name = "frmMainMenu";
             this.Text = "Teddy Bear Club Nursery";
             this.tabParents.ResumeLayout(false);
@@ -284,17 +296,17 @@
         private System.Windows.Forms.ListBox lstChildren;
         private System.Windows.Forms.Button btnChildren;
         private System.Windows.Forms.TextBox txtChildren;
-        private System.Windows.Forms.Button btnParents;
-        private System.Windows.Forms.TextBox txtParents;
-        private System.Windows.Forms.ListBox lstParents;
-        private System.Windows.Forms.Button btnStaff;
-        private System.Windows.Forms.TextBox txtStaff;
-        private System.Windows.Forms.ListBox lstStaff;
-        private System.Windows.Forms.Button btnAddParent;
-        private System.Windows.Forms.Button btnAddEmployee;
         private System.Windows.Forms.Button btnAddChild;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCheckAges;
+        private System.Windows.Forms.Button btnAddParent;
+        private System.Windows.Forms.Button btnParents;
+        private System.Windows.Forms.TextBox txtParents;
+        private System.Windows.Forms.ListBox lstParents;
+        private System.Windows.Forms.Button btnAddStaff;
+        private System.Windows.Forms.Button btnStaff;
+        private System.Windows.Forms.TextBox txtStaff;
+        private System.Windows.Forms.ListBox lstStaff;
 
 
 

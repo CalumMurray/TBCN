@@ -42,25 +42,25 @@ namespace TBCN
 
         private void lblParent1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmParentReport parentReport = new frmParentReport(child.FirstName + "'s Parent", child.Parents[0]);
+            frmParentReport parentReport = new frmParentReport(child.Parents[0]);
             parentReport.Show();
         }
 
         private void lblParent2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmParentReport parentReport = new frmParentReport(child.FirstName + "'s Parent", child.Parents[1]);
+            frmParentReport parentReport = new frmParentReport(child.Parents[1]);
             parentReport.Show();
         }
 
         private void lblEC1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmParentReport ecReport = new frmParentReport(child.FirstName + "'s Emergency Contact", child.EmergencyContacts[0]);
+            frmParentReport ecReport = new frmParentReport(child.EmergencyContacts[0]);
             ecReport.Show();
         }
 
         private void lblEC2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmParentReport ecReport = new frmParentReport(child.FirstName + "'s Emergency Contact", child.EmergencyContacts[1]);
+            frmParentReport ecReport = new frmParentReport(child.EmergencyContacts[1]);
             ecReport.Show();
         }
 
@@ -79,18 +79,18 @@ namespace TBCN
             lblLanguage.Text = child.FirstLanguage;
             lblAttendance.Text = showAttendance();
 
-            lblAddress1.Text = child.Parents[0].HomeAddress.Address1; //Correct?
-            lblCity.Text = child.Parents[0].HomeAddress.City; //Correct?
-            lblCounty.Text = child.Parents[0].HomeAddress.County; //Correct?
-            lblPostCode.Text = child.Parents[0].HomeAddress.PostCode; //Correct?
+            //lblAddress1.Text = child.Parents[0].HomeAddress.Address1; //Correct?
+            //lblCity.Text = child.Parents[0].HomeAddress.City; //Correct?
+            //lblCounty.Text = child.Parents[0].HomeAddress.County; //Correct?
+            //lblPostCode.Text = child.Parents[0].HomeAddress.PostCode; //Correct?
 
-            lblParent1.Text = child.Parents[0].FirstName + " " + child.Parents[0].LastName;
-            lblParent2.Text = child.Parents[1].FirstName + " " + child.Parents[1].LastName;
+            //lblParent1.Text = child.Parents[0].FirstName + " " + child.Parents[0].LastName;
+            //lblParent2.Text = child.Parents[1].FirstName + " " + child.Parents[1].LastName;
 
-            lblEC1.Text = child.EmergencyContacts[0].FirstName + " " + child.EmergencyContacts[0].LastName;
-            lblEC2.Text = child.EmergencyContacts[1].FirstName + " " + child.EmergencyContacts[1].LastName;
+            //lblEC1.Text = child.EmergencyContacts[0].FirstName + " " + child.EmergencyContacts[0].LastName;
+            //lblEC2.Text = child.EmergencyContacts[1].FirstName + " " + child.EmergencyContacts[1].LastName;
 
-            lblMedicalInfo.Text = child.MedicalInfo.ToString();
+            //lblMedicalInfo.Text = child.MedicalInfo.ToString();
         }
 
 
