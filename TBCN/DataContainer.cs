@@ -5,19 +5,27 @@ using System.Text;
 
 namespace TBCN
 {
-    class TestMain
+    class DataContainer
     {
         public List<Child> children = new List<Child>();
         public List<Parent> parents = new List<Parent>();
         public List<Employee> employees = new List<Employee>();
+        public Database dbConnection;
 
-        public TestMain()
+
+        public DataContainer()
         {
-            loadItems();
+            
+            dbConnection = new Database();
         }
 
-        private void loadItems()
+        public void loadItems()
         {
+
+            children = dbConnection.selectAllChildren();
+            parents = dbConnection.selectAllParents();
+            employees = dbConnection.selectAllStaff();
+
             Child exampleChild1 = new Child();
             Parent exampleParent1 = new Parent();
 
@@ -41,7 +49,7 @@ namespace TBCN
             exampleChild1.Attendance = new bool[5] {true,false,false,true,true};
             exampleChild1.ExtraDays = 2;
             exampleChild1.Teas = 3;
-            exampleChild1.Parents.Add(exampleParent1);
+            //exampleChild1.Parents.Add(exampleParent1);
 
             children.Add(exampleChild1);
             parents.Add(exampleParent1);

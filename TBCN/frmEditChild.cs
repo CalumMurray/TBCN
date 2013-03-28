@@ -51,7 +51,10 @@ namespace TBCN
             //parents.Add(frmEditParent.AddedParent);
 
             //Add to Database
-            dbConnection.insertChild(ChildAdded);
+            if (dbConnection.insertChild(ChildAdded))
+                MessageBox.Show("Child added successfully");
+            else
+                MessageBox.Show("Problem occurred while adding child");
         }
 
         private bool validateForm()
