@@ -86,6 +86,7 @@
             this.btnParents.TabIndex = 7;
             this.btnParents.Text = "Search";
             this.btnParents.UseVisualStyleBackColor = true;
+            this.btnParents.Click += new System.EventHandler(this.btnParents_Click_1);
             // 
             // txtParents
             // 
@@ -154,7 +155,7 @@
             this.txtStaff.Name = "txtStaff";
             this.txtStaff.Size = new System.Drawing.Size(359, 20);
             this.txtStaff.TabIndex = 6;
-            this.txtStaff.Text = "Enter employee name to search for...";
+            this.txtStaff.Text = "Enter parent name to search for...";
             // 
             // lstStaff
             // 
@@ -275,7 +276,6 @@
             this.MinimumSize = new System.Drawing.Size(319, 251);
             this.Name = "frmMainMenu";
             this.Text = "Teddy Bear Club Nursery";
-            this.Load += new System.EventHandler(this.frmMainMenu_Load_1);
             this.tabParents.ResumeLayout(false);
             this.tabParents.PerformLayout();
             this.tabStaff.ResumeLayout(false);

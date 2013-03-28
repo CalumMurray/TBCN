@@ -147,8 +147,8 @@ namespace TBCN {
                 if ((ds.Tables["emergency_contact"] != null)) {
                     base.Tables.Add(new emergency_contactDataTable(ds.Tables["emergency_contact"]));
                 }
-                if ((ds.Tables["employee"] != null)) {
-                    base.Tables.Add(new employeeDataTable(ds.Tables["employee"]));
+                if ((ds.Tables["parent"] != null)) {
+                    base.Tables.Add(new employeeDataTable(ds.Tables["parent"]));
                 }
                 if ((ds.Tables["invoice"] != null)) {
                     base.Tables.Add(new invoiceDataTable(ds.Tables["invoice"]));
@@ -414,8 +414,8 @@ namespace TBCN {
                 if ((ds.Tables["emergency_contact"] != null)) {
                     base.Tables.Add(new emergency_contactDataTable(ds.Tables["emergency_contact"]));
                 }
-                if ((ds.Tables["employee"] != null)) {
-                    base.Tables.Add(new employeeDataTable(ds.Tables["employee"]));
+                if ((ds.Tables["parent"] != null)) {
+                    base.Tables.Add(new employeeDataTable(ds.Tables["parent"]));
                 }
                 if ((ds.Tables["invoice"] != null)) {
                     base.Tables.Add(new invoiceDataTable(ds.Tables["invoice"]));
@@ -510,7 +510,7 @@ namespace TBCN {
                     this.tableemergency_contact.InitVars();
                 }
             }
-            this.tableemployee = ((employeeDataTable)(base.Tables["employee"]));
+            this.tableemployee = ((employeeDataTable)(base.Tables["parent"]));
             if ((initTable == true)) {
                 if ((this.tableemployee != null)) {
                     this.tableemployee.InitVars();
@@ -3367,7 +3367,7 @@ namespace TBCN {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public employeeDataTable() {
-                this.TableName = "employee";
+                this.TableName = "parent";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -7438,7 +7438,7 @@ namespace TBCN {
                         return ((global::System.DateTime)(this[this.tableemployee.Date_FinishedColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Date_Finished\' in table \'employee\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Date_Finished\' in table \'parent\' is DBNull.", e);
                     }
                 }
                 set {
@@ -7476,7 +7476,7 @@ namespace TBCN {
                         return ((short)(this[this.tableemployee.Holidays_TakenColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Holidays_Taken\' in table \'employee\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Holidays_Taken\' in table \'parent\' is DBNull.", e);
                     }
                 }
                 set {
@@ -7525,7 +7525,7 @@ namespace TBCN {
                         return ((double)(this[this.tableemployee.SalaryColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Salary\' in table \'employee\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Salary\' in table \'parent\' is DBNull.", e);
                     }
                 }
                 set {
@@ -7552,7 +7552,7 @@ namespace TBCN {
                         return ((string)(this[this.tableemployee.Mobile_PhoneColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Mobile_Phone\' in table \'employee\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Mobile_Phone\' in table \'parent\' is DBNull.", e);
                     }
                 }
                 set {
@@ -7579,7 +7579,7 @@ namespace TBCN {
                         return ((string)(this[this.tableemployee.TrainingColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Training\' in table \'employee\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Training\' in table \'parent\' is DBNull.", e);
                     }
                 }
                 set {
@@ -13915,7 +13915,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
             this._adapter = new global::MySql.Data.MySqlClient.MySqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "employee";
+            tableMapping.DataSetTable = "parent";
             tableMapping.ColumnMappings.Add("National_Insurance_Number", "National_Insurance_Number");
             tableMapping.ColumnMappings.Add("FirstName", "FirstName");
             tableMapping.ColumnMappings.Add("LastName", "LastName");
@@ -13938,7 +13938,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `employee` WHERE ((`National_Insurance_Number` = @Original_National_Insurance_Number) AND (`FirstName` = @Original_FirstName) AND (`LastName` = @Original_LastName) AND (`Gender` = @Original_Gender) AND (`Date_Started` = @Original_Date_Started) AND ((@IsNull_Date_Finished = 1 AND `Date_Finished` IS NULL) OR (`Date_Finished` = @Original_Date_Finished)) AND (`PVG_Date` = @Original_PVG_Date) AND (`Holidays_Entitled` = @Original_Holidays_Entitled) AND ((@IsNull_Holidays_Taken = 1 AND `Holidays_Taken` IS NULL) OR (`Holidays_Taken` = @Original_Holidays_Taken)) AND (`HoursPerWeek` = @Original_HoursPerWeek) AND (`HomeAddress` = @Original_HomeAddress) AND (`DateOfBirth` = @Original_DateOfBirth) AND ((@IsNull_Salary = 1 AND `Salary` IS NULL) OR (`Salary` = @Original_Salary)) AND (`Home_Phone` = @Original_Home_Phone) AND ((@IsNull_Mobile_Phone = 1 AND `Mobile_Phone` IS NULL) OR (`Mobile_Phone` = @Original_Mobile_Phone)) AND (`Email` = @Original_Email) AND (`Medical_Information` = @Original_Medical_Information) AND (`Emergency_Contact` = @Original_Emergency_Contact))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `parent` WHERE ((`National_Insurance_Number` = @Original_National_Insurance_Number) AND (`FirstName` = @Original_FirstName) AND (`LastName` = @Original_LastName) AND (`Gender` = @Original_Gender) AND (`Date_Started` = @Original_Date_Started) AND ((@IsNull_Date_Finished = 1 AND `Date_Finished` IS NULL) OR (`Date_Finished` = @Original_Date_Finished)) AND (`PVG_Date` = @Original_PVG_Date) AND (`Holidays_Entitled` = @Original_Holidays_Entitled) AND ((@IsNull_Holidays_Taken = 1 AND `Holidays_Taken` IS NULL) OR (`Holidays_Taken` = @Original_Holidays_Taken)) AND (`HoursPerWeek` = @Original_HoursPerWeek) AND (`HomeAddress` = @Original_HomeAddress) AND (`DateOfBirth` = @Original_DateOfBirth) AND ((@IsNull_Salary = 1 AND `Salary` IS NULL) OR (`Salary` = @Original_Salary)) AND (`Home_Phone` = @Original_Home_Phone) AND ((@IsNull_Mobile_Phone = 1 AND `Mobile_Phone` IS NULL) OR (`Mobile_Phone` = @Original_Mobile_Phone)) AND (`Email` = @Original_Email) AND (`Medical_Information` = @Original_Medical_Information) AND (`Emergency_Contact` = @Original_Emergency_Contact))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Original_National_Insurance_Number";
@@ -14122,7 +14122,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO `employee` (`National_Insurance_Number`, `FirstName`, `LastName`, `Gender`, `Date_Started`, `Date_Finished`, `PVG_Date`, `Holidays_Entitled`, `Holidays_Taken`, `HoursPerWeek`, `HomeAddress`, `DateOfBirth`, `Salary`, `Home_Phone`, `Mobile_Phone`, `Email`, `Training`, `Medical_Information`, `Emergency_Contact`) VALUES (@National_Insurance_Number, @FirstName, @LastName, @Gender, @Date_Started, @Date_Finished, @PVG_Date, @Holidays_Entitled, @Holidays_Taken, @HoursPerWeek, @HomeAddress, @DateOfBirth, @Salary, @Home_Phone, @Mobile_Phone, @Email, @Training, @Medical_Information, @Emergency_Contact)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO `parent` (`National_Insurance_Number`, `FirstName`, `LastName`, `Gender`, `Date_Started`, `Date_Finished`, `PVG_Date`, `Holidays_Entitled`, `Holidays_Taken`, `HoursPerWeek`, `HomeAddress`, `DateOfBirth`, `Salary`, `Home_Phone`, `Mobile_Phone`, `Email`, `Training`, `Medical_Information`, `Emergency_Contact`) VALUES (@National_Insurance_Number, @FirstName, @LastName, @Gender, @Date_Started, @Date_Finished, @PVG_Date, @Holidays_Entitled, @Holidays_Taken, @HoursPerWeek, @HomeAddress, @DateOfBirth, @Salary, @Home_Phone, @Mobile_Phone, @Email, @Training, @Medical_Information, @Emergency_Contact)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@National_Insurance_Number";
@@ -14258,7 +14258,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `employee` SET `National_Insurance_Number` = @National_Insurance_Number, `" +
+            this._adapter.UpdateCommand.CommandText = "UPDATE `parent` SET `National_Insurance_Number` = @National_Insurance_Number, `" +
                 "FirstName` = @FirstName, `LastName` = @LastName, `Gender` = @Gender, `Date_Start" +
                 "ed` = @Date_Started, `Date_Finished` = @Date_Finished, `PVG_Date` = @PVG_Date, `" +
                 "Holidays_Entitled` = @Holidays_Entitled, `Holidays_Taken` = @Holidays_Taken, `Ho" +
@@ -14607,7 +14607,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT `National_Insurance_Number`, `FirstName`, `LastName`, `Gender`, `Date_Started`, `Date_Finished`, `PVG_Date`, `Holidays_Entitled`, `Holidays_Taken`, `HoursPerWeek`, `HomeAddress`, `DateOfBirth`, `Salary`, `Home_Phone`, `Mobile_Phone`, `Email`, `Training`, `Medical_Information`, `Emergency_Contact` FROM `employee`";
+            this._commandCollection[0].CommandText = @"SELECT `National_Insurance_Number`, `FirstName`, `LastName`, `Gender`, `Date_Started`, `Date_Finished`, `PVG_Date`, `Holidays_Entitled`, `Holidays_Taken`, `HoursPerWeek`, `HomeAddress`, `DateOfBirth`, `Salary`, `Home_Phone`, `Mobile_Phone`, `Email`, `Training`, `Medical_Information`, `Emergency_Contact` FROM `parent`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -14646,7 +14646,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet dataSet) {
-            return this.Adapter.Update(dataSet, "employee");
+            return this.Adapter.Update(dataSet, "parent");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

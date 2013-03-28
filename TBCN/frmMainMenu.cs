@@ -43,33 +43,81 @@ namespace TBCN
 
         private void btnChildren_Click(object sender, EventArgs e)
         {
-            //String childName = txtChildren.Text;
-            //List<Child> foundChildren = db.searchChildren(childName);
-            //lstChildren.Items.Add(foundChildren);
+            bool found = false;
+            String childName = txtChildren.Text;
+            List<Child> foundChildren = new List<Child>();
+            foreach (Child child in data.children)
+            {
+                if (child.FirstName == childName || child.LastName == childName)
+                {
+                    found = true;
+                    foundChildren.Add(child);
+                    
+                }
+            }
+            if (found)
+            {
+                lstChildren.Items.Clear();
+                lstChildren.Items.Add(foundChildren);
+            }
+            else
+                MessageBox.Show("No children were found.");
 
         }
 
         private void btnStaff_Click(object sender, EventArgs e)
         {
-            //String staffSearchString = txtStaff.Text;
-            //List<Employee> foundStaff = db.searchStaff(staffSearchString);
-            //lstStaff.Items.Add(foundStaff);
+            bool found = false;
+            String employeeName = txtStaff.Text;
+            List<Employee> foundEmployees = new List<Employee>();
+            foreach (Employee employee in data.employees)
+            {
+                if (employee.FirstName == employeeName || employee.LastName == employeeName)
+                {
+                    found = true;
+                    foundEmployees.Add(employee);
+
+                }
+            }
+            if (found)
+            {
+                lstChildren.Items.Clear();
+                lstChildren.Items.Add(foundEmployees);
+            }
+            else
+                MessageBox.Show("No staff members were found.");
         }
 
         private void btnParents_Click(object sender, EventArgs e)
         {
-            //String parentSearchString = txtParents.Text;
-            //List<Parent> foundParents = db.searchParent(parentSearchString);
-            //lstParents.Items.Add(foundParents);
+            bool found = false;
+            String parentName = txtStaff.Text;
+            List<Parent> foundParents = new List<Parent>();
+            foreach (Parent parent in data.employees)
+            {
+                if (parent.FirstName == parentName || parent.LastName == parentName)
+                {
+                    found = true;
+                    foundParents.Add(parent);
+
+                }
+            }
+            if (found)
+            {
+                lstChildren.Items.Clear();
+                lstChildren.Items.Add(foundParents);
+            }
+            else
+                MessageBox.Show("No parents were found.");
         }
 
         private void btnCheckAges_Click(object sender, EventArgs e)
         {
-            //List<Child> childrenToMove = db.childrenToMoveRoom();
-            //if (childrenToMove.Count == 0)
-            //    MessageBox.Show("No children are scheduled to move to an older room.");
-            //else
-            //    lstChildren.Items.AddRange(childrenToMove.ToArray());
+            List<Child> childrenToMove = db.childrenToMoveRoom();
+            if (childrenToMove.Count == 0)
+                MessageBox.Show("No children are scheduled to move to an older room.");
+            else
+                lstChildren.Items.AddRange(childrenToMove.ToArray());
         }
 
         private void tabChildren_Enter(object sender, EventArgs e)
@@ -188,6 +236,8 @@ namespace TBCN
                 staffIDList.Add(employee.NINo);
             }
         }
+
+
 
 
 
