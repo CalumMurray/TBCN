@@ -46,7 +46,7 @@ namespace TBCN
             lblHolidaysEntitled.Text = Convert.ToString(employee.HolidaysEntitled);
             lblHolidaysTaken.Text = Convert.ToString(employee.HolidaysTaken);
             lblHours.Text = Convert.ToString(employee.WeeksHours);
-            lblSalary.Text = Convert.ToString(employee.Salary);
+            lblSalary.Text = "£" + Convert.ToString(employee.Salary);
 
             lblTraining.Text = employee.Training;
 
@@ -58,6 +58,11 @@ namespace TBCN
             lblEC1.Text = employee.EmergencyContact.FirstName + " " + employee.EmergencyContact.LastName;
 
             lblMedical.Text = employee.Medical.ToString();
+        }
+
+        private void lblHomePhone_Click(object sender, EventArgs e)
+        {
+
         }
 
     

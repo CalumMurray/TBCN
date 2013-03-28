@@ -14,14 +14,14 @@ namespace TBCN {
     
     
     /// <summary>
-    ///Represents a strongly typed in-memory cache of data.
+    ///Represents a strongly typed in-memory cache of DataContainer.
     ///</summary>
     [global::System.Serializable()]
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("_12ac3d03DataSet")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.DataSet")]
     public partial class _12ac3d03DataSet : global::System.Data.DataSet {
         
         private addressDataTable tableaddress;
@@ -9116,14 +9116,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
     
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
+    ///Represents the connection and commands used to retrieve and save DataContainer.
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DataObjectAttribute(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
     public partial class addressTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -9498,7 +9498,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(_12ac3d03DataSet.addressDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -9511,7 +9511,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _12ac3d03DataSet.addressDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -9522,21 +9522,21 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet.addressDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet dataSet) {
             return this.Adapter.Update(dataSet, "address");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
@@ -9544,14 +9544,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(string Original_Address_1, string Original_City, string Original_County, string Original_PostCode, string Original_Country) {
             if ((Original_Address_1 == null)) {
@@ -9610,7 +9610,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(string Address_1, string City, string County, string PostCode, string Country) {
             if ((Address_1 == null)) {
@@ -9661,7 +9661,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Address_1, string City, string County, string PostCode, string Country, string Original_Address_1, string Original_City, string Original_County, string Original_PostCode, string Original_Country) {
             if ((Address_1 == null)) {
@@ -9750,7 +9750,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string City, string County, string PostCode, string Country, string Original_Address_1, string Original_City, string Original_County, string Original_PostCode, string Original_Country) {
             return this.Update(Original_Address_1, City, County, PostCode, Country, Original_Address_1, Original_City, Original_County, Original_PostCode, Original_Country);
@@ -9758,14 +9758,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
+    ///Represents the connection and commands used to retrieve and save DataContainer.
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DataObjectAttribute(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
     public partial class attendanceTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -10191,7 +10191,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(_12ac3d03DataSet.attendanceDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -10204,7 +10204,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _12ac3d03DataSet.attendanceDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -10215,21 +10215,21 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet.attendanceDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet dataSet) {
             return this.Adapter.Update(dataSet, "attendance");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
@@ -10237,14 +10237,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(int Original_Child_ID, global::System.Nullable<byte> Original_Monday, global::System.Nullable<byte> Original_Tuesday, global::System.Nullable<byte> Original_Wednesday, global::System.Nullable<byte> Original_Thursday, global::System.Nullable<byte> Original_Friday) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Child_ID));
@@ -10306,7 +10306,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(int Child_ID, global::System.Nullable<byte> Monday, global::System.Nullable<byte> Tuesday, global::System.Nullable<byte> Wednesday, global::System.Nullable<byte> Thursday, global::System.Nullable<byte> Friday) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Child_ID));
@@ -10358,7 +10358,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int Child_ID, global::System.Nullable<byte> Monday, global::System.Nullable<byte> Tuesday, global::System.Nullable<byte> Wednesday, global::System.Nullable<byte> Thursday, global::System.Nullable<byte> Friday, int Original_Child_ID, global::System.Nullable<byte> Original_Monday, global::System.Nullable<byte> Original_Tuesday, global::System.Nullable<byte> Original_Wednesday, global::System.Nullable<byte> Original_Thursday, global::System.Nullable<byte> Original_Friday) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Child_ID));
@@ -10451,7 +10451,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(global::System.Nullable<byte> Monday, global::System.Nullable<byte> Tuesday, global::System.Nullable<byte> Wednesday, global::System.Nullable<byte> Thursday, global::System.Nullable<byte> Friday, int Original_Child_ID, global::System.Nullable<byte> Original_Monday, global::System.Nullable<byte> Original_Tuesday, global::System.Nullable<byte> Original_Wednesday, global::System.Nullable<byte> Original_Thursday, global::System.Nullable<byte> Original_Friday) {
             return this.Update(Original_Child_ID, Monday, Tuesday, Wednesday, Thursday, Friday, Original_Child_ID, Original_Monday, Original_Tuesday, Original_Wednesday, Original_Thursday, Original_Friday);
@@ -10459,14 +10459,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
+    ///Represents the connection and commands used to retrieve and save DataContainer.
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DataObjectAttribute(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
     public partial class childTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -11125,7 +11125,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(_12ac3d03DataSet.childDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -11138,7 +11138,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _12ac3d03DataSet.childDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -11149,21 +11149,21 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet.childDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet dataSet) {
             return this.Adapter.Update(dataSet, "child");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
@@ -11171,14 +11171,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(int Original_Child_ID, string Original_First_Name, string Original_Last_Name, string Original_Gender, System.DateTime Original_DOB, string Original_First_Language, string Original_Room_Attending, global::System.Nullable<int> Original_Sibling, System.DateTime Original_Date_Applied, global::System.Nullable<global::System.DateTime> Original_Date_Left, byte Original_Days_Per_Week, global::System.Nullable<byte> Original_Extra_Days, global::System.Nullable<byte> Original_Teas, int Original_Medical_Information) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Child_ID));
@@ -11268,7 +11268,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(string First_Name, string Last_Name, string Gender, System.DateTime DOB, string First_Language, string Room_Attending, global::System.Nullable<int> Sibling, System.DateTime Date_Applied, global::System.Nullable<global::System.DateTime> Date_Left, byte Days_Per_Week, global::System.Nullable<byte> Extra_Days, global::System.Nullable<byte> Teas, int Medical_Information) {
             if ((First_Name == null)) {
@@ -11347,7 +11347,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string First_Name, 
@@ -11522,14 +11522,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
+    ///Represents the connection and commands used to retrieve and save DataContainer.
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DataObjectAttribute(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
     public partial class child_has_emergency_contactTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -11742,7 +11742,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(_12ac3d03DataSet.child_has_emergency_contactDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -11755,7 +11755,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _12ac3d03DataSet.child_has_emergency_contactDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -11766,21 +11766,21 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet.child_has_emergency_contactDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet dataSet) {
             return this.Adapter.Update(dataSet, "child_has_emergency_contact");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
@@ -11788,14 +11788,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(int Original_Contact_ID, int Original_Child_ID) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Contact_ID));
@@ -11818,7 +11818,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(int Contact_ID, int Child_ID) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Contact_ID));
@@ -11841,7 +11841,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int Contact_ID, int Child_ID, int Original_Contact_ID, int Original_Child_ID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Contact_ID));
@@ -11866,7 +11866,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int Original_Contact_ID, int Original_Child_ID) {
             return this.Update(Original_Contact_ID, Original_Child_ID, Original_Contact_ID, Original_Child_ID);
@@ -11874,14 +11874,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
+    ///Represents the connection and commands used to retrieve and save DataContainer.
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DataObjectAttribute(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
     public partial class child_has_parent_guardianTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -12094,7 +12094,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(_12ac3d03DataSet.child_has_parent_guardianDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -12107,7 +12107,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _12ac3d03DataSet.child_has_parent_guardianDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -12118,21 +12118,21 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet.child_has_parent_guardianDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet dataSet) {
             return this.Adapter.Update(dataSet, "child_has_parent_guardian");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
@@ -12140,14 +12140,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(int Original_Parent_ID, int Original_Child_ID) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Parent_ID));
@@ -12170,7 +12170,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(int Parent_ID, int Child_ID) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Parent_ID));
@@ -12193,7 +12193,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int Parent_ID, int Child_ID, int Original_Parent_ID, int Original_Child_ID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Parent_ID));
@@ -12218,7 +12218,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int Original_Parent_ID, int Original_Child_ID) {
             return this.Update(Original_Parent_ID, Original_Child_ID, Original_Parent_ID, Original_Child_ID);
@@ -12226,14 +12226,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
+    ///Represents the connection and commands used to retrieve and save DataContainer.
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DataObjectAttribute(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
     public partial class departmentTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -12555,7 +12555,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(_12ac3d03DataSet.departmentDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -12568,7 +12568,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _12ac3d03DataSet.departmentDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -12579,21 +12579,21 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet.departmentDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet dataSet) {
             return this.Adapter.Update(dataSet, "department");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
@@ -12601,14 +12601,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(int Original_Min_Age, int Original_Max_Age, decimal Original_Weekly_Fee, decimal Original_Daily_Fee, global::System.Nullable<decimal> Original_Tea_Fee) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Min_Age));
@@ -12641,7 +12641,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(int Min_Age, int Max_Age, decimal Weekly_Fee, decimal Daily_Fee, global::System.Nullable<decimal> Tea_Fee) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Min_Age));
@@ -12672,7 +12672,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int Min_Age, int Max_Age, decimal Weekly_Fee, decimal Daily_Fee, global::System.Nullable<decimal> Tea_Fee, int Original_Min_Age, int Original_Max_Age, decimal Original_Weekly_Fee, decimal Original_Daily_Fee, global::System.Nullable<decimal> Original_Tea_Fee) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Min_Age));
@@ -12715,7 +12715,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(decimal Weekly_Fee, decimal Daily_Fee, global::System.Nullable<decimal> Tea_Fee, int Original_Min_Age, int Original_Max_Age, decimal Original_Weekly_Fee, decimal Original_Daily_Fee, global::System.Nullable<decimal> Original_Tea_Fee) {
             return this.Update(Original_Min_Age, Original_Max_Age, Weekly_Fee, Daily_Fee, Tea_Fee, Original_Min_Age, Original_Max_Age, Original_Weekly_Fee, Original_Daily_Fee, Original_Tea_Fee);
@@ -12723,14 +12723,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
+    ///Represents the connection and commands used to retrieve and save DataContainer.
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DataObjectAttribute(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
     public partial class emergency_contactTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -13363,7 +13363,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(_12ac3d03DataSet.emergency_contactDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -13376,7 +13376,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _12ac3d03DataSet.emergency_contactDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -13387,21 +13387,21 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet.emergency_contactDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet dataSet) {
             return this.Adapter.Update(dataSet, "emergency_contact");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
@@ -13409,14 +13409,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(int Original_Contact_ID, string Original_Title, string Original_First_Name, string Original_Last_Name, string Original_Relationship, string Original_Home_Phone, string Original_Work_Phone, string Original_Mobile_Phone, string Original_Address, string Original_Work_Address, string Original_Gender, string Original_Email) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Contact_ID));
@@ -13518,7 +13518,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(string Title, string First_Name, string Last_Name, string Relationship, string Home_Phone, string Work_Phone, string Mobile_Phone, string Address, string Work_Address, string Gender, string Email) {
             if ((Title == null)) {
@@ -13605,7 +13605,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string Title, 
@@ -13796,14 +13796,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
+    ///Represents the connection and commands used to retrieve and save DataContainer.
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DataObjectAttribute(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
     public partial class employeeTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -14613,7 +14613,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(_12ac3d03DataSet.employeeDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -14626,7 +14626,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _12ac3d03DataSet.employeeDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -14637,21 +14637,21 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet.employeeDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet dataSet) {
             return this.Adapter.Update(dataSet, "employee");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
@@ -14659,14 +14659,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(
                     string Original_National_Insurance_Number, 
@@ -14786,7 +14786,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
                     string National_Insurance_Number, 
@@ -14905,7 +14905,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string National_Insurance_Number, 
@@ -15123,7 +15123,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string FirstName, 
@@ -15167,14 +15167,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
+    ///Represents the connection and commands used to retrieve and save DataContainer.
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DataObjectAttribute(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
     public partial class invoiceTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -15877,7 +15877,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(_12ac3d03DataSet.invoiceDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -15890,7 +15890,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _12ac3d03DataSet.invoiceDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -15901,21 +15901,21 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet.invoiceDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet dataSet) {
             return this.Adapter.Update(dataSet, "invoice");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
@@ -15923,14 +15923,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(
                     int Original_InvoiceID, 
@@ -16021,7 +16021,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(int Child, int Paying_Parent, System.DateTime Month_Beginning, decimal Weekly_Fee, string Month, byte No_of_Weeks, decimal Percent_Discount, decimal Discount, decimal Net_Fee, global::System.Nullable<byte> Extra_Days, global::System.Nullable<byte> Teas, global::System.Nullable<decimal> Late_Pay, global::System.Nullable<decimal> Arrears, string Payment_Method, decimal Total) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Child));
@@ -16087,7 +16087,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     int Child, 
@@ -16238,14 +16238,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
+    ///Represents the connection and commands used to retrieve and save DataContainer.
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DataObjectAttribute(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
     public partial class medical_informationTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -16529,7 +16529,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(_12ac3d03DataSet.medical_informationDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -16542,7 +16542,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _12ac3d03DataSet.medical_informationDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -16553,21 +16553,21 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet.medical_informationDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet dataSet) {
             return this.Adapter.Update(dataSet, "medical_information");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
@@ -16575,14 +16575,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(int Original_Medical_ID, string Original_Doctor, string Original_Doctor_Address) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Medical_ID));
@@ -16616,7 +16616,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(int Medical_ID, string Allergies, string Medication, string Other, string Doctor, string Doctor_Address) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Medical_ID));
@@ -16668,7 +16668,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int Medical_ID, string Allergies, string Medication, string Other, string Doctor, string Doctor_Address, int Original_Medical_ID, string Original_Doctor, string Original_Doctor_Address) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Medical_ID));
@@ -16733,7 +16733,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Allergies, string Medication, string Other, string Doctor, string Doctor_Address, int Original_Medical_ID, string Original_Doctor, string Original_Doctor_Address) {
             return this.Update(Original_Medical_ID, Allergies, Medication, Other, Doctor, Doctor_Address, Original_Medical_ID, Original_Doctor, Original_Doctor_Address);
@@ -16741,14 +16741,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
+    ///Represents the connection and commands used to retrieve and save DataContainer.
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DataObjectAttribute(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
     public partial class parent_guardianTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -17327,7 +17327,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(_12ac3d03DataSet.parent_guardianDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -17340,7 +17340,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _12ac3d03DataSet.parent_guardianDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -17351,21 +17351,21 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet.parent_guardianDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet dataSet) {
             return this.Adapter.Update(dataSet, "parent_guardian");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
@@ -17373,14 +17373,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(int Original_Parent_ID, string Original_First_Name, string Original_Last_Name, string Original_Title, string Original_Gender, string Original_Home_Phone, string Original_Work_Phone, string Original_Mobile_Phone, string Original_Home_Address, string Original_Work_Address, global::System.Nullable<int> Original_Spouse, string Original_Email) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Parent_ID));
@@ -17476,7 +17476,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(string First_Name, string Last_Name, string Title, string Gender, string Home_Phone, string Work_Phone, string Mobile_Phone, string Home_Address, string Work_Address, global::System.Nullable<int> Spouse, string Email) {
             if ((First_Name == null)) {
@@ -17563,7 +17563,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string First_Name, 
@@ -17748,14 +17748,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
+    ///Represents the connection and commands used to retrieve and save DataContainer.
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DataObjectAttribute(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
     public partial class roomTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -18164,7 +18164,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(_12ac3d03DataSet.roomDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -18177,7 +18177,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _12ac3d03DataSet.roomDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -18188,21 +18188,21 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet.roomDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet dataSet) {
             return this.Adapter.Update(dataSet, "room");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
@@ -18210,14 +18210,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(string Original_Name, int Original_Max_Capacity, int Original_Minimum_Ratio, int Original_Minimum_Age, int Original_Maximum_Age, int Original_Current_Capacity, int Original_Department_Min, int Original_Department_Max) {
             if ((Original_Name == null)) {
@@ -18251,7 +18251,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(string Name, int Max_Capacity, int Minimum_Ratio, int Minimum_Age, int Maximum_Age, int Current_Capacity, string Description, int Department_Min, int Department_Max) {
             if ((Name == null)) {
@@ -18291,7 +18291,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string Name, 
@@ -18361,7 +18361,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     int Max_Capacity, 
@@ -18385,14 +18385,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
+    ///Represents the connection and commands used to retrieve and save DataContainer.
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DataObjectAttribute(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
     public partial class supplierTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -18556,7 +18556,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(_12ac3d03DataSet.supplierDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -18569,7 +18569,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _12ac3d03DataSet.supplierDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -18580,21 +18580,21 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet.supplierDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet dataSet) {
             return this.Adapter.Update(dataSet, "supplier");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
@@ -18602,14 +18602,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(int Original_SupplierID) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_SupplierID));
@@ -18631,7 +18631,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert() {
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
@@ -18652,7 +18652,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int Original_SupplierID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Original_SupplierID));
@@ -18674,14 +18674,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
+    ///Represents the connection and commands used to retrieve and save DataContainer.
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DataObjectAttribute(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
     public partial class supplier_invoiceTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
@@ -18847,7 +18847,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(_12ac3d03DataSet.supplier_invoiceDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -18860,7 +18860,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _12ac3d03DataSet.supplier_invoiceDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
@@ -18871,21 +18871,21 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet.supplier_invoiceDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(_12ac3d03DataSet dataSet) {
             return this.Adapter.Update(dataSet, "supplier_invoice");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow dataRow) {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
@@ -18893,14 +18893,14 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(int Original_Supplier_InvoiceID) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Supplier_InvoiceID));
@@ -18922,7 +18922,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert() {
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
@@ -18943,7 +18943,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int Original_Supplier_InvoiceID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Original_Supplier_InvoiceID));
@@ -18971,7 +18971,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerDesigner, Microsoft.VSD" +
         "esigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapterManager")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.DataContainer.TableAdapterManager")]
     public partial class TableAdapterManager : global::System.ComponentModel.Component {
         
         private UpdateOrderOption _updateOrder;
@@ -19857,7 +19857,7 @@ namespace TBCN._12ac3d03DataSetTableAdapters {
             }
             global::System.Data.IDbTransaction workTransaction = workConnection.BeginTransaction();
             if ((workTransaction == null)) {
-                throw new global::System.ApplicationException("The transaction cannot begin. The current data connection does not support transa" +
+                throw new global::System.ApplicationException("The transaction cannot begin. The current DataContainer connection does not support transa" +
                         "ctions or the current state is not allowing the transaction to begin.");
             }
             global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();

@@ -42,7 +42,7 @@ namespace TBCN
 
         private void frmMainSearch_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the '_12ac3d03DataSet.child' table. You can move, or remove it, as needed.
+            // TODO: This line of code loads DataContainer into the '_12ac3d03DataSet.child' table. You can move, or remove it, as needed.
             this.childTableAdapter.Fill(this._12ac3d03DataSet.child);
 
         }

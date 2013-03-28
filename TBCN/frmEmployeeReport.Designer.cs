@@ -83,7 +83,7 @@
             // lblPosition
             // 
             this.lblPosition.AutoSize = true;
-            this.lblPosition.Location = new System.Drawing.Point(14, 34);
+            this.lblPosition.Location = new System.Drawing.Point(14, 36);
             this.lblPosition.Name = "lblPosition";
             this.lblPosition.Size = new System.Drawing.Size(95, 13);
             this.lblPosition.TabIndex = 2;
@@ -92,7 +92,7 @@
             // lblGender
             // 
             this.lblGender.AutoSize = true;
-            this.lblGender.Location = new System.Drawing.Point(14, 47);
+            this.lblGender.Location = new System.Drawing.Point(14, 54);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(41, 13);
             this.lblGender.TabIndex = 3;
@@ -243,6 +243,7 @@
             this.lblHomePhone.Size = new System.Drawing.Size(113, 13);
             this.lblHomePhone.TabIndex = 25;
             this.lblHomePhone.Text = "Home:  01382 123456";
+            this.lblHomePhone.Click += new System.EventHandler(this.lblHomePhone_Click);
             // 
             // lblEmail
             // 
