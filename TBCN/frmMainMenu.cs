@@ -70,6 +70,7 @@ namespace TBCN
 
         private void tabChildren_Enter(object sender, EventArgs e)
         {
+            lstChildren.Items.Clear();
             childIDList = new List<int>();
             foreach (Child child in data.children)
             {
@@ -164,6 +165,7 @@ namespace TBCN
 
         private void tabParents_Enter(object sender, EventArgs e)
         {
+            lstParents.Items.Clear();
             parentIDList = new List<int>();
             foreach (Parent parent in data.parents)
             {
@@ -174,6 +176,7 @@ namespace TBCN
 
         private void tabStaff_Enter(object sender, EventArgs e)
         {
+            lstStaff.Items.Clear();
             staffIDList = new List<string>();
             foreach (Employee employee in data.employees)
             {
