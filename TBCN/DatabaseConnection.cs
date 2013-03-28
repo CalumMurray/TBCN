@@ -435,9 +435,13 @@ namespace TBCN
                 return null;
 
             MySqlCommand selectCommand = new MySqlCommand(null, connection);
-            selectCommand.CommandText = @"SELECT * FROM child 
+            selectCommand.CommandText = @"SELECT *, child_has_parent_guardian.child_id as parent_child, child_has_parent_guardian.parent_id as child_parent ,
+                                        child_has_emergency_contact.child_id as contact_child, child_has_emergency_contact.contact_id as child_contact
+                                        FROM child 
                                         INNER JOIN attendance ON child.attendance = attendance.child_id
-                                        INNER JOIN medical_information ON child.medical_information = medical_information.medical_id;";
+                                        INNER JOIN medical_information ON child.medical_information = medical_information.Medical_ID
+                                        INNER JOIN child_has_parent_guardian ON child.Child_ID = child_has_parent_guardian.Child_ID
+                                        INNER JOIN child_has_emergency_contact ON child.Child_ID = child_has_emergency_contact.Child_ID;";
 
             Console.WriteLine("Executing: [ " + selectCommand.CommandText + "].");
             MySqlDataReader childReader = selectCommand.ExecuteReader();
@@ -446,6 +450,10 @@ namespace TBCN
             while(childReader.Read())
             {
                 Child newChild = constructChild(childReader);
+                //TODO: This work for multiple columns?
+                newChild.ParentsIDs.Add(childReader.GetInt16("child_parent"));
+                newChild.EmergencyContactsIDs.Add(childReader.GetInt16("child_contact"));
+
                 allChildren.Add(newChild);
             }
 
@@ -460,9 +468,12 @@ namespace TBCN
                 return null;
 
             MySqlCommand selectCommand = new MySqlCommand(null, connection);
-            selectCommand.CommandText = @"SELECT * FROM parent_guardian
+            selectCommand.CommandText = @"SELECT *, homeAddr.Address_1 as home1, homeAddr.City as homeCity, homeAddr.County as homeCounty, homeAddr.PostCode as homePostCode, 
+                                        workAddr.Address_1 as work1, workAddr.City as workCity, workAddr.County as workCounty, workAddr.PostCode as workPostCode
+                                        FROM parent_guardian
                                         INNER JOIN address homeAddr ON parent_guardian.Home_Address = homeAddr.Address_1
-                                        INNER JOIN address workAddr ON parent_guardian.Work_Address = workAddr.Address_1";
+                                        INNER JOIN address workAddr ON parent_guardian.Work_Address = workAddr.Address_1
+                                        INNER JOIN child_has_parent_guardian ON parent_guardian.Parent_ID = child_has_parent_guardian.Parent_ID;";
 
             Console.WriteLine("Executing: [ " + selectCommand.CommandText + "].");
             MySqlDataReader parentReader = selectCommand.ExecuteReader();
@@ -470,7 +481,9 @@ namespace TBCN
             List<Parent> allParents = new List<Parent>();
             while (parentReader.Read())
             {
-                Parent newParent = constructParent(parentReader);   
+                Parent newParent = constructParent(parentReader);
+
+                newParent.ChildrenAttending.Add(parentReader.GetInt16("Child_ID"));
                 allParents.Add(newParent);
             }
 
@@ -720,6 +733,7 @@ namespace TBCN
             selectCommand.CommandText = @"SELECT * FROM parent_guardian WHERE Parent_ID = @parentID
                                         INNER JOIN address homeAddr ON parent_guardian.Home_Address = homeAddr.Address_1
                                         INNER JOIN address workAddr ON parent_guardian.Work_Address = wordAddr.Address_1
+                                        INNER JOIN child_has_parent_guardian ON parent_guardian.Parent_ID = child_has_parent_guardian.Parent_ID
                                         WHERE parent_guardian.Parent_ID = @parentID;";
             selectCommand.Parameters.AddWithValue("@parentID", parentIDToSelect);
 
@@ -732,6 +746,7 @@ namespace TBCN
             while (parentReader.Read())
             {
                 newParent = constructParent(parentReader);
+                newParent.ChildrenAttending.Add(parentReader.GetInt16("Child_ID"));
             }
             parentReader.Close();
 
@@ -747,9 +762,11 @@ namespace TBCN
                 return null;
 
             MySqlCommand selectCommand = new MySqlCommand(null, connection);
-            selectCommand.CommandText = @"SELECT * FROM emergency_contact
+            selectCommand.CommandText = @"SELECT * , homeAddr.Address_1 as home1, homeAddr.City as homeCity, homeAddr.County as homeCounty,  homeAddr.PostCode as homePostCode, 
+                                        workAddr.Address_1 as work1, workAddr.City as workCity, workAddr.County as workCounty,  workAddr.PostCode as workPostCode
+                                        FROM emergency_contact
                                         INNER JOIN address homeAddr ON emergency_contact.Home_Address = homeAddr.Address_1
-                                        INNER JOIN address workAddr ON emergency_contact.Work_Address = wordAddr.Address_1
+                                        INNER JOIN address workAddr ON emergency_contact.Work_Address = workAddr.Address_1
                                         WHERE emergency_contact.Contact_ID = @contactID;";
             selectCommand.Parameters.AddWithValue("@contactID", ecIDToSelect);
 
@@ -912,7 +929,6 @@ namespace TBCN
             return newChild;
         }
 
-        //TODO: Multiple Address_1s
         private EmergencyContact constructEmergencyContact(MySqlDataReader ECReader)
         {
             EmergencyContact newEC = new EmergencyContact();
@@ -924,8 +940,8 @@ namespace TBCN
             newEC.HomePhone = ECReader.GetString("Home_Phone");
             newEC.WorkPhone = ECReader.GetString("Work_Phone");
             newEC.MobilePhone = ECReader.GetString("Mobile_Phone");
-            newEC.HomeAddress = selectAddress("Address_1");
-            newEC.WorkAddress = selectAddress("Address_1");
+            newEC.HomeAddress = constructMultipleAddress(ECReader, "home");
+            newEC.WorkAddress = constructMultipleAddress(ECReader, "work");
             newEC.Gender = ECReader.GetChar("Gender");
             newEC.Email = ECReader.GetString("Email");
 
@@ -969,8 +985,8 @@ namespace TBCN
             newParent.HomePhone = parentReader.GetString("Home_Phone");
             newParent.WorkPhone = parentReader.GetString("Work_Phone");
             newParent.MobilePhone = parentReader.GetString("Mobile_Phone");
-            newParent.HomeAddress = constructAddress(parentReader);
-            newParent.WorkAddress = constructAddress(parentReader);
+            newParent.HomeAddress = constructMultipleAddress(parentReader, "home");
+            newParent.WorkAddress = constructMultipleAddress(parentReader, "work");
             //newParent.Spouse = childReader.GetInt16(10);
             newParent.Email = parentReader.GetString("Email");
 
@@ -1000,6 +1016,17 @@ namespace TBCN
             newAddress.County = addressReader.GetString("County");
             newAddress.PostCode = addressReader.GetString("PostCode");
             newAddress.Country = SafeGetString(addressReader, "Country");
+            return newAddress;
+        }
+
+        private Address constructMultipleAddress(MySqlDataReader addressReader, String prefix)
+        {
+            Address newAddress = new Address();
+            newAddress.Address1 = addressReader.GetString(prefix + "1");
+            newAddress.City = addressReader.GetString(prefix + "City");
+            newAddress.County = addressReader.GetString(prefix + "County");
+            newAddress.PostCode = addressReader.GetString(prefix + "PostCode");
+            newAddress.Country = "UK";
             return newAddress;
         }
 
@@ -1076,7 +1103,7 @@ namespace TBCN
                                         INNER JOIN emergency_contact ON emergency_contact.contact_id = child_has_emergency_contact.contact_id
                                         INNER JOIN attendance ON attendance.child_id = child.child_id
                                         INNER JOIN address ON parent_guardian.home_address AND parent_guardian.work_address = address.address_1
-                                        WHERE child.child_id = @name OR child.First_Name = @name OR child.Last_Name = @name OR (child.First_Name = @firstname AND child.Last_Name = @firstname);";
+                                        WHERE child.child_id = @name OR child.First_Name = @name OR child.Last_Name = @name OR (child.First_Name = @firstname AND child.Last_Name = @lastname);";
             //selectCommand.CommandType = CommandType.StoredProcedure;
             selectCommand.Parameters.AddWithValue("@name", childName);
             selectCommand.Parameters.AddWithValue("@firstname", names[0]);
@@ -1094,6 +1121,10 @@ namespace TBCN
                 while (childrenReader.Read())
                 {
                     Child newChild = constructChild(childrenReader);
+
+                    //TODO: This work for multiple columns?
+                    newChild.ParentsIDs.Add(childrenReader.GetInt16("Parent_Id"));
+                    newChild.EmergencyContactsIDs.Add(childrenReader.GetInt16("ContactID"));
 
                     children.Add(newChild);
                 }
@@ -1230,11 +1261,11 @@ namespace TBCN
             selectCommand.CommandText = @"SELECT child.*, child_age 
                                         FROM child 
                                         INNER JOIN ( 
-	                                        SELECT DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(child.dob, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(child.dob, '00-%m-%d')) AS child_age
+	                                        SELECT DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(child.DOB, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(child.DOB, '00-%m-%d')) AS child_age
 	                                        FROM child 
                                         ) 
                                         AS child_age
-                                        INNER JOIN room ON child.room_attending = room.`Name`
+                                        INNER JOIN room ON child.Room_Attending = room.`Name`
                                         WHERE child_age > room.Maximum_Age;";
 
             Console.WriteLine("Executing: [ " + selectCommand.CommandText + "].");
