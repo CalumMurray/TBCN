@@ -16,12 +16,13 @@ namespace TBCN
         public Child ChildToAdd { get; set;  }
         public Child ChildToEdit {get; set;}
         private bool editing = false;
+        private DataContainer data;
         
         public frmEditChild()
         {
             InitializeComponent();
             dbConnection = new Database();
-
+            data = new DataContainer();
         }
 
         public frmEditChild(Child childToEdit)
@@ -128,7 +129,7 @@ namespace TBCN
             
             new frmEditParent("Add an Emergency Contact").ShowDialog();
 
-            ((frmMainMenu)this.ParentForm).DataContainer = new DataContainer(); //Refresh Data from DB
+            data = new DataContainer(); //Refresh Data from DB
            // ChildToAdd.EmergencyContactsIDs[0] = ((frmMainMenu)this.ParentForm).DataContainer.contacts[((frmMainMenu)this.ParentForm).DataContainer.contacts.Count - 1].ContactID;
         }
 
@@ -138,8 +139,8 @@ namespace TBCN
             frmEditParent addParentForm = new frmEditParent("Add a Parent");
             addParentForm.ShowDialog();
 
-            ((frmMainMenu)this.ParentForm).DataContainer = new DataContainer(); //Refresh Data from DB
-            ChildToAdd.ParentsIDs[0] = ((frmMainMenu)this.ParentForm).DataContainer.parents[((frmMainMenu)this.ParentForm).DataContainer.parents.Count - 1].ParentID;
+            this.data = new DataContainer(); //Refresh Data from DB
+            ChildToAdd.ParentsIDs[0] = data.parents[this.data.parents.Count - 1].ParentID;
 
         }
 

@@ -275,7 +275,7 @@
             this.MinimumSize = new System.Drawing.Size(319, 251);
             this.Name = "frmMainMenu";
             this.Text = "Teddy Bear Club Nursery";
-            this.Load += new System.EventHandler(this.frmMainMenu_Load_1);
+            this.Load += new System.EventHandler(this.frmMainMenu_Load);
             this.tabParents.ResumeLayout(false);
             this.tabParents.PerformLayout();
             this.tabStaff.ResumeLayout(false);
