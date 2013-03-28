@@ -16,6 +16,7 @@ namespace TBCN
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMainMenu());
+            System.Reflection.Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
         }
     }
 }

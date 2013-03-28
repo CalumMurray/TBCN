@@ -370,46 +370,27 @@ namespace TBCN
                                             VALUES (@nino, @firstname, @lastname, @position, @gender, @datestarted, @datefinished, @pvgdate, @holidaysentitled, @holidaystaken, @hours, @address, @dob, @salary, @homephone, @mobilephone, @email, @training, @medical, @ec);";
 
                 //Fill in prepared statement parameters
-                //MySqlParameter ninoParam = new MySqlParameter("@nino", employeeToAdd.NINo);
-                //MySqlParameter fNameParam = new MySqlParameter("@firstname", employeeToAdd.FirstName);
-                //MySqlParameter lNameParam = new MySqlParameter("@lastname", employeeToAdd.LastName);
-                //MySqlParameter positionParam = new MySqlParameter("@position", employeeToAdd.Position);
-                //MySqlParameter genderParam = new MySqlParameter("@gender", employeeToAdd.Gender);
-                //MySqlParameter dateAppliedParam = new MySqlParameter("@datestarted", employeeToAdd.DateStarted);
-                //MySqlParameter dateLeftParam = new MySqlParameter("@datefinished", employeeToAdd.DateFinished);
-                //MySqlParameter pvgParam = new MySqlParameter("@pvgdate", employeeToAdd.PVGDate);
-                //MySqlParameter entitledParam = new MySqlParameter("@holidaysentitled", employeeToAdd.HolidaysEntitled);
-                //MySqlParameter takenParam = new MySqlParameter("@holidaystaken", employeeToAdd.HolidaysTaken);
-                //MySqlParameter hoursParam = new MySqlParameter("@hours", employeeToAdd.WeeksHours);
-                //MySqlParameter addressParam = new MySqlParameter("@address", employeeToAdd.Address.Address1);
-                //MySqlParameter dobParam = new MySqlParameter("@dob", employeeToAdd.DOB);
-                //MySqlParameter salaryParam = new MySqlParameter("@salary", employeeToAdd.Salary); 
-                //MySqlParameter homePhoneParam = new MySqlParameter("@homephone", employeeToAdd.HomePhone);
-                //MySqlParameter mobilePhoneParam = new MySqlParameter("@mobilephone", employeeToAdd.MobilePhone);
-                //MySqlParameter emailParam = new MySqlParameter("@email", employeeToAdd.Email);
-                //MySqlParameter trainingParam = new MySqlParameter("@training", employeeToAdd.Training);
-                //MySqlParameter medicalParam = new MySqlParameter("@medical", employeeToAdd.Medical.MedicalID);
-                //MySqlParameter ecParam = new MySqlParameter("@ec", employeeToAdd.EmergencyContact.ContactID);
+                
 
                 insertCommand.Parameters.AddWithValue("@nino", employeeToAdd.NINo);
-                insertCommand.Parameters.Add("@firstname", employeeToAdd.FirstName);
-                insertCommand.Parameters.Add("@lastname", employeeToAdd.LastName);
-                insertCommand.Parameters.Add("@position", employeeToAdd.Position);
-                insertCommand.Parameters.Add("@gender", employeeToAdd.Gender);
-                insertCommand.Parameters.Add("@datestarted", employeeToAdd.DateStarted);
-                insertCommand.Parameters.Add("@datefinished", employeeToAdd.DateFinished);
-                insertCommand.Parameters.Add("@pvgdate", employeeToAdd.PVGDate);
-                insertCommand.Parameters.Add("@holidaysentitled", employeeToAdd.HolidaysEntitled);
-                insertCommand.Parameters.Add("@holidaystaken", employeeToAdd.HolidaysTaken);
-                insertCommand.Parameters.Add("@hours", employeeToAdd.WeeksHours);
-                insertCommand.Parameters.Add("@address", employeeToAdd.Address.Address1);
-                insertCommand.Parameters.Add("@salary", employeeToAdd.Salary);
-                insertCommand.Parameters.Add("@homephone", employeeToAdd.HomePhone);
-                insertCommand.Parameters.Add("@mobile", employeeToAdd.MobilePhone);
-                insertCommand.Parameters.Add("@email", employeeToAdd.Email);
-                insertCommand.Parameters.Add("@training", employeeToAdd.Training);
-                insertCommand.Parameters.Add("@medical", employeeToAdd.Medical.MedicalID);
-                //insertCommand.Parameters.Add("@ec", employeeToAdd.EmergencyContact.ContactID);
+                insertCommand.Parameters.AddWithValue("@firstname", employeeToAdd.FirstName);
+                insertCommand.Parameters.AddWithValue("@lastname", employeeToAdd.LastName);
+                insertCommand.Parameters.AddWithValue("@position", employeeToAdd.Position);
+                insertCommand.Parameters.AddWithValue("@gender", employeeToAdd.Gender);
+                insertCommand.Parameters.AddWithValue("@datestarted", employeeToAdd.DateStarted);
+                insertCommand.Parameters.AddWithValue("@datefinished", employeeToAdd.DateFinished);
+                insertCommand.Parameters.AddWithValue("@pvgdate", employeeToAdd.PVGDate);
+                insertCommand.Parameters.AddWithValue("@holidaysentitled", employeeToAdd.HolidaysEntitled);
+                insertCommand.Parameters.AddWithValue("@holidaystaken", employeeToAdd.HolidaysTaken);
+                insertCommand.Parameters.AddWithValue("@hours", employeeToAdd.WeeksHours);
+                insertCommand.Parameters.AddWithValue("@address", employeeToAdd.Address.Address1);
+                insertCommand.Parameters.AddWithValue("@salary", employeeToAdd.Salary);
+                insertCommand.Parameters.AddWithValue("@homephone", employeeToAdd.HomePhone);
+                insertCommand.Parameters.AddWithValue("@mobile", employeeToAdd.MobilePhone);
+                insertCommand.Parameters.AddWithValue("@email", employeeToAdd.Email);
+                insertCommand.Parameters.AddWithValue("@training", employeeToAdd.Training);
+                insertCommand.Parameters.AddWithValue("@medical", employeeToAdd.Medical.MedicalID);
+                //insertCommand.Parameters.AddWithValue("@ec", employeeToAdd.EmergencyContact.ContactID);
 
                 // Prepare statement
                 Console.WriteLine("Executing: [ " + insertCommand.CommandText + "].");
@@ -441,7 +422,8 @@ namespace TBCN
                                         INNER JOIN attendance ON child.attendance = attendance.child_id
                                         INNER JOIN medical_information ON child.medical_information = medical_information.Medical_ID
                                         INNER JOIN child_has_parent_guardian ON child.Child_ID = child_has_parent_guardian.Child_ID
-                                        INNER JOIN child_has_emergency_contact ON child.Child_ID = child_has_emergency_contact.Child_ID;";
+                                        INNER JOIN child_has_emergency_contact ON child.Child_ID = child_has_emergency_contact.Child_ID
+                                        INNER JOIN address ON Doctor_Address = address.Address_1;";
 
             Console.WriteLine("Executing: [ " + selectCommand.CommandText + "].");
             MySqlDataReader childReader = selectCommand.ExecuteReader();
@@ -1289,6 +1271,8 @@ namespace TBCN
         {
             return null;
         }
+
+
         
     }
 }

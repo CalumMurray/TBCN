@@ -42,26 +42,26 @@ namespace TBCN
 
         private void lblParent1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmParentReport parentReport = new frmParentReport(child.Parents[0]);
-            parentReport.Show();
+            //frmParentReport parentReport = new frmParentReport(child.Parents[0]);
+            //parentReport.Show();
         }
 
         private void lblParent2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmParentReport parentReport = new frmParentReport(child.Parents[1]);
-            parentReport.Show();
+            //frmParentReport parentReport = new frmParentReport(child.Parents[1]);
+            //parentReport.Show();
         }
 
         private void lblEC1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmParentReport ecReport = new frmParentReport(child.EmergencyContacts[0]);
-            ecReport.Show();
+            //frmParentReport ecReport = new frmParentReport(child.EmergencyContacts[0]);
+            //ecReport.Show();
         }
 
         private void lblEC2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmParentReport ecReport = new frmParentReport(child.EmergencyContacts[1]);
-            ecReport.Show();
+            //frmParentReport ecReport = new frmParentReport(child.EmergencyContacts[1]);
+            //ecReport.Show();
         }
 
         private void frmChildReport_Load(object sender, EventArgs e)

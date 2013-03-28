@@ -11,7 +11,7 @@ namespace TBCN
 {
     public partial class frmMainMenu : Form
     {
-        TestMain data;
+        DataContainer data;
         List<int> childIDList;
         List<string> staffIDList;
         List<int> parentIDList;
@@ -19,11 +19,12 @@ namespace TBCN
         public frmMainMenu()
         {
             InitializeComponent();
-            data = new TestMain();
+            data = new DataContainer();
 
             childIDList = new List<int>();
             staffIDList = new List<string>();
             parentIDList = new List<int>();
+            data.loadItems();
         }
 
         private void frmMainMenu_Load(object sender, EventArgs e)
@@ -35,6 +36,9 @@ namespace TBCN
             //TODO: Check children for room moves
 
             //TODO: Check renewal of PVG (3 years)
+
+
+            
         }
 
         private void btnChildren_Click(object sender, EventArgs e)
@@ -181,5 +185,8 @@ namespace TBCN
                 staffIDList.Add(employee.NINo);
             }
         }
+
+
+
     }
 }
