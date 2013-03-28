@@ -97,6 +97,25 @@ namespace TBCN
                 lstChildren.Items.AddRange(childrenToMove.ToArray());
         }
 
+        private void childBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.childBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this._12ac3d03DataSet);
+
+        }
+
+        private void frmMainMenu_Load_1(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the '_12ac3d03DataSet.parent_guardian' table. You can move, or remove it, as needed.
+            this.parent_guardianTableAdapter.Fill(this._12ac3d03DataSet.parent_guardian);
+            // TODO: This line of code loads data into the '_12ac3d03DataSet.employee' table. You can move, or remove it, as needed.
+            this.employeeTableAdapter.Fill(this._12ac3d03DataSet.employee);
+            // TODO: This line of code loads data into the '_12ac3d03DataSet.child' table. You can move, or remove it, as needed.
+            this.childTableAdapter.Fill(this._12ac3d03DataSet.child);
+        }
+
+
 
 
         
