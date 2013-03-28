@@ -527,7 +527,6 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "frmEditEmployee";
             this.Text = "Edit an Employee";
-            this.Load += new System.EventHandler(this.frmEditEmployee_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

@@ -27,15 +27,15 @@ namespace TBCN
         public MedicalInformation MedicalInfo { get; set; }
 
         //??
-        public List<Parent> Parents { get; set; }
-        public List<EmergencyContact> EmergencyContacts { get; set; }
+        public List<int> ParentsIDs { get; set; }
+        public List<int> EmergencyContactsIDs { get; set; }
 
 
         public Child()
         {
             Attendance = new bool[5];
-            Parents = new List<Parent>(2);
-            EmergencyContacts = new List<EmergencyContact>(2);
+            ParentsIDs = new List<int>(2);
+            EmergencyContactsIDs = new List<int>(2);
         }
     }
 }

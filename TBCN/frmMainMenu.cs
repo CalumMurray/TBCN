@@ -33,7 +33,7 @@ namespace TBCN
         private void btnChildren_Click(object sender, EventArgs e)
         {
             String childName = txtChildren.Text;
-            List<Child> foundChildren = db.searchChildren(childName);
+            List<Child> foundChildren = db.searchChildrenByName(childName);
             lstChildren.Items.Add(foundChildren);
 
         }
