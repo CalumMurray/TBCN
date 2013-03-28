@@ -15,8 +15,8 @@ namespace TBCN
 
         public DataContainer()
         {
-            
             dbConnection = new Database();
+            loadItems();
         }
 
         public void loadItems()
@@ -49,7 +49,7 @@ namespace TBCN
             exampleChild1.Attendance = new bool[5] {true,false,false,true,true};
             exampleChild1.ExtraDays = 2;
             exampleChild1.Teas = 3;
-            //exampleChild1.Parents.Add(exampleParent1);
+            exampleChild1.ParentsIDs.Add(exampleParent1.ParentID);
 
             children.Add(exampleChild1);
             parents.Add(exampleParent1);

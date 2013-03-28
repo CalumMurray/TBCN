@@ -12,11 +12,13 @@ namespace TBCN
     public partial class frmChildReport : Form
     {
         private Child child;
+        private DataContainer data;
 
         public frmChildReport(Child childtoDisplay)
         {
             InitializeComponent();
             child = childtoDisplay;
+            data = new DataContainer();
         }
 
 
@@ -42,14 +44,54 @@ namespace TBCN
 
         private void lblParent1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //frmParentReport parentReport = new frmParentReport(child.Parents[0]);
-            //parentReport.Show();
+            Parent clickedParent = null;
+
+            try
+            {
+                foreach (Parent parent in data.parents)
+                {
+                    if (parent.ParentID == child.ParentsIDs[0])
+                    {
+                        clickedParent = parent;
+                    }
+                }
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+
+            }
+
+            if (clickedParent != null)
+            {
+                frmParentReport parentReport = new frmParentReport(clickedParent);
+                parentReport.Show();
+            }
         }
 
         private void lblParent2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //frmParentReport parentReport = new frmParentReport(child.Parents[1]);
-            //parentReport.Show();
+            Parent clickedParent = null;
+
+            try
+            {
+                foreach (Parent parent in data.parents)
+                {
+                    if (parent.ParentID == child.ParentsIDs[1])
+                    {
+                        clickedParent = parent;
+                    }
+                }
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+
+            }
+
+            if (clickedParent != null)
+            {
+                frmParentReport parentReport = new frmParentReport(clickedParent);
+                parentReport.Show();
+            }
         }
 
         private void lblEC1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -79,13 +121,45 @@ namespace TBCN
             lblLanguage.Text = child.FirstLanguage;
             lblAttendance.Text = showAttendance();
 
-            //lblAddress1.Text = child.Parents[0].HomeAddress.Address1; //Correct?
-            //lblCity.Text = child.Parents[0].HomeAddress.City; //Correct?
-            //lblCounty.Text = child.Parents[0].HomeAddress.County; //Correct?
-            //lblPostCode.Text = child.Parents[0].HomeAddress.PostCode; //Correct?
+            try
+            {
+                lblAddress1.Text = data.parents[child.ParentsIDs[0]].HomeAddress.Address1; //Correct?
+                lblCity.Text = data.parents[child.ParentsIDs[0]].HomeAddress.City; //Correct?
+                lblCounty.Text = data.parents[child.ParentsIDs[0]].HomeAddress.County; //Correct?
+                lblPostCode.Text = data.parents[child.ParentsIDs[0]].HomeAddress.PostCode; //Correct?
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                lblAddress1.Text = "";
+                lblCity.Text = "";
+                lblCounty.Text = "";
+                lblPostCode.Text = "";
+            }
+            catch (NullReferenceException)
+            {
+                lblAddress1.Text = "";
+                lblCity.Text = "";
+                lblCounty.Text = "";
+                lblPostCode.Text = "";
+            }
 
-            //lblParent1.Text = child.Parents[0].FirstName + " " + child.Parents[0].LastName;
-            //lblParent2.Text = child.Parents[1].FirstName + " " + child.Parents[1].LastName;
+            try
+            {
+                lblParent1.Text = data.parents[child.ParentsIDs[0]].FirstName + " " + data.parents[child.ParentsIDs[0]].LastName;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                lblParent1.Text = "";
+            }
+
+            try
+            {
+                lblParent2.Text = data.parents[child.ParentsIDs[1]].FirstName + " " + data.parents[child.ParentsIDs[1]].LastName;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                lblParent2.Text = "";
+            }
 
             //lblEC1.Text = child.EmergencyContacts[0].FirstName + " " + child.EmergencyContacts[0].LastName;
             //lblEC2.Text = child.EmergencyContacts[1].FirstName + " " + child.EmergencyContacts[1].LastName;

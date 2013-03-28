@@ -30,7 +30,7 @@ namespace TBCN
         private void frmMainMenu_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the '_12ac3d03DataSet.child' table. You can move, or remove it, as needed.
-            
+
             //TOOD: Issue Invoice every month.
 
             //TODO: Check children for room moves
@@ -38,7 +38,7 @@ namespace TBCN
             //TODO: Check renewal of PVG (3 years)
 
 
-            
+
         }
 
         private void btnChildren_Click(object sender, EventArgs e)
@@ -99,7 +99,7 @@ namespace TBCN
                     }
                 }
             }
-            catch (ArgumentOutOfRangeException error)
+            catch (ArgumentOutOfRangeException)
             {
                 selectedChild = null;
             }
@@ -127,9 +127,9 @@ namespace TBCN
                     }
                 }
             }
-            catch (ArgumentOutOfRangeException error)
+            catch (ArgumentOutOfRangeException)
             {
-                selectedEmployee= null;
+                selectedEmployee = null;
             }
 
             if (selectedEmployee != null)
@@ -155,7 +155,7 @@ namespace TBCN
                     }
                 }
             }
-            catch (ArgumentOutOfRangeException error)
+            catch (ArgumentOutOfRangeException)
             {
                 selectedParent = null;
             }
