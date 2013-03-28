@@ -44,6 +44,8 @@
             this.txtChildren = new System.Windows.Forms.TextBox();
             this.lstChildren = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnCheckAges = new System.Windows.Forms.Button();
             this.tabParents.SuspendLayout();
             this.tabStaff.SuspendLayout();
             this.tabChildren.SuspendLayout();
@@ -59,14 +61,14 @@
             this.tabParents.Location = new System.Drawing.Point(4, 22);
             this.tabParents.Name = "tabParents";
             this.tabParents.Padding = new System.Windows.Forms.Padding(3);
-            this.tabParents.Size = new System.Drawing.Size(655, 383);
+            this.tabParents.Size = new System.Drawing.Size(655, 443);
             this.tabParents.TabIndex = 2;
             this.tabParents.Text = "Parents/Contacts";
             this.tabParents.UseVisualStyleBackColor = true;
             // 
             // btnAddParent
             // 
-            this.btnAddParent.Location = new System.Drawing.Point(368, 289);
+            this.btnAddParent.Location = new System.Drawing.Point(270, 306);
             this.btnAddParent.Name = "btnAddParent";
             this.btnAddParent.Size = new System.Drawing.Size(112, 23);
             this.btnAddParent.TabIndex = 6;
@@ -87,9 +89,9 @@
             // txtParents
             // 
             this.txtParents.ForeColor = System.Drawing.Color.Gray;
-            this.txtParents.Location = new System.Drawing.Point(6, 263);
+            this.txtParents.Location = new System.Drawing.Point(188, 263);
             this.txtParents.Name = "txtParents";
-            this.txtParents.Size = new System.Drawing.Size(376, 20);
+            this.txtParents.Size = new System.Drawing.Size(194, 20);
             this.txtParents.TabIndex = 4;
             this.txtParents.Text = "Enter parent name to search for...";
             // 
@@ -101,8 +103,9 @@
             this.lstParents.FormattingEnabled = true;
             this.lstParents.Location = new System.Drawing.Point(6, 6);
             this.lstParents.Name = "lstParents";
-            this.lstParents.Size = new System.Drawing.Size(457, 251);
+            this.lstParents.Size = new System.Drawing.Size(643, 251);
             this.lstParents.TabIndex = 3;
+            this.lstParents.SelectedIndexChanged += new System.EventHandler(this.lstParents_SelectedIndexChanged);
             // 
             // tabStaff
             // 
@@ -113,14 +116,14 @@
             this.tabStaff.Location = new System.Drawing.Point(4, 22);
             this.tabStaff.Name = "tabStaff";
             this.tabStaff.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStaff.Size = new System.Drawing.Size(655, 383);
+            this.tabStaff.Size = new System.Drawing.Size(655, 443);
             this.tabStaff.TabIndex = 1;
             this.tabStaff.Text = "Staff";
             this.tabStaff.UseVisualStyleBackColor = true;
             // 
             // btnAddEmployee
             // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(376, 289);
+            this.btnAddEmployee.Location = new System.Drawing.Point(284, 307);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Size = new System.Drawing.Size(98, 23);
             this.btnAddEmployee.TabIndex = 6;
@@ -141,9 +144,9 @@
             // txtStaff
             // 
             this.txtStaff.ForeColor = System.Drawing.Color.Gray;
-            this.txtStaff.Location = new System.Drawing.Point(6, 263);
+            this.txtStaff.Location = new System.Drawing.Point(175, 264);
             this.txtStaff.Name = "txtStaff";
-            this.txtStaff.Size = new System.Drawing.Size(376, 20);
+            this.txtStaff.Size = new System.Drawing.Size(207, 20);
             this.txtStaff.TabIndex = 4;
             this.txtStaff.Text = "Enter staff member name to search for...";
             // 
@@ -155,11 +158,13 @@
             this.lstStaff.FormattingEnabled = true;
             this.lstStaff.Location = new System.Drawing.Point(6, 6);
             this.lstStaff.Name = "lstStaff";
-            this.lstStaff.Size = new System.Drawing.Size(457, 251);
+            this.lstStaff.Size = new System.Drawing.Size(643, 251);
             this.lstStaff.TabIndex = 3;
+            this.lstStaff.SelectedIndexChanged += new System.EventHandler(this.lstStaff_SelectedIndexChanged);
             // 
             // tabChildren
             // 
+            this.tabChildren.Controls.Add(this.btnCheckAges);
             this.tabChildren.Controls.Add(this.btnAddChild);
             this.tabChildren.Controls.Add(this.btnChildren);
             this.tabChildren.Controls.Add(this.txtChildren);
@@ -167,15 +172,14 @@
             this.tabChildren.Location = new System.Drawing.Point(4, 22);
             this.tabChildren.Name = "tabChildren";
             this.tabChildren.Padding = new System.Windows.Forms.Padding(3);
-            this.tabChildren.Size = new System.Drawing.Size(655, 383);
+            this.tabChildren.Size = new System.Drawing.Size(655, 443);
             this.tabChildren.TabIndex = 0;
             this.tabChildren.Text = "Children";
             this.tabChildren.UseVisualStyleBackColor = true;
-            this.tabChildren.Click += new System.EventHandler(this.tabChildren_Click);
             // 
             // btnAddChild
             // 
-            this.btnAddChild.Location = new System.Drawing.Point(388, 289);
+            this.btnAddChild.Location = new System.Drawing.Point(376, 289);
             this.btnAddChild.Name = "btnAddChild";
             this.btnAddChild.Size = new System.Drawing.Size(75, 23);
             this.btnAddChild.TabIndex = 3;
@@ -185,7 +189,7 @@
             // 
             // btnChildren
             // 
-            this.btnChildren.Location = new System.Drawing.Point(388, 263);
+            this.btnChildren.Location = new System.Drawing.Point(377, 263);
             this.btnChildren.Name = "btnChildren";
             this.btnChildren.Size = new System.Drawing.Size(74, 20);
             this.btnChildren.TabIndex = 2;
@@ -196,9 +200,9 @@
             // txtChildren
             // 
             this.txtChildren.ForeColor = System.Drawing.Color.Gray;
-            this.txtChildren.Location = new System.Drawing.Point(6, 263);
+            this.txtChildren.Location = new System.Drawing.Point(197, 263);
             this.txtChildren.Name = "txtChildren";
-            this.txtChildren.Size = new System.Drawing.Size(376, 20);
+            this.txtChildren.Size = new System.Drawing.Size(174, 20);
             this.txtChildren.TabIndex = 1;
             this.txtChildren.Text = "Enter child name to search for...";
             // 
@@ -210,8 +214,9 @@
             this.lstChildren.FormattingEnabled = true;
             this.lstChildren.Location = new System.Drawing.Point(6, 6);
             this.lstChildren.Name = "lstChildren";
-            this.lstChildren.Size = new System.Drawing.Size(457, 251);
+            this.lstChildren.Size = new System.Drawing.Size(643, 251);
             this.lstChildren.TabIndex = 0;
+            this.lstChildren.SelectedIndexChanged += new System.EventHandler(this.lstChildren_SelectedIndexChanged);
             // 
             // tabControl1
             // 
@@ -221,22 +226,43 @@
             this.tabControl1.Controls.Add(this.tabChildren);
             this.tabControl1.Controls.Add(this.tabStaff);
             this.tabControl1.Controls.Add(this.tabParents);
-            this.tabControl1.Location = new System.Drawing.Point(13, 13);
+            this.tabControl1.Location = new System.Drawing.Point(13, 72);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(663, 409);
+            this.tabControl1.Size = new System.Drawing.Size(663, 469);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(150, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(384, 45);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Teddy Bear Club Nursery";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnCheckAges
+            // 
+            this.btnCheckAges.Location = new System.Drawing.Point(377, 318);
+            this.btnCheckAges.Name = "btnCheckAges";
+            this.btnCheckAges.Size = new System.Drawing.Size(75, 23);
+            this.btnCheckAges.TabIndex = 4;
+            this.btnCheckAges.Text = "Check Ages";
+            this.btnCheckAges.UseVisualStyleBackColor = true;
+            this.btnCheckAges.Click += new System.EventHandler(this.btnCheckAges_Click);
             // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 434);
+            this.ClientSize = new System.Drawing.Size(688, 553);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmMainMenu";
             this.Text = "Teddy Bear Club Nursery";
-            this.Load += new System.EventHandler(this.frmMainMenu_Load_1);
             this.tabParents.ResumeLayout(false);
             this.tabParents.PerformLayout();
             this.tabStaff.ResumeLayout(false);
@@ -245,6 +271,7 @@
             this.tabChildren.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -266,6 +293,8 @@
         private System.Windows.Forms.Button btnAddParent;
         private System.Windows.Forms.Button btnAddEmployee;
         private System.Windows.Forms.Button btnAddChild;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCheckAges;
 
 
 

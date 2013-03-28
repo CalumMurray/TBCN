@@ -51,7 +51,7 @@ namespace TBCN
             //parents.Add(frmEditParent.AddedParent);
 
             //Add to Database
-            dbConnection.insertChild(ChildAdded, parent1, emergencyContacts[0]);
+            dbConnection.insertChild(ChildAdded);
         }
 
         private bool validateForm()
@@ -171,9 +171,5 @@ namespace TBCN
 
         }
 
-        private void frmEditChild_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

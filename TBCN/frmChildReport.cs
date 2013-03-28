@@ -12,6 +12,7 @@ namespace TBCN
     public partial class frmChildReport : Form
     {
         private Child child;
+
         public frmChildReport(Child childtoDisplay)
         {
             InitializeComponent();

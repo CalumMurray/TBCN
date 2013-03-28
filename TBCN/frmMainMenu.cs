@@ -30,11 +30,6 @@ namespace TBCN
             //TODO: Check renewal of PVG (3 years)
         }
 
-        private void frmMainMenu_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnChildren_Click(object sender, EventArgs e)
         {
             String childName = txtChildren.Text;
@@ -47,12 +42,14 @@ namespace TBCN
         {
             String staffSearchString = txtStaff.Text;
             List<Employee> foundStaff = db.searchStaff(staffSearchString);
+            lstStaff.Items.Add(foundStaff);
         }
 
         private void btnParents_Click(object sender, EventArgs e)
         {
             String parentSearchString = txtParents.Text;
-            //List<Parent> foundStaff = db.searchParent(parentSearchString);
+            List<Parent> foundParents = db.searchParent(parentSearchString);
+            lstParents.Items.Add(foundParents);
         }
 
         private void tabControl_SelectIndexChanged(object sender, EventArgs e) 
@@ -76,10 +73,31 @@ namespace TBCN
             new frmEditParent("Add a Parent/Contact").ShowDialog();
         }
 
-        private void tabChildren_Click(object sender, EventArgs e)
+        private void lstChildren_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            new frmChildReport((Child)lstChildren.SelectedItem).ShowDialog();
         }
+
+        private void lstStaff_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            new frmEmployeeReport((Employee)lstStaff.SelectedItem).ShowDialog();
+        }
+
+        private void lstParents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            new frmParentReport("Parent", (Parent)lstParents.SelectedItem).ShowDialog();
+        }
+
+        private void btnCheckAges_Click(object sender, EventArgs e)
+        {
+            List<Child> childrenToMove = db.childrenToMoveRoom();
+            if (childrenToMove.Count == 0)
+                MessageBox.Show("No children are scheduled to move to an older room.");
+            else
+                lstChildren.Items.AddRange(childrenToMove.ToArray());
+        }
+
+
 
         
     }
