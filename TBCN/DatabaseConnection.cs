@@ -15,7 +15,7 @@ namespace TBCN
     {
         private const string connStr = "SERVER=arlia.computing.dundee.ac.uk;USER=12ac3u03;DATABASE=12ac3d03;PORT=3306;PASSWORD=ab123c;";
         //private MySqlConnection connection;
-        //private MySqlCommand insertCommand;
+        //private MySqlCommand updateCommand;
         //private MySqlCommand selectCommand;
         //private MySqlCommand deleteCommand;
 
@@ -27,7 +27,7 @@ namespace TBCN
         public Database()
         {
             //connection = new MySqlConnection(connStr);
-            //insertCommand = new MySqlCommand(); 
+            //updateCommand = new MySqlCommand(); 
         }
 
         public MySqlConnection OpenConnection()
@@ -89,29 +89,29 @@ namespace TBCN
                 MySqlCommand insertCommand = new MySqlCommand(null, connection);
                 MySqlCommand idCommand = new MySqlCommand("SELECT LAST_INSERT_ID()", connection);
                 
-                //insertCommand.Transaction = transaction;
+                //updateCommand.Transaction = transaction;
 
                 // Create and prepare an SQL statement.
                 insertCommand.CommandText = @"INSERT INTO child (First_Name, Last_Name, Gender, DOB, First_Language, Room_Attending, Sibling, Date_Applied, Date_Left, Attendance, Extra_Days, Teas, Medical_Information)
                                             VALUES (@firstname, @lastname, @gender, @dob, @firstlanguage, @roomattending, @sibling, @dateapplied, @dateleft, @attendance, @extra, @teas, @medical);";
                 
-                //insertMedical(childToAdd.MedicalInfo);
+                //insertMedical(childToUpdate.MedicalInfo);
                 //int medicalID = (int)idCommand.ExecuteScalar();
 
                // //Fill in prepared statement parameters
-               //// MySqlParameter idParam = new MySqlParameter("@id", childToAdd.ChildID);
-               // MySqlParameter fNameParam = new MySqlParameter("@firstname", childToAdd.FirstName);
-               // MySqlParameter lNameParam = new MySqlParameter("@lastname", childToAdd.LastName);
-               // MySqlParameter genderParam = new MySqlParameter("@gender", childToAdd.Gender);
-               // MySqlParameter dobParam = new MySqlParameter("@dob", childToAdd.DOB);
-               // MySqlParameter languageParam = new MySqlParameter("@firstlanguage", childToAdd.FirstLanguage);
-               // MySqlParameter roomParam = new MySqlParameter("@roomattending", childToAdd.RoomAttending); 
-               // //MySqlParameter siblingParam = new MySqlParameter("@sibling", childToAdd.Sibling.ChildID);
-               // MySqlParameter dateAppliedParam = new MySqlParameter("@dateapplied", childToAdd.DateApplied);
+               //// MySqlParameter idParam = new MySqlParameter("@id", childToUpdate.ChildID);
+               // MySqlParameter fNameParam = new MySqlParameter("@firstname", childToUpdate.FirstName);
+               // MySqlParameter lNameParam = new MySqlParameter("@lastname", childToUpdate.LastName);
+               // MySqlParameter genderParam = new MySqlParameter("@gender", childToUpdate.Gender);
+               // MySqlParameter dobParam = new MySqlParameter("@dob", childToUpdate.DOB);
+               // MySqlParameter languageParam = new MySqlParameter("@firstlanguage", childToUpdate.FirstLanguage);
+               // MySqlParameter roomParam = new MySqlParameter("@roomattending", childToUpdate.RoomAttending); 
+               // //MySqlParameter siblingParam = new MySqlParameter("@sibling", childToUpdate.Sibling.ChildID);
+               // MySqlParameter dateAppliedParam = new MySqlParameter("@dateapplied", childToUpdate.DateApplied);
                // MySqlParameter dateLeftParam = new MySqlParameter("@dateleft", null);
                // MySqlParameter attendanceParam = new MySqlParameter("@attenance", null);
-               // MySqlParameter extraParam = new MySqlParameter("@extra", childToAdd.ExtraDays);
-               // MySqlParameter teasParam = new MySqlParameter("@teas", childToAdd.Teas);
+               // MySqlParameter extraParam = new MySqlParameter("@extra", childToUpdate.ExtraDays);
+               // MySqlParameter teasParam = new MySqlParameter("@teas", childToUpdate.Teas);
                // MySqlParameter medicalParam = new MySqlParameter("@medical", 1/*medicalID*/);
 
                 insertCommand.Parameters.AddWithValue("@firstname", childToAdd.FirstName);
@@ -120,10 +120,10 @@ namespace TBCN
                 insertCommand.Parameters.AddWithValue("@dob", childToAdd.DOB);
                 insertCommand.Parameters.AddWithValue("@firstlanguage", childToAdd.FirstLanguage);
                 insertCommand.Parameters.AddWithValue("@roomattending", childToAdd.RoomAttending);
-                //insertCommand.Parameters.Add(siblingParam);
+                //updateCommand.Parameters.Add(siblingParam);
                 insertCommand.Parameters.AddWithValue("@dateapplied", childToAdd.DateApplied);
                 insertCommand.Parameters.AddWithValue("@dateleft", null);
-                insertCommand.Parameters.AddWithValue("@attendance", 1/*childToAdd.Attendance*/);
+                insertCommand.Parameters.AddWithValue("@attendance", 1/*childToUpdate.Attendance*/);
                 insertCommand.Parameters.AddWithValue("@extra", childToAdd.ExtraDays);
                 insertCommand.Parameters.AddWithValue("@teas", childToAdd.Teas);
                 insertCommand.Parameters.AddWithValue("@medical", 1/*medicalID*/);
@@ -137,16 +137,16 @@ namespace TBCN
 
                 childID = (int)idCommand.ExecuteScalar();
                 insertAttendance(childToAdd);
-                //insertMedical(childToAdd.MedicalInfo);
-                //insertMedical(childToAdd.MedicalInfo);
+                //insertMedical(childToUpdate.MedicalInfo);
+                //insertMedical(childToUpdate.MedicalInfo);
                 //insertParent(parent);
                 //parentID = (int)idCommand.ExecuteScalar();
-                //linkParentChild(childToAdd, parent);
+                //linkParentChild(childToUpdate, parent);
 
                 //insertEmergencyContact(ec);
                 //contactID = (int)idCommand.ExecuteScalar();
 
-                //linkECChild(ec, childToAdd);
+                //linkECChild(ec, childToUpdate);
 
                 //Perform transaction
                 transaction.Commit();
@@ -170,19 +170,6 @@ namespace TBCN
             MySqlCommand insertCommand = new MySqlCommand(null, connection);
             insertCommand.CommandText = @"INSERT INTO parent_guardian (First_Name, Last_Name, Title, Gender, Work_Phone, Home_Phone, Mobile_Phone, Home_Address, Work_Address, Spouse, Email)
                                         VALUES (@firstname, @lastname, @title, @gender, @workphone, @homephone, @mobilephone, @homeaddress, @workaddress, @spouse, @email);";
-
-            //MySqlParameter idParam = new MySqlParameter("@id", parentToAdd.ParentID);
-            //MySqlParameter fNameParam = new MySqlParameter("@firstname", parentToAdd.FirstName);
-            //MySqlParameter lNameParam = new MySqlParameter("@lastname", parentToAdd.LastName);
-            //MySqlParameter genderParam = new MySqlParameter("@gender", parentToAdd.Gender);
-            //MySqlParameter titleParam = new MySqlParameter("@title", parentToAdd.Title);
-            //MySqlParameter workPhoneParam = new MySqlParameter("@workphone", parentToAdd.WorkPhone); 
-            //MySqlParameter homePhoneParam = new MySqlParameter("@homephone", parentToAdd.HomePhone);
-            //MySqlParameter mobilePhoneParam = new MySqlParameter("@mobilephone", parentToAdd.MobilePhone);
-            //MySqlParameter homeAddrParam = new MySqlParameter("@homeaddress", parentToAdd.HomeAddress.Address1);
-            //MySqlParameter workAddrParamParam = new MySqlParameter("@workaddress", parentToAdd.WorkAddress.Address1);
-            //MySqlParameter spouseParam = new MySqlParameter("@spouse", parentToAdd.Spouse);
-            //MySqlParameter emailParam = new MySqlParameter("@email", parentToAdd.Email);
 
             insertCommand.Parameters.AddWithValue("@firstname", parentToAdd.FirstName);
             insertCommand.Parameters.AddWithValue("@lastname", parentToAdd.LastName);
@@ -390,7 +377,7 @@ namespace TBCN
                 insertCommand.Parameters.AddWithValue("@email", employeeToAdd.Email);
                 insertCommand.Parameters.AddWithValue("@training", employeeToAdd.Training);
                 insertCommand.Parameters.AddWithValue("@medical", employeeToAdd.Medical.MedicalID);
-                //insertCommand.Parameters.AddWithValue("@ec", employeeToAdd.EmergencyContact.ContactID);
+                //updateCommand.Parameters.AddWithValue("@ec", employeeToAdd.EmergencyContact.ContactID);
 
                 // Prepare statement
                 Console.WriteLine("Executing: [ " + insertCommand.CommandText + "].");
@@ -496,7 +483,31 @@ namespace TBCN
             return allStaff;
         }
 
-        
+        public List<EmergencyContact> selectAllContacts()
+        {
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
+                return null;
+
+            MySqlCommand selectCommand = new MySqlCommand(null, connection);
+            selectCommand.CommandText = selectCommand.CommandText = @"SELECT *, homeAddr.Address_1 as home1, homeAddr.City as homeCity, homeAddr.County as homeCounty, homeAddr.PostCode as homePostCode, 
+                                        workAddr.Address_1 as work1, workAddr.City as workCity, workAddr.County as workCounty, workAddr.PostCode as workPostCode
+                                        FROM emergency_contact
+                                        INNER JOIN address homeAddr ON emergency_contact.Home_Address = homeAddr.Address_1
+                                        INNER JOIN address workAddr ON emergency_contact.Work_Address = workAddr.Address_1
+                                        INNER JOIN child_has_emergency_contact ON emergency_contact.Parent_ID = child_has_emergency_contact.Parent_ID;";
+
+            Console.WriteLine("Executing: [ " + selectCommand.CommandText + "].");
+            MySqlDataReader contactReader = selectCommand.ExecuteReader();
+
+            List<EmergencyContact> allContacts = new List<EmergencyContact>();
+            while (contactReader.Read())
+            {
+                EmergencyContact newContact = constructEmergencyContact(contactReader);
+                allContacts.Add(newContact);
+            }
+            return allContacts;
+        }
 
         //public Child searchChildrenByID(int childIDToSelect)
         //{
@@ -1188,6 +1199,143 @@ namespace TBCN
             return (CloseConnection(connection));
         }
 
+
+        /*----------------------UPDATES-----------------------*/
+        public bool updateChild(Child childToUpdate)
+        {
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
+                return false;
+
+            MySqlTransaction transaction = connection.BeginTransaction();
+            try
+            {
+                MySqlCommand updateCommand = new MySqlCommand(null, connection);
+                MySqlCommand idCommand = new MySqlCommand("SELECT LAST_INSERT_ID()", connection);
+
+                //updateCommand.Transaction = transaction;
+
+                // Create and prepare an SQL statement.
+                updateCommand.CommandText = @"UPDATE child 
+                                            SET First_Name = @firstname, Last_Name = @lastname, Gender = @gender, DOB = @dob, First_Language = @firstlanguage, Room_Attending = @roomattending, Sibling = @sibling, Date_Applied = @dateapplied,Date_Left = @dateleft, Attendance = @attendance, Extra_Days = @extra, Teas = @teas, Medical_Information = @medical;";
+
+                //insertMedical(childToUpdate.MedicalInfo);
+                //int medicalID = (int)idCommand.ExecuteScalar();
+
+                updateCommand.Parameters.AddWithValue("@firstname", childToUpdate.FirstName);
+                updateCommand.Parameters.AddWithValue("@lastname", childToUpdate.LastName);
+                updateCommand.Parameters.AddWithValue("@gender", childToUpdate.Gender);
+                updateCommand.Parameters.AddWithValue("@dob", childToUpdate.DOB);
+                updateCommand.Parameters.AddWithValue("@firstlanguage", childToUpdate.FirstLanguage);
+                updateCommand.Parameters.AddWithValue("@roomattending", childToUpdate.RoomAttending);
+               //updateCommand.Parameters.AddWithValue("@sibling", chileT);
+                updateCommand.Parameters.AddWithValue("@dateapplied", childToUpdate.DateApplied);
+                updateCommand.Parameters.AddWithValue("@dateleft", null);
+                updateCommand.Parameters.AddWithValue("@attendance", 1/*childToUpdate.Attendance*/);
+                updateCommand.Parameters.AddWithValue("@extra", childToUpdate.ExtraDays);
+                updateCommand.Parameters.AddWithValue("@teas", childToUpdate.Teas);
+                updateCommand.Parameters.AddWithValue("@medical", 1/*medicalID*/);
+
+                // Prepare statement
+                updateCommand.Prepare();
+                Console.WriteLine("Executing: [ " + updateCommand.CommandText + "].");
+                updateCommand.ExecuteNonQuery();
+
+
+                childID = (int)idCommand.ExecuteScalar();
+                insertAttendance(childToUpdate);
+                //insertMedical(childToUpdate.MedicalInfo);
+                //insertMedical(childToUpdate.MedicalInfo);
+                //insertParent(parent);
+                //parentID = (int)idCommand.ExecuteScalar();
+                //linkParentChild(childToUpdate, parent);
+
+                //insertEmergencyContact(ec);
+                //contactID = (int)idCommand.ExecuteScalar();
+
+                //linkECChild(ec, childToUpdate);
+
+                //Perform transaction
+                transaction.Commit();
+            }
+            catch (MySqlException mysqle)
+            {
+                transaction.Rollback(); //Something went wrong, rollback
+                return false;
+            }
+
+            return (CloseConnection(connection)); //Successful or not
+
+        }
+
+        public bool updateParent(Parent parentToUpdate)
+        {
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
+                return false;
+
+            MySqlCommand updateCommand = new MySqlCommand(null, connection);
+            updateCommand.CommandText = @"UPDATE parent_guardian 
+                                        SET First_Name = @firstname, Last_Name = @lastname, Title = @title, Gender = @gender, Work_Phone = @workphone, Home_Phone = @homephone, Mobile_Phone = @mobilephone, Home_Address = @homeaddress, Work_Address = @workaddress, Spouse = @spouse, Email = @email);";
+
+            updateCommand.Parameters.AddWithValue("@firstname", parentToUpdate.FirstName);
+            updateCommand.Parameters.AddWithValue("@lastname", parentToUpdate.LastName);
+            updateCommand.Parameters.AddWithValue("@gender", parentToUpdate.Gender);
+            updateCommand.Parameters.AddWithValue("@title", parentToUpdate.Title);
+            updateCommand.Parameters.AddWithValue("@workphone", parentToUpdate.WorkPhone);
+            updateCommand.Parameters.AddWithValue("@homephone", parentToUpdate.HomePhone);
+            updateCommand.Parameters.AddWithValue("@mobilephone", parentToUpdate.MobilePhone);
+            updateCommand.Parameters.AddWithValue("@homeaddress", parentToUpdate.HomeAddress.Address1);
+            updateCommand.Parameters.AddWithValue("@workaddress", parentToUpdate.WorkAddress.Address1);
+            updateCommand.Parameters.AddWithValue("@spouse", parentToUpdate.Spouse);
+            updateCommand.Parameters.AddWithValue("@email", parentToUpdate.Email);
+
+            // Call Prepare after setting the Commandtext and Parameters.
+            Console.WriteLine("Executing: [ " + updateCommand.CommandText + "].");
+            updateCommand.Prepare();
+            updateCommand.ExecuteNonQuery();
+
+            return (CloseConnection(connection));
+        }
+
+        public bool updateEmployee(Employee employeeToUpdate)
+        {
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
+                return false;
+
+            MySqlCommand updateCommand = new MySqlCommand(null, connection);
+            updateCommand.CommandText = @"UPDATE employee 
+                                        SET National_Insurance_Number = @nino, First_Name = @firstname, Last_Name = @lastname, Position = @position, Gender = @gender, Date_Started = @datestarted, Date_Finshed = @datefinished, PVG_Date = @pvgdate, Holidays_Entitled = @holidaysentitled, Holidays_Taken = @holidaystaken, Hours = @hours, Home_Address = @address, DOB = @dob, Salary = @salary, Home_Phone = @homephone, Mobile_Phone = @mobilephone, Email = @email, Training = @training, Medical_Information = @medical, Emergency_Contact = @ec;";
+
+            updateCommand.Parameters.AddWithValue("@nino", employeeToUpdate.NINo);
+            updateCommand.Parameters.AddWithValue("@firstname", employeeToUpdate.FirstName);
+            updateCommand.Parameters.AddWithValue("@lastname", employeeToUpdate.LastName);
+            updateCommand.Parameters.AddWithValue("@position", employeeToUpdate.Position);
+            updateCommand.Parameters.AddWithValue("@gender", employeeToUpdate.Gender);
+            updateCommand.Parameters.AddWithValue("@datestarted", employeeToUpdate.DateStarted);
+            updateCommand.Parameters.AddWithValue("@datefinished", employeeToUpdate.DateFinished);
+            updateCommand.Parameters.AddWithValue("@pvgdate", employeeToUpdate.PVGDate);
+            updateCommand.Parameters.AddWithValue("@holidaysentitled", employeeToUpdate.HolidaysEntitled);
+            updateCommand.Parameters.AddWithValue("@holidaystaken", employeeToUpdate.HolidaysTaken);
+            updateCommand.Parameters.AddWithValue("@hours", employeeToUpdate.WeeksHours);
+            updateCommand.Parameters.AddWithValue("@address", employeeToUpdate.Address.Address1);
+            updateCommand.Parameters.AddWithValue("@salary", employeeToUpdate.Salary);
+            updateCommand.Parameters.AddWithValue("@homephone", employeeToUpdate.HomePhone);
+            updateCommand.Parameters.AddWithValue("@mobile", employeeToUpdate.MobilePhone);
+            updateCommand.Parameters.AddWithValue("@email", employeeToUpdate.Email);
+            updateCommand.Parameters.AddWithValue("@training", employeeToUpdate.Training);
+            updateCommand.Parameters.AddWithValue("@medical", employeeToUpdate.Medical.MedicalID);
+            //updateCommand.Parameters.AddWithValue("@ec", employeeToUpdate.EmergencyContact.ContactID);
+
+            // Call Prepare after setting the Commandtext and Parameters.
+            Console.WriteLine("Executing: [ " + updateCommand.CommandText + "].");
+            updateCommand.Prepare();
+            updateCommand.ExecuteNonQuery();
+
+            return (CloseConnection(connection));
+        }
+
         /*----------------------UTILITY------------------------*/
         public static String SafeGetString(MySqlDataReader reader, int colIndex)
         {
@@ -1251,7 +1399,6 @@ namespace TBCN
                                         WHERE child_age > room.Maximum_Age;";
 
             Console.WriteLine("Executing: [ " + selectCommand.CommandText + "].");
-            selectCommand.Prepare();
             MySqlDataReader childReader = selectCommand.ExecuteReader();
 
             List<Child> olderChildren = new List<Child>();
@@ -1267,9 +1414,28 @@ namespace TBCN
             return null;
         }
 
+
+        //Check if today's date is over 3 years since an employees pvg date.
         public List<Employee> pvgRenewals()
         {
-            return null;
+            MySqlConnection connection = OpenConnection();
+            if (connection == null)
+                return null;
+
+            MySqlCommand selectCommand = new MySqlCommand(null, connection);
+            selectCommand.CommandText = @"SELECT * FROM employee
+                                        WHERE PVG_Date > (DATE_FORMAT(NOW(), '%Y-%m-%d') - INTERVAL 3 YEAR);";
+
+            MySqlDataReader employeeReader = selectCommand.ExecuteReader();
+
+            List<Employee> staffWithPVGRenewals = new List<Employee>();
+            while (employeeReader.Read())
+            {
+                staffWithPVGRenewals.Add(constructEmployee(employeeReader));
+            }
+            return staffWithPVGRenewals;
+
+            
         }
 
 

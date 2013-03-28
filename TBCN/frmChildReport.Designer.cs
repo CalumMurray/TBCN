@@ -134,9 +134,9 @@
             this.lblAddressTitle.AutoSize = true;
             this.lblAddressTitle.Location = new System.Drawing.Point(14, 198);
             this.lblAddressTitle.Name = "lblAddressTitle";
-            this.lblAddressTitle.Size = new System.Drawing.Size(79, 13);
+            this.lblAddressTitle.Size = new System.Drawing.Size(89, 13);
             this.lblAddressTitle.TabIndex = 8;
-            this.lblAddressTitle.Text = "Home Address:";
+            this.lblAddressTitle.Text = "Parent\'s Address:";
             // 
             // lblAddress1
             // 
@@ -199,10 +199,8 @@
             this.lblParent2.AutoSize = true;
             this.lblParent2.Location = new System.Drawing.Point(151, 270);
             this.lblParent2.Name = "lblParent2";
-            this.lblParent2.Size = new System.Drawing.Size(66, 13);
+            this.lblParent2.Size = new System.Drawing.Size(0, 13);
             this.lblParent2.TabIndex = 15;
-            this.lblParent2.TabStop = true;
-            this.lblParent2.Text = "Susan Other";
             // 
             // lblMedical
             // 
@@ -227,10 +225,8 @@
             this.lblEC2.AutoSize = true;
             this.lblEC2.Location = new System.Drawing.Point(151, 303);
             this.lblEC2.Name = "lblEC2";
-            this.lblEC2.Size = new System.Drawing.Size(64, 13);
+            this.lblEC2.Size = new System.Drawing.Size(0, 13);
             this.lblEC2.TabIndex = 21;
-            this.lblEC2.TabStop = true;
-            this.lblEC2.Text = "Eck Sample";
             // 
             // lblEC1
             // 

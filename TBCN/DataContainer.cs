@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TBCN
 {
-    class DataContainer
+    public class DataContainer
     {
         public List<Child> children = new List<Child>();
         public List<Parent> parents = new List<Parent>();

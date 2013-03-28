@@ -13,24 +13,23 @@ namespace TBCN
     {
         private Database dbConnection;
 
-        //private static Child newChild;
-        public static Child ChildAdded { get; set;  }
-
-
-        //Test parents & ECs
-        Parent parent1 = new Parent();
-        Parent parent2 = new Parent();
-        EmergencyContact ec1 = new EmergencyContact();
-        EmergencyContact ec2 = new EmergencyContact();
-
-
-        private List<Parent> parents;
-        private List<EmergencyContact> emergencyContacts;
-
+        public Child ChildToAdd { get; set;  }
+        public Child ChildToEdit {get; set;}
+        private bool editing = false;
+        
         public frmEditChild()
         {
             InitializeComponent();
             dbConnection = new Database();
+
+        }
+
+        public frmEditChild(Child childToEdit)
+        {
+            InitializeComponent();
+            dbConnection = new Database();
+            ChildToEdit = childToEdit;
+            editing = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -39,22 +38,30 @@ namespace TBCN
             if (!validateForm())
                 return;
 
-            ChildAdded = constructChild();
+            ChildToAdd = constructChild();
+            ChildToEdit = constructChild();
 
-            testParents();
+            if (ChildToAdd.ParentsIDs[0] == 0)
+            {
+                MessageBox.Show("Add a parent first");
+            }
 
-            //if (frmEditParent.AddedParent == null)
-            //{
-            //    MessageBox.Show("Please add parents and emergency contacts first");
-            //    return;
-            //}
-            //parents.Add(frmEditParent.AddedParent);
-
-            //Add to Database
-            if (dbConnection.insertChild(ChildAdded))
-                MessageBox.Show("Child added successfully");
+            if (editing)
+            {
+                //Update to Database
+                if (dbConnection.updateChild(ChildToAdd))
+                    MessageBox.Show("Child updated successfully");
+                else
+                    MessageBox.Show("Problem occurred while updating child");
+            }
             else
-                MessageBox.Show("Problem occurred while adding child");
+            {
+                //Add to Database
+                if (dbConnection.insertChild(ChildToAdd))
+                    MessageBox.Show("Child added successfully");
+                else
+                    MessageBox.Show("Problem occurred while adding child");
+            }
         }
 
         private bool validateForm()
@@ -120,14 +127,20 @@ namespace TBCN
         {
             
             new frmEditParent("Add an Emergency Contact").ShowDialog();
+
+            ((frmMainMenu)this.ParentForm).DataContainer = new DataContainer(); //Refresh Data from DB
+           // ChildToAdd.EmergencyContactsIDs[0] = ((frmMainMenu)this.ParentForm).DataContainer.contacts[((frmMainMenu)this.ParentForm).DataContainer.contacts.Count - 1].ContactID;
         }
 
         private void btnAddParent_Click(object sender, EventArgs e)
         {
 
             frmEditParent addParentForm = new frmEditParent("Add a Parent");
-            addParentForm.FormClosed += new FormClosedEventHandler(frmAddParent_Closed);    //Register to be notified when parent closed
             addParentForm.ShowDialog();
+
+            ((frmMainMenu)this.ParentForm).DataContainer = new DataContainer(); //Refresh Data from DB
+            ChildToAdd.ParentsIDs[0] = ((frmMainMenu)this.ParentForm).DataContainer.parents[((frmMainMenu)this.ParentForm).DataContainer.parents.Count - 1].ParentID;
+
         }
 
         private void btnAddPhoto_Click(object sender, EventArgs e)
@@ -140,39 +153,6 @@ namespace TBCN
             MessageBox.Show("Add Medical Information form.");
         }
 
-        private void frmAddParent_Closed(object sender, FormClosedEventArgs e)
-        {
-
-        }
-
-
-        private void testParents()
-        {
-            parent1.FirstName = "Calum";
-            parent1.LastName = "Murray";
-            parent1.Title = "Mr";
-            parent1.Gender = 'M';
-            parent1.WorkPhone = "120338194";
-            parent1.HomePhone = "843975823";
-            parent1.MobilePhone = "234345434";
-            //parent1.HomeAddress = 1;
-            //parent1.WorkAddress = 2;
-            //parent1.Spouse = 4;
-            parent1.Email = "Calum@email.com";
-
-            parent2.FirstName = "Joyce";
-            parent2.LastName = "Murray";
-            parent2.Title = "Mrs";
-            parent2.Gender = 'F';
-            parent2.WorkPhone = "120338194";
-            parent2.HomePhone = "843975823";
-            parent2.MobilePhone = "234345434";
-            //parent2.HomeAddress = 1;
-            //parent2.WorkAddress = 3;
-            //parent2.Spouse = 3;
-            parent2.Email = "Joyce@email.com";
-
-        }
 
     }
 }
