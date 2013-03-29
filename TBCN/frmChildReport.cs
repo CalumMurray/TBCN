@@ -167,6 +167,13 @@ namespace TBCN
             //lblMedicalInfo.Text = child.MedicalInfo.ToString();
         }
 
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            frmEditChild editForm = new frmEditChild(child);
+            editForm.ShowDialog();
+            data = new DataContainer();
+        }
+
 
 
     }
