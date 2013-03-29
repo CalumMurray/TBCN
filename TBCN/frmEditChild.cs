@@ -16,6 +16,7 @@ namespace TBCN
         public Child ChildToAdd { get; set;  }
         public Child ChildToEdit {get; set;}
         private bool editing = false;
+        private DataContainer data;
         
         public frmEditChild()
         {
@@ -35,7 +36,7 @@ namespace TBCN
             txtLastName.Text = ChildToEdit.LastName;
             txtExtra.Text = ChildToEdit.ExtraDays.ToString();
             txtTeas.Text = ChildToEdit.Teas.ToString();
-            if (ChildToEdit.Gender == 'M')
+            if (ChildToEdit.Gender == 'M' )
             {
                 cmbGender.Text = "Male";
             }
@@ -67,8 +68,8 @@ namespace TBCN
             if (!validateForm())
                 return;
 
-            ChildToAdd = constructChild();
-            ChildToEdit = constructChild();
+            
+            
 
             if (ChildToAdd.ParentsIDs[0] == 0)
             {
@@ -77,6 +78,7 @@ namespace TBCN
 
             if (editing)
             {
+                ChildToEdit = constructChild();
                 //Update to Database
                 if (dbConnection.updateChild(ChildToAdd))
                     MessageBox.Show("Child updated successfully");
@@ -85,6 +87,7 @@ namespace TBCN
             }
             else
             {
+                ChildToAdd = constructChild();
                 //Add to Database
                 if (dbConnection.insertChild(ChildToAdd))
                     MessageBox.Show("Child added successfully");
@@ -159,7 +162,7 @@ namespace TBCN
             
             new frmEditParent("Add an Emergency Contact").ShowDialog();
 
-            DataContainer data = new DataContainer(); //Refresh Data from DB
+            data = new DataContainer(); //Refresh Data from DB
             ChildToAdd.EmergencyContactsIDs[0] = data.contacts[(data.contacts.Count - 1)].ContactID;
         }
 
@@ -169,7 +172,7 @@ namespace TBCN
             frmEditParent addParentForm = new frmEditParent("Add a Parent");
             addParentForm.ShowDialog();
 
-            DataContainer data = new DataContainer(); //Refresh Data from DB
+            data = new DataContainer(); //Refresh Data from DB
             ChildToAdd.ParentsIDs[0] = data.parents[data.parents.Count - 1].ParentID;
 
         }
@@ -182,6 +185,10 @@ namespace TBCN
         private void btnAddMedical_Click(object sender, EventArgs e)
         {
             new frmMedicalInformation().ShowDialog();
+
+            data = new DataContainer();
+            
+            
         }
 
 

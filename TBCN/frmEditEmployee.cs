@@ -12,7 +12,7 @@ namespace TBCN
     public partial class frmEditEmployee : Form
     {
         private Database dbConnection;
-
+        DataContainer data;
         //private Employee createdEmployee;
 
         public frmEditEmployee()
@@ -58,7 +58,8 @@ namespace TBCN
 
             createdEmployee.Address = constructAddress();
             
-            //Medical
+            
+            
             //EmergencyContact
             return createdEmployee;
             
@@ -83,7 +84,9 @@ namespace TBCN
 
         private void btnAddMedical_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Add Employee's Medical Information");
+            new frmMedicalInformation().ShowDialog();
+            data = new DataContainer();
+            
         }
 
         private void btnAddTraining_Click(object sender, EventArgs e)

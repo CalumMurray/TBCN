@@ -430,7 +430,6 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox3);
             this.Name = "frmEditParent";
-            this.Load += new System.EventHandler(this.frmEditParent_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

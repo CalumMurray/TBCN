@@ -11,49 +11,35 @@ namespace TBCN
 {
     public partial class frmMedicalInformation : Form
     {
+        MedicalInformation medicalToAdd;
         public frmMedicalInformation()
         {
             InitializeComponent();
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-
+            medicalToAdd.Allergies = txtAllergies.Text;
+            medicalToAdd.Medication = txtMedication.Text;
+            medicalToAdd.Other = txtOther.Text;
+            medicalToAdd.Doctor = txtDocname.Text;
+            medicalToAdd.DoctorAddress = constructAddress();
+            Database db = new Database();
+            db.insertAddress(medicalToAdd.DoctorAddress);
+            db.insertMedical(medicalToAdd);
         }
 
-        private void label8_Click(object sender, EventArgs e)
+        private Address constructAddress()
         {
-
+            Address newAddress = new Address();
+            newAddress.Address1 = txtAddress1.Text;
+            newAddress.City = txtCity.Text;
+            newAddress.County = txtCounty.Text;
+            newAddress.PostCode = txtPostcode.Text;
+            newAddress.Country = "UK";
+            return newAddress;
         }
 
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }

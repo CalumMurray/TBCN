@@ -28,33 +28,33 @@ namespace TBCN
             employees = dbConnection.selectAllStaff();
             contacts = dbConnection.selectAllContacts();
 
-            //Child exampleChild1 = new Child();
-            //Parent exampleParent1 = new Parent();
+            Child exampleChild1 = new Child();
+            Parent exampleParent1 = new Parent();
 
-            //exampleParent1.FirstName = "Brian";
-            //exampleParent1.LastName = "Cox";
-            //exampleParent1.Title = "Mr";
-            //exampleParent1.Gender = 'm';
-            //exampleParent1.WorkPhone = "01234567890";
-            //exampleParent1.HomePhone = "07704123874";
-            //exampleParent1.Email = "braincox1@gmail.com";
+            exampleParent1.FirstName = "Lewis";
+            exampleParent1.LastName = "Sharp";
+            exampleParent1.Title = "Mr";
+            exampleParent1.Gender = 'M';
+            exampleParent1.WorkPhone = "01234567890";
+            exampleParent1.HomePhone = "07704123874";
+            exampleParent1.Email = "lewis@gmail.com";
 
-            //exampleChild1.ChildID = 12;
-            //exampleChild1.FirstName = "Steven";
-            //exampleChild1.LastName = "Cox";
-            //exampleChild1.Gender = 'm';
-            //exampleChild1.DOB = new DateTime(1992,04,15);
-            //exampleChild1.FirstLanguage = "English";
-            //exampleChild1.RoomAttending = "Panda Room";
-            //exampleChild1.DateApplied = new DateTime(2009,06,17);
-            //exampleChild1.DateLeft = new DateTime();
-            //exampleChild1.Attendance = new bool[5] {true,false,false,true,true};
-            //exampleChild1.ExtraDays = 2;
-            //exampleChild1.Teas = 3;
-            //exampleChild1.ParentsIDs.Add(exampleParent1.ParentID);
+            exampleChild1.ChildID = 12;
+            exampleChild1.FirstName = "Gemima";
+            exampleChild1.LastName = "Sharp";
+            exampleChild1.Gender = 'F';
+            exampleChild1.DOB = new DateTime(2008, 04, 15);
+            exampleChild1.FirstLanguage = "English";
+            exampleChild1.RoomAttending = "Teddy's Transformers";
+            exampleChild1.DateApplied = new DateTime(2009, 06, 17);
+            exampleChild1.DateLeft = new DateTime();
+            exampleChild1.Attendance = new bool[5] { true, false, false, true, true };
+            exampleChild1.ExtraDays = 2;
+            exampleChild1.Teas = 3;
+            exampleChild1.ParentsIDs.Add(exampleParent1.ParentID);
 
-            //children.Add(exampleChild1);
-            //parents.Add(exampleParent1);
+            children.Add(exampleChild1);
+            parents.Add(exampleParent1);
         }
     }
 }

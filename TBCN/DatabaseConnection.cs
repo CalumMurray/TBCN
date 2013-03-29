@@ -116,7 +116,19 @@ namespace TBCN
 
                 //Remember the last medical id
                 MySqlCommand idCommand = new MySqlCommand("SELECT LAST_INSERT_ID()", connection);
-                lastChildID = (int)idCommand.ExecuteScalar();
+                object test = idCommand.ExecuteScalar();
+                try
+                {
+                    lastChildID = int.Parse(test.ToString());
+                }
+                catch (ArgumentNullException)
+                {
+
+                }
+                catch (FormatException)
+                {
+
+                }
                 //insertAttendance(childToAdd);
                 //insertMedical(childToUpdate.MedicalInfo);
                 //insertMedical(childToUpdate.MedicalInfo);
@@ -169,10 +181,22 @@ namespace TBCN
             insertCommand.Prepare();
             insertCommand.ExecuteNonQuery();
 
+            
             //Remember the last medical id
             MySqlCommand idCommand = new MySqlCommand("SELECT LAST_INSERT_ID()", connection);
-            lastParentID = (int)idCommand.ExecuteScalar();
+            object test = idCommand.ExecuteScalar();
+            try
+            {
+                lastParentID = int.Parse(test.ToString());
+            }
+            catch (ArgumentNullException)
+            {
 
+            }
+            catch (FormatException)
+            {
+
+            }
             CloseConnection(connection);
         }
 
@@ -236,9 +260,21 @@ namespace TBCN
             insertCommand.Prepare();
             insertCommand.ExecuteNonQuery();
 
-            //Remember the last contact id
+            //Remember the last medical id
             MySqlCommand idCommand = new MySqlCommand("SELECT LAST_INSERT_ID()", connection);
-            lastContactID = (int)idCommand.ExecuteScalar();
+            object test = idCommand.ExecuteScalar();
+            try
+            {
+                lastContactID = int.Parse(test.ToString());
+            }
+            catch (ArgumentNullException)
+            {
+
+            }
+            catch (FormatException)
+            {
+
+            }
 
             CloseConnection(connection);
         }
@@ -283,8 +319,21 @@ namespace TBCN
             insertCommand.ExecuteNonQuery();
 
             //Remember the last attendance id
+            //Remember the last medical id
             MySqlCommand idCommand = new MySqlCommand("SELECT LAST_INSERT_ID()", connection);
-            lastAttendanceID = (int)idCommand.ExecuteScalar();
+            object test = idCommand.ExecuteScalar();
+            try
+            {
+                lastAttendanceID = int.Parse(test.ToString());
+            }
+            catch (ArgumentNullException)
+            {
+
+            }
+            catch (FormatException)
+            {
+
+            }
 
             CloseConnection(connection);
         }
@@ -332,8 +381,21 @@ namespace TBCN
             insertCommand.ExecuteNonQuery();
 
             //Remember the last medical id
+            //Remember the last medical id
             MySqlCommand idCommand = new MySqlCommand("SELECT LAST_INSERT_ID()", connection);
-            lastMedicalID = (int)idCommand.ExecuteScalar();
+            object test = idCommand.ExecuteScalar();
+            try
+            {
+                lastMedicalID = int.Parse(test.ToString());
+            }
+            catch (ArgumentNullException)
+            {
+
+            }
+            catch (FormatException)
+            {
+
+            }
 
             CloseConnection(connection);
         }

@@ -40,8 +40,6 @@
             this.lblPostCode = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.lblMedical = new System.Windows.Forms.Label();
-            this.lblEC1 = new System.Windows.Forms.LinkLabel();
-            this.label15 = new System.Windows.Forms.Label();
             this.lblDateStarted = new System.Windows.Forms.Label();
             this.lblDateLeft = new System.Windows.Forms.Label();
             this.lblMobilePhone = new System.Windows.Forms.Label();
@@ -164,7 +162,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(14, 393);
+            this.label14.Location = new System.Drawing.Point(14, 362);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(101, 13);
             this.label14.TabIndex = 16;
@@ -173,30 +171,11 @@
             // lblMedical
             // 
             this.lblMedical.AutoSize = true;
-            this.lblMedical.Location = new System.Drawing.Point(174, 393);
+            this.lblMedical.Location = new System.Drawing.Point(174, 362);
             this.lblMedical.Name = "lblMedical";
             this.lblMedical.Size = new System.Drawing.Size(63, 13);
             this.lblMedical.TabIndex = 17;
             this.lblMedical.Text = "Has asthma";
-            // 
-            // lblEC1
-            // 
-            this.lblEC1.AutoSize = true;
-            this.lblEC1.Location = new System.Drawing.Point(174, 356);
-            this.lblEC1.Name = "lblEC1";
-            this.lblEC1.Size = new System.Drawing.Size(59, 13);
-            this.lblEC1.TabIndex = 20;
-            this.lblEC1.TabStop = true;
-            this.lblEC1.Text = "Joe Bloggs";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(14, 357);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(107, 13);
-            this.label15.TabIndex = 19;
-            this.label15.Text = "Emergency contacts:";
             // 
             // lblDateStarted
             // 
@@ -443,8 +422,6 @@
             this.Controls.Add(this.lblDateLeft);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblDateStarted);
-            this.Controls.Add(this.lblEC1);
-            this.Controls.Add(this.label15);
             this.Controls.Add(this.lblMedical);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.lblPostCode);
@@ -481,8 +458,6 @@
         private System.Windows.Forms.Label lblPostCode;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblMedical;
-        private System.Windows.Forms.LinkLabel lblEC1;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lblDateStarted;
         private System.Windows.Forms.Label lblDateLeft;
         private System.Windows.Forms.Label lblMobilePhone;

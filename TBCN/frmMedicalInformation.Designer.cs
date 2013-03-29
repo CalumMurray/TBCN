@@ -94,7 +94,6 @@
             this.label5.Size = new System.Drawing.Size(48, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "Address:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -104,7 +103,6 @@
             this.label6.Size = new System.Drawing.Size(27, 13);
             this.label6.TabIndex = 5;
             this.label6.Text = "City:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -114,7 +112,6 @@
             this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 6;
             this.label7.Text = "County:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // txtAllergies
             // 
@@ -150,7 +147,6 @@
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.Size = new System.Drawing.Size(100, 20);
             this.txtAddress1.TabIndex = 11;
-            this.txtAddress1.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // txtCity
             // 
@@ -158,7 +154,6 @@
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(100, 20);
             this.txtCity.TabIndex = 12;
-            this.txtCity.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // txtCounty
             // 
@@ -166,7 +161,6 @@
             this.txtCounty.Name = "txtCounty";
             this.txtCounty.Size = new System.Drawing.Size(100, 20);
             this.txtCounty.TabIndex = 13;
-            this.txtCounty.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // txtPostcode
             // 
@@ -174,7 +168,6 @@
             this.txtPostcode.Name = "txtPostcode";
             this.txtPostcode.Size = new System.Drawing.Size(100, 20);
             this.txtPostcode.TabIndex = 15;
-            this.txtPostcode.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
             // label8
             // 
@@ -184,7 +177,6 @@
             this.label8.Size = new System.Drawing.Size(58, 13);
             this.label8.TabIndex = 14;
             this.label8.Text = "Post code:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // groupBox1
             // 
@@ -213,6 +205,7 @@
             this.btnSave.TabIndex = 17;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 

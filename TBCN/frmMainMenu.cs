@@ -16,6 +16,7 @@ namespace TBCN
         List<string> staffIDList;
         List<int> parentIDList;
         Database db;
+        private List<int> contactIDList;
         public frmMainMenu()
         {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace TBCN
             childIDList = new List<int>();
             staffIDList = new List<string>();
             parentIDList = new List<int>();
+            contactIDList = new List<int>();
             //data.loadItems();
         }
 
@@ -117,8 +119,12 @@ namespace TBCN
                 MessageBox.Show("No children are scheduled to move to an older room.");
             else
             {
-                lstChildren.Items.Clear();
-                lstChildren.Items.AddRange(childrenToMove.ToArray());
+                String childrenString = "";
+                foreach (Child child in childrenToMove)
+                    childrenString += child.FirstName + " " + child.LastName + "\n";
+
+                MessageBox.Show("Children requiring room moves:\n" + childrenString);
+                
             }
         }
 
@@ -250,16 +256,19 @@ namespace TBCN
         private void btnAddParent_Click(object sender, EventArgs e)
         {
             new frmEditParent("Add a Parent").ShowDialog();
+            data = new DataContainer();
         }
 
         private void btnAddStaff_Click(object sender, EventArgs e)
         {
             new frmEditEmployee().ShowDialog();
+            data = new DataContainer();
         }
 
         private void btnAddChild_Click(object sender, EventArgs e)
         {
             new frmEditChild().ShowDialog();
+            data = new DataContainer();
         }
 
         private void btnCheckPVGDate_Click(object sender, EventArgs e)
@@ -269,8 +278,12 @@ namespace TBCN
                 MessageBox.Show("No employees due for PVG renewal.");
             else
             {
-                lstChildren.Items.Clear();
-                lstChildren.Items.AddRange(employeesToRenew.ToArray());
+                String employeesString = "";
+                foreach (Employee employee in employeesToRenew)
+                    employeesString += employee.FirstName + " " + employee.LastName + "\n";
+
+                MessageBox.Show("Employees requiring PVG renewal:\n" + employeesString);
+                //lstChildren.Items.AddRange(employeesToRenew.ToArray());
             }
         }
 

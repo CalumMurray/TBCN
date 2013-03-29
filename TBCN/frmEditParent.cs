@@ -12,7 +12,7 @@ namespace TBCN
     public partial class frmEditParent : Form
     {
         private Database dbConnection;
-
+        private DataContainer data;
         //private static Parent parent;
         //public static Parent AddedParent { get; set;}
 
@@ -31,6 +31,8 @@ namespace TBCN
 
             createdParent = constructParent();
 
+            dbConnection.insertAddress(createdParent.HomeAddress);
+            dbConnection.insertAddress(createdParent.WorkAddress);
             dbConnection.insertParent(createdParent);
         }
 
@@ -79,11 +81,6 @@ namespace TBCN
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void frmEditParent_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
