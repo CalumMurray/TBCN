@@ -88,7 +88,7 @@
             this.btnParents.TabIndex = 7;
             this.btnParents.Text = "Search";
             this.btnParents.UseVisualStyleBackColor = true;
-            this.btnParents.Click += new System.EventHandler(btnParents_Click);
+            this.btnParents.Click += new System.EventHandler(this.btnParents_Click);
             // 
             // txtParents
             // 
@@ -243,6 +243,7 @@
             this.txtChildren.Size = new System.Drawing.Size(358, 20);
             this.txtChildren.TabIndex = 1;
             this.txtChildren.Text = "Enter child name to search for...";
+            this.txtChildren.Enter += new System.EventHandler(this.txtChildren_Enter);
             // 
             // lstChildren
             // 
