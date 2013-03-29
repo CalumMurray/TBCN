@@ -39,7 +39,7 @@ namespace TBCN
             DateTime today = DateTime.Today;
             int age = today.Year - dob.Year;
             if (dob > today.AddYears(-age)) age--;
-            return age + " years old";
+            return age + "years old";
         }
 
         private void lblParent1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -123,10 +123,10 @@ namespace TBCN
 
             try
             {
-                lblAddress1.Text = data.parents[child.ParentsIDs[0] - 1].HomeAddress.Address1;
-                lblCity.Text = data.parents[child.ParentsIDs[0] - 1].HomeAddress.City;
-                lblCounty.Text = data.parents[child.ParentsIDs[0] - 1].HomeAddress.County;
-                lblPostCode.Text = data.parents[child.ParentsIDs[0] - 1].HomeAddress.PostCode;
+                lblAddress1.Text = data.parents[child.ParentsIDs[0]].HomeAddress.Address1; //Correct?
+                lblCity.Text = data.parents[child.ParentsIDs[0]].HomeAddress.City; //Correct?
+                lblCounty.Text = data.parents[child.ParentsIDs[0]].HomeAddress.County; //Correct?
+                lblPostCode.Text = data.parents[child.ParentsIDs[0]].HomeAddress.PostCode; //Correct?
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -145,7 +145,7 @@ namespace TBCN
 
             try
             {
-                lblParent1.Text = data.parents[child.ParentsIDs[0] - 1].FirstName + " " + data.parents[child.ParentsIDs[0] - 1].LastName;
+                lblParent1.Text = data.parents[child.ParentsIDs[0]].FirstName + " " + data.parents[child.ParentsIDs[0]].LastName;
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -154,7 +154,7 @@ namespace TBCN
 
             try
             {
-                lblParent2.Text = data.parents[child.ParentsIDs[1] - 1].FirstName + " " + data.parents[child.ParentsIDs[1] - 1].LastName;
+                lblParent2.Text = data.parents[child.ParentsIDs[1]].FirstName + " " + data.parents[child.ParentsIDs[1]].LastName;
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -167,11 +167,12 @@ namespace TBCN
             //lblMedicalInfo.Text = child.MedicalInfo.ToString();
         }
 
-        private void btnChildReportEdit_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-            new frmEditChild(child).ShowDialog();
+            frmEditChild editForm = new frmEditChild(child);
+            editForm.ShowDialog();
+            data = new DataContainer();
         }
-
 
 
 

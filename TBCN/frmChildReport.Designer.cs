@@ -52,7 +52,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnChildReportEdit = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +60,7 @@
             // 
             this.picImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picImage.Location = new System.Drawing.Point(162, 12);
+            this.picImage.Location = new System.Drawing.Point(154, 12);
             this.picImage.Name = "picImage";
             this.picImage.Size = new System.Drawing.Size(100, 100);
             this.picImage.TabIndex = 0;
@@ -106,7 +106,7 @@
             // lblDOB
             // 
             this.lblDOB.AutoSize = true;
-            this.lblDOB.Location = new System.Drawing.Point(159, 123);
+            this.lblDOB.Location = new System.Drawing.Point(151, 123);
             this.lblDOB.Name = "lblDOB";
             this.lblDOB.Size = new System.Drawing.Size(69, 13);
             this.lblDOB.TabIndex = 5;
@@ -115,7 +115,7 @@
             // lblLanguage
             // 
             this.lblLanguage.AutoSize = true;
-            this.lblLanguage.Location = new System.Drawing.Point(159, 145);
+            this.lblLanguage.Location = new System.Drawing.Point(151, 145);
             this.lblLanguage.Name = "lblLanguage";
             this.lblLanguage.Size = new System.Drawing.Size(41, 13);
             this.lblLanguage.TabIndex = 6;
@@ -124,7 +124,7 @@
             // lblAttendance
             // 
             this.lblAttendance.AutoSize = true;
-            this.lblAttendance.Location = new System.Drawing.Point(159, 169);
+            this.lblAttendance.Location = new System.Drawing.Point(151, 169);
             this.lblAttendance.Name = "lblAttendance";
             this.lblAttendance.Size = new System.Drawing.Size(85, 13);
             this.lblAttendance.TabIndex = 7;
@@ -142,7 +142,7 @@
             // lblAddress1
             // 
             this.lblAddress1.AutoSize = true;
-            this.lblAddress1.Location = new System.Drawing.Point(159, 198);
+            this.lblAddress1.Location = new System.Drawing.Point(151, 198);
             this.lblAddress1.Name = "lblAddress1";
             this.lblAddress1.Size = new System.Drawing.Size(75, 13);
             this.lblAddress1.TabIndex = 9;
@@ -151,7 +151,7 @@
             // lblCity
             // 
             this.lblCity.AutoSize = true;
-            this.lblCity.Location = new System.Drawing.Point(159, 211);
+            this.lblCity.Location = new System.Drawing.Point(151, 211);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(45, 13);
             this.lblCity.TabIndex = 10;
@@ -160,7 +160,7 @@
             // lblCounty
             // 
             this.lblCounty.AutoSize = true;
-            this.lblCounty.Location = new System.Drawing.Point(159, 224);
+            this.lblCounty.Location = new System.Drawing.Point(151, 224);
             this.lblCounty.Name = "lblCounty";
             this.lblCounty.Size = new System.Drawing.Size(65, 13);
             this.lblCounty.TabIndex = 11;
@@ -169,7 +169,7 @@
             // lblPostCode
             // 
             this.lblPostCode.AutoSize = true;
-            this.lblPostCode.Location = new System.Drawing.Point(159, 237);
+            this.lblPostCode.Location = new System.Drawing.Point(151, 237);
             this.lblPostCode.Name = "lblPostCode";
             this.lblPostCode.Size = new System.Drawing.Size(52, 13);
             this.lblPostCode.TabIndex = 12;
@@ -187,7 +187,7 @@
             // lblParent1
             // 
             this.lblParent1.AutoSize = true;
-            this.lblParent1.Location = new System.Drawing.Point(159, 257);
+            this.lblParent1.Location = new System.Drawing.Point(151, 257);
             this.lblParent1.Name = "lblParent1";
             this.lblParent1.Size = new System.Drawing.Size(59, 13);
             this.lblParent1.TabIndex = 14;
@@ -198,7 +198,7 @@
             // lblParent2
             // 
             this.lblParent2.AutoSize = true;
-            this.lblParent2.Location = new System.Drawing.Point(159, 270);
+            this.lblParent2.Location = new System.Drawing.Point(151, 270);
             this.lblParent2.Name = "lblParent2";
             this.lblParent2.Size = new System.Drawing.Size(0, 13);
             this.lblParent2.TabIndex = 15;
@@ -215,7 +215,7 @@
             // lblMedicalInfo
             // 
             this.lblMedicalInfo.AutoSize = true;
-            this.lblMedicalInfo.Location = new System.Drawing.Point(159, 327);
+            this.lblMedicalInfo.Location = new System.Drawing.Point(151, 327);
             this.lblMedicalInfo.Name = "lblMedicalInfo";
             this.lblMedicalInfo.Size = new System.Drawing.Size(63, 13);
             this.lblMedicalInfo.TabIndex = 17;
@@ -224,7 +224,7 @@
             // lblEC2
             // 
             this.lblEC2.AutoSize = true;
-            this.lblEC2.Location = new System.Drawing.Point(159, 303);
+            this.lblEC2.Location = new System.Drawing.Point(151, 303);
             this.lblEC2.Name = "lblEC2";
             this.lblEC2.Size = new System.Drawing.Size(0, 13);
             this.lblEC2.TabIndex = 21;
@@ -232,7 +232,7 @@
             // lblEC1
             // 
             this.lblEC1.AutoSize = true;
-            this.lblEC1.Location = new System.Drawing.Point(159, 290);
+            this.lblEC1.Location = new System.Drawing.Point(151, 290);
             this.lblEC1.Name = "lblEC1";
             this.lblEC1.Size = new System.Drawing.Size(59, 13);
             this.lblEC1.TabIndex = 20;
@@ -275,22 +275,22 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "FirstLanguage:";
             // 
-            // btnChildReportEdit
+            // btnEdit
             // 
-            this.btnChildReportEdit.Location = new System.Drawing.Point(92, 370);
-            this.btnChildReportEdit.Name = "btnChildReportEdit";
-            this.btnChildReportEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnChildReportEdit.TabIndex = 22;
-            this.btnChildReportEdit.Text = "Edit Child";
-            this.btnChildReportEdit.UseVisualStyleBackColor = true;
-            this.btnChildReportEdit.Click += new System.EventHandler(this.btnChildReportEdit_Click);
+            this.btnEdit.Location = new System.Drawing.Point(98, 355);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 22;
+            this.btnEdit.Text = "Edit child";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // frmChildReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(274, 405);
-            this.Controls.Add(this.btnChildReportEdit);
+            this.ClientSize = new System.Drawing.Size(266, 390);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.lblEC2);
             this.Controls.Add(this.lblEC1);
             this.Controls.Add(this.lblECsTitle);
@@ -350,6 +350,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnChildReportEdit;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
