@@ -94,6 +94,7 @@ namespace TBCN
                 else
                     MessageBox.Show("Problem occurred while adding child");
             }
+            this.Close();
         }
 
         private bool validateForm()

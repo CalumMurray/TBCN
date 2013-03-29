@@ -77,6 +77,8 @@ namespace TBCN
             {
                 dbConnection.updateParent(createdParent);
             }
+
+            this.Close();
         }
 
         private Parent constructParent()

@@ -71,6 +71,8 @@ namespace TBCN
             Employee createdEmployee = constructEmployee();
 
             dbConnection.insertEmployee(createdEmployee);
+
+            this.Close();
         }
 
         private Employee constructEmployee()
