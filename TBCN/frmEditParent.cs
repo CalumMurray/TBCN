@@ -25,6 +25,38 @@ namespace TBCN
             dbConnection = new Database();
         }
 
+        public frmEditParent(String title, Parent ParentToEdit)
+        {
+            InitializeComponent();
+            this.Text = title;
+            dbConnection = new Database();
+
+            txtFirstName.Text = ParentToEdit.FirstName;
+            txtLastName.Text = ParentToEdit.LastName;
+            if (ParentToEdit.Gender == 'M')
+            {
+                cmbGender.Text = "Male";
+            }
+            else if (ParentToEdit.Gender == 'F')
+            {
+                cmbGender.Text = "Female";
+            }
+
+            txtTitle.Text = ParentToEdit.Title;
+            txtHomePhone.Text = ParentToEdit.HomePhone;
+            txtWorkPhone.Text = ParentToEdit.WorkPhone;
+            txtMobilePhone.Text = ParentToEdit.MobilePhone;
+            txtHomeAddress1.Text = ParentToEdit.HomeAddress.Address1;
+            txtHomeCounty.Text = ParentToEdit.HomeAddress.County;
+            txtHomePostCode.Text = ParentToEdit.HomeAddress.PostCode;
+            txtHomeTown.Text = ParentToEdit.HomeAddress.City;
+            txtWorkAddress1.Text = ParentToEdit.WorkAddress.Address1;
+            txtWorkCounty.Text = ParentToEdit.WorkAddress.County;
+            txtWorkPostCode.Text = ParentToEdit.WorkAddress.PostCode;
+            txtWorkTown.Text = ParentToEdit.WorkAddress.City;
+
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             Parent createdParent = new Parent();

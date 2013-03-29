@@ -13,12 +13,21 @@ namespace TBCN
     {
         Parent parent;
         DataContainer data;
+
         public frmParentReport(Parent parent)
         {
             InitializeComponent();
             //this.Text = title;
             this.parent = parent;
             data = new DataContainer();
+        }
+
+        public frmParentReport(Parent parent, DataContainer data)
+        {
+            InitializeComponent();
+            //this.Text = title;
+            this.parent = parent;
+            this.data = data;
         }
 
         public frmParentReport(EmergencyContact ec)
@@ -48,14 +57,22 @@ namespace TBCN
             lblWorkAddress1.Text = parent.WorkAddress.Address1;
             lblWorkCity.Text = parent.WorkAddress.City;
             lblWorkCounty.Text = parent.WorkAddress.County;
-            lblWorkPostCode.Text = parent.WorkAddress.PostCode; 
+            lblWorkPostCode.Text = parent.WorkAddress.PostCode;
 
-            lblChild.Text = data.children[parent.ChildrenAttending[0] - 1].FirstName + " " + data.children[parent.ChildrenAttending[0] - 1].LastName;
+            try
+            {
+                lblChild.Text = data.children[parent.ChildrenAttending[0] - 1].FirstName + " " + data.children[parent.ChildrenAttending[0] - 1].LastName;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                lblChild.Text = "";
+            }
         }
 
         private void btnParentReportEdit_Click(object sender, EventArgs e)
         {
-            //new frmEditParent(parent).ShowDialog();
+            frmEditParent editDialog = new frmEditParent("Edit Parent",parent);
+            editDialog.ShowDialog();
         }
 
         //Parent's Child selected - Show report.

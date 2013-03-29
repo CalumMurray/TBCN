@@ -188,7 +188,7 @@ namespace TBCN
 
             if (selectedChild != null)
             {
-                Form childReport = new frmChildReport(selectedChild);
+                Form childReport = new frmChildReport(selectedChild, data);
                 childReport.ShowDialog();
             }
         }
@@ -246,7 +246,7 @@ namespace TBCN
 
             if (selectedParent != null)
             {
-                Form parentReport = new frmParentReport(selectedParent);
+                Form parentReport = new frmParentReport(selectedParent, data);
                 parentReport.ShowDialog();
             }
         }
@@ -284,6 +284,14 @@ namespace TBCN
 
                 MessageBox.Show("Employees requiring PVG renewal:\n" + employeesString);
                 //lstChildren.Items.AddRange(employeesToRenew.ToArray());
+            }
+        }
+
+        private void txtChildren_Enter(object sender, EventArgs e)
+        {
+            if (txtChildren.Text == "Enter child name to search for...")
+            {
+                txtChildren.Text = "";
             }
         }
 

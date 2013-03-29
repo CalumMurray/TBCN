@@ -21,6 +21,13 @@ namespace TBCN
             data = new DataContainer();
         }
 
+        public frmChildReport(Child childtoDisplay,DataContainer data)
+        {
+            InitializeComponent();
+            child = childtoDisplay;
+            this.data = data;
+        }
+
 
         private string showAttendance()
         {
