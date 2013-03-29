@@ -30,6 +30,35 @@ namespace TBCN
             dbConnection = new Database();
             ChildToEdit = childToEdit;
             editing = true;
+
+            txtFirstName.Text = ChildToEdit.FirstName;
+            txtLastName.Text = ChildToEdit.LastName;
+            txtExtra.Text = ChildToEdit.ExtraDays.ToString();
+            txtTeas.Text = ChildToEdit.Teas.ToString();
+            if (ChildToEdit.Gender == 'M')
+            {
+                cmbGender.Text = "Male";
+            }
+            else if (ChildToEdit.Gender == 'F')
+            {
+                cmbGender.Text = "Female";
+            }
+            cmbLanguage.Text = ChildToEdit.FirstLanguage;
+            cmbRoom.Text = ChildToEdit.RoomAttending;
+            dtpDOB.Value = ChildToEdit.DOB;
+            if (ChildToEdit.DateLeft != new DateTime(0001, 1, 1, 0, 0, 0))
+            {
+                dtpLeaveDate.Value = ChildToEdit.DateLeft;
+            }
+            dtpStartDate.Value = ChildToEdit.DateApplied;
+
+            chk1.Checked = ChildToEdit.Attendance[0];
+            chk2.Checked = ChildToEdit.Attendance[1];
+            chk3.Checked = ChildToEdit.Attendance[2];
+            chk4.Checked = ChildToEdit.Attendance[3];
+            chk5.Checked = ChildToEdit.Attendance[4];
+
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -100,9 +129,12 @@ namespace TBCN
             newChild.Teas = Convert.ToInt16(txtTeas.Text);
             
             Control[] attendanceBoxes = this.Controls.Find("chk", false);
-            
-            for (int i = 0; i < attendanceBoxes.Length; i++)
-                newChild.Attendance[i] = ((CheckBox)attendanceBoxes[i]).Checked;
+
+            newChild.Attendance[0] = chk1.Checked;
+            newChild.Attendance[1] = chk2.Checked;
+            newChild.Attendance[2] = chk3.Checked;
+            newChild.Attendance[3] = chk4.Checked;
+            newChild.Attendance[4] = chk5.Checked;
 
 
             return newChild;

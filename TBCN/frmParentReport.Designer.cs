@@ -86,11 +86,11 @@
             // lblHomePhone
             // 
             this.lblHomePhone.AutoSize = true;
-            this.lblHomePhone.Location = new System.Drawing.Point(146, 78);
+            this.lblHomePhone.Location = new System.Drawing.Point(149, 78);
             this.lblHomePhone.Name = "lblHomePhone";
-            this.lblHomePhone.Size = new System.Drawing.Size(79, 13);
+            this.lblHomePhone.Size = new System.Drawing.Size(76, 13);
             this.lblHomePhone.TabIndex = 6;
-            this.lblHomePhone.Text = " 01382 123456";
+            this.lblHomePhone.Text = "01382 123456";
             // 
             // label8
             // 
