@@ -57,7 +57,14 @@ namespace TBCN
 
             //lblEC1.Text = employee.EmergencyContact.FirstName + " " + employee.EmergencyContact.LastName;
 
-            lblMedical.Text = employee.Medical.ToString();
+            lblMedical.Text = employee.Medical.Allergies + "\n";
+            lblMedical.Text += employee.Medical.Medication + "\n";
+            lblMedical.Text += employee.Medical.Other + "\n\n";
+            lblMedical.Text += employee.Medical.Doctor + "\n";
+            lblMedical.Text += employee.Medical.DoctorAddress.Address1 + "\n";
+            lblMedical.Text += employee.Medical.DoctorAddress.City + "\n";
+            lblMedical.Text += employee.Medical.DoctorAddress.County + "\n";
+            lblMedical.Text += employee.Medical.DoctorAddress.PostCode;
         }
 
         private void btnEmployeeReportEdit_Click(object sender, EventArgs e)
