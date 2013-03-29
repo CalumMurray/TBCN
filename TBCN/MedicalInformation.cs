@@ -23,5 +23,9 @@ namespace TBCN
                            
             
         }
+
+        public MedicalInformation()
+        {
+        }
     }
 }
