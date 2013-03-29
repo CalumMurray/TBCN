@@ -295,6 +295,39 @@ namespace TBCN
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            data = new DataContainer();
+
+            //Refresh children
+            lstChildren.Items.Clear();
+            childIDList = new List<int>();
+            foreach (Child child in data.children)
+            {
+                lstChildren.Items.Add(child.FirstName + " " + child.LastName);
+                childIDList.Add(child.ChildID);
+            }
+
+            //Refresh parents
+            lstParents.Items.Clear();
+            parentIDList = new List<int>();
+            foreach (Parent parent in data.parents)
+            {
+                lstParents.Items.Add(parent.FirstName + " " + parent.LastName);
+                parentIDList.Add(parent.ParentID);
+            }
+
+            //refresh staff
+            lstStaff.Items.Clear();
+            staffIDList = new List<string>();
+            foreach (Employee employee in data.employees)
+            {
+                lstStaff.Items.Add(employee.FirstName + " " + employee.LastName);
+                staffIDList.Add(employee.NINo);
+            }
+        }
+
+
         
 
 

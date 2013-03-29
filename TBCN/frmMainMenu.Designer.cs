@@ -47,6 +47,7 @@
             this.lstChildren = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.tabParents.SuspendLayout();
             this.tabStaff.SuspendLayout();
             this.tabChildren.SuspendLayout();
@@ -243,6 +244,7 @@
             this.txtChildren.Size = new System.Drawing.Size(358, 20);
             this.txtChildren.TabIndex = 1;
             this.txtChildren.Text = "Enter child name to search for...";
+            this.txtChildren.TextChanged += new System.EventHandler(this.txtChildren_TextChanged);
             this.txtChildren.Enter += new System.EventHandler(this.txtChildren_Enter);
             // 
             // lstChildren
@@ -283,11 +285,22 @@
             this.label1.Text = "Teddy Bear Club Nursery";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(396, 15);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 2;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 315);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
             this.MinimumSize = new System.Drawing.Size(319, 251);
@@ -326,6 +339,7 @@
         private System.Windows.Forms.TextBox txtStaff;
         private System.Windows.Forms.ListBox lstStaff;
         private System.Windows.Forms.Button btnCheckPVGDate;
+        private System.Windows.Forms.Button btnRefresh;
 
 
 
