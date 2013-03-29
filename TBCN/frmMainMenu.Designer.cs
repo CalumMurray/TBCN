@@ -46,6 +46,7 @@
             this.lstChildren = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnCheckPVGDate = new System.Windows.Forms.Button();
             this.tabParents.SuspendLayout();
             this.tabStaff.SuspendLayout();
             this.tabChildren.SuspendLayout();
@@ -76,6 +77,7 @@
             this.btnAddParent.TabIndex = 8;
             this.btnAddParent.Text = "Add Parent";
             this.btnAddParent.UseVisualStyleBackColor = true;
+            this.btnAddParent.Click += new System.EventHandler(this.btnAddParent_Click);
             // 
             // btnParents
             // 
@@ -112,6 +114,7 @@
             // 
             // tabStaff
             // 
+            this.tabStaff.Controls.Add(this.btnCheckPVGDate);
             this.tabStaff.Controls.Add(this.btnAddStaff);
             this.tabStaff.Controls.Add(this.btnStaff);
             this.tabStaff.Controls.Add(this.txtStaff);
@@ -134,6 +137,7 @@
             this.btnAddStaff.TabIndex = 8;
             this.btnAddStaff.Text = "Add Staff";
             this.btnAddStaff.UseVisualStyleBackColor = true;
+            this.btnAddStaff.Click += new System.EventHandler(this.btnAddStaff_Click);
             // 
             // btnStaff
             // 
@@ -204,6 +208,7 @@
             this.btnAddChild.TabIndex = 3;
             this.btnAddChild.Text = "Add Child";
             this.btnAddChild.UseVisualStyleBackColor = true;
+            this.btnAddChild.Click += new System.EventHandler(this.btnAddChild_Click);
             // 
             // btnChildren
             // 
@@ -265,6 +270,16 @@
             this.label1.Text = "Teddy Bear Club Nursery";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnCheckPVGDate
+            // 
+            this.btnCheckPVGDate.Location = new System.Drawing.Point(369, 168);
+            this.btnCheckPVGDate.Name = "btnCheckPVGDate";
+            this.btnCheckPVGDate.Size = new System.Drawing.Size(75, 23);
+            this.btnCheckPVGDate.TabIndex = 9;
+            this.btnCheckPVGDate.Text = "Check PVG";
+            this.btnCheckPVGDate.UseVisualStyleBackColor = true;
+            this.btnCheckPVGDate.Click += new System.EventHandler(this.btnCheckPVGDate_Click);
+            // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,7 +290,6 @@
             this.MinimumSize = new System.Drawing.Size(319, 251);
             this.Name = "frmMainMenu";
             this.Text = "Teddy Bear Club Nursery";
-            this.Load += new System.EventHandler(this.frmMainMenu_Load);
             this.tabParents.ResumeLayout(false);
             this.tabParents.PerformLayout();
             this.tabStaff.ResumeLayout(false);
@@ -308,6 +322,7 @@
         private System.Windows.Forms.Button btnStaff;
         private System.Windows.Forms.TextBox txtStaff;
         private System.Windows.Forms.ListBox lstStaff;
+        private System.Windows.Forms.Button btnCheckPVGDate;
 
 
 

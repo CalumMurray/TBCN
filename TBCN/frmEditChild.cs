@@ -16,13 +16,12 @@ namespace TBCN
         public Child ChildToAdd { get; set;  }
         public Child ChildToEdit {get; set;}
         private bool editing = false;
-        private DataContainer data;
         
         public frmEditChild()
         {
             InitializeComponent();
             dbConnection = new Database();
-            data = new DataContainer();
+
         }
 
         public frmEditChild(Child childToEdit)
@@ -97,10 +96,9 @@ namespace TBCN
             newChild.RoomAttending = cmbRoom.Text;
             newChild.DateApplied = dtpStartDate.Value;
             newChild.DateLeft = dtpLeaveDate.Value;
-            newChild.ExtraDays = Convert.ToInt16(txtExtra.Text); //TODO: Number or specific days
+            newChild.ExtraDays = Convert.ToInt16(txtExtra.Text); 
             newChild.Teas = Convert.ToInt16(txtTeas.Text);
             
-            //Get attendance //TODO: Number of specific days
             Control[] attendanceBoxes = this.Controls.Find("chk", false);
             
             for (int i = 0; i < attendanceBoxes.Length; i++)
@@ -127,10 +125,10 @@ namespace TBCN
         private void btnAddEC_Click(object sender, EventArgs e)
         {
             
-            new frmEditParent("Add an Emergency Contact").ShowDialog();
+            //new frmEditParent("Add an Emergency Contact").ShowDialog();
 
-            data = new DataContainer(); //Refresh Data from DB
-           // ChildToAdd.EmergencyContactsIDs[0] = ((frmMainMenu)this.ParentForm).DataContainer.contacts[((frmMainMenu)this.ParentForm).DataContainer.contacts.Count - 1].ContactID;
+            //DataContainer data = new DataContainer(); //Refresh Data from DB
+            //ChildToAdd.EmergencyContactsIDs[0] = data.contacts[(data.contacts.Count - 1].ContactID;
         }
 
         private void btnAddParent_Click(object sender, EventArgs e)
@@ -139,8 +137,8 @@ namespace TBCN
             frmEditParent addParentForm = new frmEditParent("Add a Parent");
             addParentForm.ShowDialog();
 
-            this.data = new DataContainer(); //Refresh Data from DB
-            ChildToAdd.ParentsIDs[0] = data.parents[this.data.parents.Count - 1].ParentID;
+            DataContainer data = new DataContainer(); //Refresh Data from DB
+            ChildToAdd.ParentsIDs[0] = data.parents[data.parents.Count - 1].ParentID;
 
         }
 

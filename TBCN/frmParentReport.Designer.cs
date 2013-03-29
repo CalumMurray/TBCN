@@ -48,6 +48,11 @@
             this.label14 = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.LinkLabel();
             this.lblWorkPhone = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnParentReportEdit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblName
@@ -72,20 +77,20 @@
             // lblDOB
             // 
             this.lblDOB.AutoSize = true;
-            this.lblDOB.Location = new System.Drawing.Point(15, 54);
+            this.lblDOB.Location = new System.Drawing.Point(56, 55);
             this.lblDOB.Name = "lblDOB";
-            this.lblDOB.Size = new System.Drawing.Size(98, 13);
+            this.lblDOB.Size = new System.Drawing.Size(69, 13);
             this.lblDOB.TabIndex = 5;
-            this.lblDOB.Text = "DOB: 8 June, 2008";
+            this.lblDOB.Text = "8 June, 2008";
             // 
             // lblHomePhone
             // 
             this.lblHomePhone.AutoSize = true;
-            this.lblHomePhone.Location = new System.Drawing.Point(14, 68);
+            this.lblHomePhone.Location = new System.Drawing.Point(108, 71);
             this.lblHomePhone.Name = "lblHomePhone";
-            this.lblHomePhone.Size = new System.Drawing.Size(161, 13);
+            this.lblHomePhone.Size = new System.Drawing.Size(79, 13);
             this.lblHomePhone.TabIndex = 6;
-            this.lblHomePhone.Text = "Home Phone No: 01382 123456";
+            this.lblHomePhone.Text = " 01382 123456";
             // 
             // label8
             // 
@@ -150,15 +155,16 @@
             this.lblChild.TabIndex = 14;
             this.lblChild.TabStop = true;
             this.lblChild.Text = "Anne Other";
+            this.lblChild.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblChild_LinkClicked);
             // 
             // lblMobilePhone
             // 
             this.lblMobilePhone.AutoSize = true;
-            this.lblMobilePhone.Location = new System.Drawing.Point(14, 84);
+            this.lblMobilePhone.Location = new System.Drawing.Point(111, 87);
             this.lblMobilePhone.Name = "lblMobilePhone";
-            this.lblMobilePhone.Size = new System.Drawing.Size(169, 13);
+            this.lblMobilePhone.Size = new System.Drawing.Size(76, 13);
             this.lblMobilePhone.TabIndex = 22;
-            this.lblMobilePhone.Text = "Mobile phone No:   07445 123456";
+            this.lblMobilePhone.Text = "07445 123456";
             // 
             // lblWorkPostCode
             // 
@@ -227,17 +233,64 @@
             // lblWorkPhone
             // 
             this.lblWorkPhone.AutoSize = true;
-            this.lblWorkPhone.Location = new System.Drawing.Point(14, 100);
+            this.lblWorkPhone.Location = new System.Drawing.Point(112, 102);
             this.lblWorkPhone.Name = "lblWorkPhone";
-            this.lblWorkPhone.Size = new System.Drawing.Size(90, 13);
+            this.lblWorkPhone.Size = new System.Drawing.Size(49, 13);
             this.lblWorkPhone.TabIndex = 22;
-            this.lblWorkPhone.Text = "Work Phone No.:";
+            this.lblWorkPhone.Text = "2321312";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "DOB: ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 71);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Home Phone No: ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 86);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(95, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Mobile Phone No: ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(14, 102);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 13);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Work Phone No.:";
+            // 
+            // btnParentReportEdit
+            // 
+            this.btnParentReportEdit.Location = new System.Drawing.Point(76, 318);
+            this.btnParentReportEdit.Name = "btnParentReportEdit";
+            this.btnParentReportEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnParentReportEdit.TabIndex = 30;
+            this.btnParentReportEdit.Text = "Edit Parent";
+            this.btnParentReportEdit.UseVisualStyleBackColor = true;
+            this.btnParentReportEdit.Click += new System.EventHandler(this.btnParentReportEdit_Click);
             // 
             // frmParentReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(246, 302);
+            this.ClientSize = new System.Drawing.Size(246, 353);
+            this.Controls.Add(this.btnParentReportEdit);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.lblWorkPostCode);
@@ -245,6 +298,7 @@
             this.Controls.Add(this.lblWorkCity);
             this.Controls.Add(this.lblWorkAddress1);
             this.Controls.Add(this.label20);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblWorkPhone);
             this.Controls.Add(this.lblMobilePhone);
             this.Controls.Add(this.lblChild);
@@ -254,7 +308,10 @@
             this.Controls.Add(this.lblHomeCity);
             this.Controls.Add(this.lblHomeAddress1);
             this.Controls.Add(this.label8);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.lblHomePhone);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblDOB);
             this.Controls.Add(this.lblGender);
             this.Controls.Add(this.lblName);
@@ -288,5 +345,10 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.LinkLabel lblEmail;
         private System.Windows.Forms.Label lblWorkPhone;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnParentReportEdit;
     }
 }

@@ -14,14 +14,10 @@ namespace TBCN
     public class Database
     {
         private const string connStr = "SERVER=arlia.computing.dundee.ac.uk;USER=12ac3u03;DATABASE=12ac3d03;PORT=3306;PASSWORD=ab123c;";
-        //private MySqlConnection connection;
-        //private MySqlCommand updateCommand;
-        //private MySqlCommand selectCommand;
-        //private MySqlCommand deleteCommand;
 
-        private int childID;
-        private int parentID;
-        private int contactID;
+        //private int childID;
+        //private int parentID;
+        //private int contactID;
 
 
         public Database()
@@ -135,8 +131,8 @@ namespace TBCN
                 insertCommand.ExecuteNonQuery();
 
 
-                childID = (int)idCommand.ExecuteScalar();
-                insertAttendance(childToAdd);
+                //childID = (int)idCommand.ExecuteScalar();
+                //insertAttendance(childToAdd);
                 //insertMedical(childToUpdate.MedicalInfo);
                 //insertMedical(childToUpdate.MedicalInfo);
                 //insertParent(parent);
@@ -429,7 +425,6 @@ namespace TBCN
             return allChildren;
         }
 
-        //TODO: Check multiple "Address_!" columns?
         public List<Parent> selectAllParents()
         {
             MySqlConnection connection = OpenConnection();
@@ -1242,8 +1237,8 @@ namespace TBCN
                 updateCommand.ExecuteNonQuery();
 
 
-                childID = (int)idCommand.ExecuteScalar();
-                insertAttendance(childToUpdate);
+                //childID = (int)idCommand.ExecuteScalar();
+                //insertAttendance(childToUpdate);
                 //insertMedical(childToUpdate.MedicalInfo);
                 //insertMedical(childToUpdate.MedicalInfo);
                 //insertParent(parent);
@@ -1305,7 +1300,7 @@ namespace TBCN
                 return false;
 
             MySqlCommand updateCommand = new MySqlCommand(null, connection);
-            updateCommand.CommandText = @"UPDATE employee 
+            updateCommand.CommandText = @"UPDATE parent 
                                         SET National_Insurance_Number = @nino, First_Name = @firstname, Last_Name = @lastname, Position = @position, Gender = @gender, Date_Started = @datestarted, Date_Finshed = @datefinished, PVG_Date = @pvgdate, Holidays_Entitled = @holidaysentitled, Holidays_Taken = @holidaystaken, Hours = @hours, Home_Address = @address, DOB = @dob, Salary = @salary, Home_Phone = @homephone, Mobile_Phone = @mobilephone, Email = @email, Training = @training, Medical_Information = @medical, Emergency_Contact = @ec;";
 
             updateCommand.Parameters.AddWithValue("@nino", employeeToUpdate.NINo);

@@ -39,9 +39,7 @@
             this.lblCounty = new System.Windows.Forms.Label();
             this.lblPostCode = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.lblMedical = new System.Windows.Forms.Label();
-            this.lblEC2 = new System.Windows.Forms.LinkLabel();
             this.lblEC1 = new System.Windows.Forms.LinkLabel();
             this.label15 = new System.Windows.Forms.Label();
             this.lblDateStarted = new System.Windows.Forms.Label();
@@ -56,7 +54,18 @@
             this.lblHours = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.lblTraining = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
+            this.btnEmployeeReportEdit = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +73,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(157, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(177, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 100);
             this.pictureBox1.TabIndex = 0;
@@ -83,7 +92,7 @@
             // lblPosition
             // 
             this.lblPosition.AutoSize = true;
-            this.lblPosition.Location = new System.Drawing.Point(14, 36);
+            this.lblPosition.Location = new System.Drawing.Point(14, 39);
             this.lblPosition.Name = "lblPosition";
             this.lblPosition.Size = new System.Drawing.Size(95, 13);
             this.lblPosition.TabIndex = 2;
@@ -92,7 +101,7 @@
             // lblGender
             // 
             this.lblGender.AutoSize = true;
-            this.lblGender.Location = new System.Drawing.Point(14, 54);
+            this.lblGender.Location = new System.Drawing.Point(14, 58);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(41, 13);
             this.lblGender.TabIndex = 3;
@@ -101,16 +110,16 @@
             // lblDOB
             // 
             this.lblDOB.AutoSize = true;
-            this.lblDOB.Location = new System.Drawing.Point(14, 122);
+            this.lblDOB.Location = new System.Drawing.Point(68, 80);
             this.lblDOB.Name = "lblDOB";
-            this.lblDOB.Size = new System.Drawing.Size(95, 13);
+            this.lblDOB.Size = new System.Drawing.Size(25, 13);
             this.lblDOB.TabIndex = 5;
-            this.lblDOB.Text = "DOB: 8 June 1985";
+            this.lblDOB.Text = "dob";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 282);
+            this.label8.Location = new System.Drawing.Point(14, 297);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 13);
             this.label8.TabIndex = 8;
@@ -119,7 +128,7 @@
             // lblAddress1
             // 
             this.lblAddress1.AutoSize = true;
-            this.lblAddress1.Location = new System.Drawing.Point(151, 282);
+            this.lblAddress1.Location = new System.Drawing.Point(174, 297);
             this.lblAddress1.Name = "lblAddress1";
             this.lblAddress1.Size = new System.Drawing.Size(75, 13);
             this.lblAddress1.TabIndex = 9;
@@ -128,7 +137,7 @@
             // lblCity
             // 
             this.lblCity.AutoSize = true;
-            this.lblCity.Location = new System.Drawing.Point(151, 295);
+            this.lblCity.Location = new System.Drawing.Point(174, 310);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(45, 13);
             this.lblCity.TabIndex = 10;
@@ -137,7 +146,7 @@
             // lblCounty
             // 
             this.lblCounty.AutoSize = true;
-            this.lblCounty.Location = new System.Drawing.Point(151, 308);
+            this.lblCounty.Location = new System.Drawing.Point(174, 323);
             this.lblCounty.Name = "lblCounty";
             this.lblCounty.Size = new System.Drawing.Size(65, 13);
             this.lblCounty.TabIndex = 11;
@@ -146,7 +155,7 @@
             // lblPostCode
             // 
             this.lblPostCode.AutoSize = true;
-            this.lblPostCode.Location = new System.Drawing.Point(151, 321);
+            this.lblPostCode.Location = new System.Drawing.Point(174, 336);
             this.lblPostCode.Name = "lblPostCode";
             this.lblPostCode.Size = new System.Drawing.Size(52, 13);
             this.lblPostCode.TabIndex = 12;
@@ -155,44 +164,25 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(14, 378);
+            this.label14.Location = new System.Drawing.Point(14, 393);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(101, 13);
             this.label14.TabIndex = 16;
             this.label14.Text = "Medical information:";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(151, 391);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(104, 13);
-            this.label17.TabIndex = 18;
-            this.label17.Text = "Allergic to bee stings";
-            // 
             // lblMedical
             // 
             this.lblMedical.AutoSize = true;
-            this.lblMedical.Location = new System.Drawing.Point(151, 378);
+            this.lblMedical.Location = new System.Drawing.Point(174, 393);
             this.lblMedical.Name = "lblMedical";
             this.lblMedical.Size = new System.Drawing.Size(63, 13);
             this.lblMedical.TabIndex = 17;
             this.lblMedical.Text = "Has asthma";
             // 
-            // lblEC2
-            // 
-            this.lblEC2.AutoSize = true;
-            this.lblEC2.Location = new System.Drawing.Point(151, 354);
-            this.lblEC2.Name = "lblEC2";
-            this.lblEC2.Size = new System.Drawing.Size(64, 13);
-            this.lblEC2.TabIndex = 21;
-            this.lblEC2.TabStop = true;
-            this.lblEC2.Text = "Eck Sample";
-            // 
             // lblEC1
             // 
             this.lblEC1.AutoSize = true;
-            this.lblEC1.Location = new System.Drawing.Point(151, 341);
+            this.lblEC1.Location = new System.Drawing.Point(174, 356);
             this.lblEC1.Name = "lblEC1";
             this.lblEC1.Size = new System.Drawing.Size(59, 13);
             this.lblEC1.TabIndex = 20;
@@ -202,7 +192,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(14, 342);
+            this.label15.Location = new System.Drawing.Point(14, 357);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(107, 13);
             this.label15.TabIndex = 19;
@@ -211,16 +201,16 @@
             // lblDateStarted
             // 
             this.lblDateStarted.AutoSize = true;
-            this.lblDateStarted.Location = new System.Drawing.Point(14, 135);
+            this.lblDateStarted.Location = new System.Drawing.Point(94, 151);
             this.lblDateStarted.Name = "lblDateStarted";
-            this.lblDateStarted.Size = new System.Drawing.Size(138, 13);
+            this.lblDateStarted.Size = new System.Drawing.Size(28, 13);
             this.lblDateStarted.TabIndex = 22;
-            this.lblDateStarted.Text = "Date Started:  23 April 2009";
+            this.lblDateStarted.Text = "date";
             // 
             // lblDateLeft
             // 
             this.lblDateLeft.AutoSize = true;
-            this.lblDateLeft.Location = new System.Drawing.Point(14, 148);
+            this.lblDateLeft.Location = new System.Drawing.Point(71, 169);
             this.lblDateLeft.Name = "lblDateLeft";
             this.lblDateLeft.Size = new System.Drawing.Size(96, 13);
             this.lblDateLeft.TabIndex = 23;
@@ -229,80 +219,79 @@
             // lblMobilePhone
             // 
             this.lblMobilePhone.AutoSize = true;
-            this.lblMobilePhone.Location = new System.Drawing.Point(14, 86);
+            this.lblMobilePhone.Location = new System.Drawing.Point(79, 117);
             this.lblMobilePhone.Name = "lblMobilePhone";
-            this.lblMobilePhone.Size = new System.Drawing.Size(113, 13);
+            this.lblMobilePhone.Size = new System.Drawing.Size(14, 13);
             this.lblMobilePhone.TabIndex = 24;
-            this.lblMobilePhone.Text = "Mobile: 07445 123456";
+            this.lblMobilePhone.Text = "#";
             // 
             // lblHomePhone
             // 
             this.lblHomePhone.AutoSize = true;
-            this.lblHomePhone.Location = new System.Drawing.Point(14, 73);
+            this.lblHomePhone.Location = new System.Drawing.Point(79, 100);
             this.lblHomePhone.Name = "lblHomePhone";
-            this.lblHomePhone.Size = new System.Drawing.Size(113, 13);
+            this.lblHomePhone.Size = new System.Drawing.Size(14, 13);
             this.lblHomePhone.TabIndex = 25;
-            this.lblHomePhone.Text = "Home:  01382 123456";
-            this.lblHomePhone.Click += new System.EventHandler(this.lblHomePhone_Click);
+            this.lblHomePhone.Text = "#";
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(14, 99);
+            this.lblEmail.Location = new System.Drawing.Point(60, 135);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(134, 13);
+            this.lblEmail.Size = new System.Drawing.Size(18, 13);
             this.lblEmail.TabIndex = 26;
-            this.lblEmail.Text = "Email:  babs85@gmail.com";
+            this.lblEmail.Text = "@";
             // 
             // lblPVGDate
             // 
             this.lblPVGDate.AutoSize = true;
-            this.lblPVGDate.Location = new System.Drawing.Point(14, 170);
+            this.lblPVGDate.Location = new System.Drawing.Point(84, 186);
             this.lblPVGDate.Name = "lblPVGDate";
-            this.lblPVGDate.Size = new System.Drawing.Size(139, 13);
+            this.lblPVGDate.Size = new System.Drawing.Size(28, 13);
             this.lblPVGDate.TabIndex = 27;
-            this.lblPVGDate.Text = "PVG Date:  10 August 2013";
+            this.lblPVGDate.Text = "date";
             // 
             // lblHolidaysEntitled
             // 
             this.lblHolidaysEntitled.AutoSize = true;
-            this.lblHolidaysEntitled.Location = new System.Drawing.Point(14, 183);
+            this.lblHolidaysEntitled.Location = new System.Drawing.Point(112, 204);
             this.lblHolidaysEntitled.Name = "lblHolidaysEntitled";
-            this.lblHolidaysEntitled.Size = new System.Drawing.Size(105, 13);
+            this.lblHolidaysEntitled.Size = new System.Drawing.Size(19, 13);
             this.lblHolidaysEntitled.TabIndex = 28;
-            this.lblHolidaysEntitled.Text = "Holidays entitled:  20";
+            this.lblHolidaysEntitled.Text = "20";
             // 
             // lblHolidaysTaken
             // 
             this.lblHolidaysTaken.AutoSize = true;
-            this.lblHolidaysTaken.Location = new System.Drawing.Point(14, 196);
+            this.lblHolidaysTaken.Location = new System.Drawing.Point(103, 222);
             this.lblHolidaysTaken.Name = "lblHolidaysTaken";
-            this.lblHolidaysTaken.Size = new System.Drawing.Size(140, 13);
+            this.lblHolidaysTaken.Size = new System.Drawing.Size(19, 13);
             this.lblHolidaysTaken.TabIndex = 29;
-            this.lblHolidaysTaken.Text = "Holidays taken this year:  13";
+            this.lblHolidaysTaken.Text = "13";
             // 
             // lblSalary
             // 
             this.lblSalary.AutoSize = true;
-            this.lblSalary.Location = new System.Drawing.Point(14, 222);
+            this.lblSalary.Location = new System.Drawing.Point(56, 252);
             this.lblSalary.Name = "lblSalary";
-            this.lblSalary.Size = new System.Drawing.Size(81, 13);
+            this.lblSalary.Size = new System.Drawing.Size(43, 13);
             this.lblSalary.TabIndex = 30;
-            this.lblSalary.Text = "Salary:  £25000";
+            this.lblSalary.Text = "£25000";
             // 
             // lblHours
             // 
             this.lblHours.AutoSize = true;
-            this.lblHours.Location = new System.Drawing.Point(14, 209);
+            this.lblHours.Location = new System.Drawing.Point(96, 236);
             this.lblHours.Name = "lblHours";
-            this.lblHours.Size = new System.Drawing.Size(103, 13);
+            this.lblHours.Size = new System.Drawing.Size(19, 13);
             this.lblHours.TabIndex = 31;
-            this.lblHours.Text = "Hours per week:  43";
+            this.lblHours.Text = "43";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(14, 244);
+            this.label24.Location = new System.Drawing.Point(12, 270);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(48, 13);
             this.label24.TabIndex = 32;
@@ -311,43 +300,151 @@
             // lblTraining
             // 
             this.lblTraining.AutoSize = true;
-            this.lblTraining.Location = new System.Drawing.Point(151, 244);
+            this.lblTraining.Location = new System.Drawing.Point(174, 271);
             this.lblTraining.Name = "lblTraining";
             this.lblTraining.Size = new System.Drawing.Size(43, 13);
             this.lblTraining.TabIndex = 33;
             this.lblTraining.Text = "First aid";
             // 
-            // label26
+            // btnEmployeeReportEdit
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(151, 257);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(78, 13);
-            this.label26.TabIndex = 34;
-            this.label26.Text = "HND Childcare";
+            this.btnEmployeeReportEdit.Location = new System.Drawing.Point(87, 426);
+            this.btnEmployeeReportEdit.Name = "btnEmployeeReportEdit";
+            this.btnEmployeeReportEdit.Size = new System.Drawing.Size(91, 26);
+            this.btnEmployeeReportEdit.TabIndex = 34;
+            this.btnEmployeeReportEdit.Text = "Edit Employee";
+            this.btnEmployeeReportEdit.UseVisualStyleBackColor = true;
+            this.btnEmployeeReportEdit.Click += new System.EventHandler(this.btnEmployeeReportEdit_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 80);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "DOB:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 169);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Date Left: ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(14, 100);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 13);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "Home No.:  ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 117);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 13);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Mobile No.:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(15, 135);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Email: ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(15, 151);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(73, 13);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Date Started: ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(14, 186);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 13);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "PVG Date: ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(15, 204);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(91, 13);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "Holidays Entitled: ";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(15, 222);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(84, 13);
+            this.label10.TabIndex = 29;
+            this.label10.Text = "Holidays Taken:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(14, 253);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(42, 13);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "Salary: ";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(15, 236);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(80, 13);
+            this.label12.TabIndex = 31;
+            this.label12.Text = "Weekly Hours: ";
             // 
             // frmEmployeeReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(269, 418);
-            this.Controls.Add(this.label26);
+            this.ClientSize = new System.Drawing.Size(289, 464);
+            this.Controls.Add(this.btnEmployeeReportEdit);
             this.Controls.Add(this.lblTraining);
             this.Controls.Add(this.label24);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.lblHours);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.lblSalary);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.lblHolidaysTaken);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.lblHolidaysEntitled);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.lblPVGDate);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblHomePhone);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.lblMobilePhone);
             this.Controls.Add(this.lblDateLeft);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.lblDateStarted);
-            this.Controls.Add(this.lblEC2);
             this.Controls.Add(this.lblEC1);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.label17);
             this.Controls.Add(this.lblMedical);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.lblPostCode);
@@ -355,6 +452,7 @@
             this.Controls.Add(this.lblCity);
             this.Controls.Add(this.lblAddress1);
             this.Controls.Add(this.label8);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblDOB);
             this.Controls.Add(this.lblGender);
             this.Controls.Add(this.lblPosition);
@@ -382,9 +480,7 @@
         private System.Windows.Forms.Label lblCounty;
         private System.Windows.Forms.Label lblPostCode;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label lblMedical;
-        private System.Windows.Forms.LinkLabel lblEC2;
         private System.Windows.Forms.LinkLabel lblEC1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lblDateStarted;
@@ -399,6 +495,17 @@
         private System.Windows.Forms.Label lblHours;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label lblTraining;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button btnEmployeeReportEdit;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }
