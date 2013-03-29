@@ -55,7 +55,8 @@ namespace TBCN
 
         private void btnParentReportEdit_Click(object sender, EventArgs e)
         {
-            //new frmEditParent(parent).ShowDialog();
+            frmEditParent editDialog = new frmEditParent("Edit Parent",parent);
+            editDialog.ShowDialog();
         }
 
         //Parent's Child selected - Show report.
