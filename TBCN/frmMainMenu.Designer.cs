@@ -88,6 +88,7 @@
             this.btnParents.TabIndex = 7;
             this.btnParents.Text = "Search";
             this.btnParents.UseVisualStyleBackColor = true;
+            this.btnParents.Click += new System.EventHandler(btnParents_Click);
             // 
             // txtParents
             // 
@@ -158,6 +159,7 @@
             this.btnStaff.TabIndex = 7;
             this.btnStaff.Text = "Search";
             this.btnStaff.UseVisualStyleBackColor = true;
+            this.btnStaff.Click += new System.EventHandler(this.btnStaff_Click);
             // 
             // txtStaff
             // 
