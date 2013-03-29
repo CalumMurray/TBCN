@@ -11,6 +11,8 @@ namespace TBCN
 {
     public partial class frmEditParent : Form
     {
+        private Boolean isEdit = false;
+        int editID = 0;
         private Database dbConnection;
         private DataContainer data;
         //private static Parent parent;
@@ -30,6 +32,7 @@ namespace TBCN
             InitializeComponent();
             this.Text = title;
             dbConnection = new Database();
+            isEdit = true;
 
             txtFirstName.Text = ParentToEdit.FirstName;
             txtLastName.Text = ParentToEdit.LastName;
@@ -42,6 +45,7 @@ namespace TBCN
                 cmbGender.Text = "Female";
             }
 
+            editID = ParentToEdit.ParentID;
             txtTitle.Text = ParentToEdit.Title;
             txtHomePhone.Text = ParentToEdit.HomePhone;
             txtWorkPhone.Text = ParentToEdit.WorkPhone;
@@ -63,9 +67,16 @@ namespace TBCN
 
             createdParent = constructParent();
 
-            dbConnection.insertAddress(createdParent.HomeAddress);
-            dbConnection.insertAddress(createdParent.WorkAddress);
-            dbConnection.insertParent(createdParent);
+            if (!isEdit)
+            {
+                dbConnection.insertAddress(createdParent.HomeAddress);
+                dbConnection.insertAddress(createdParent.WorkAddress);
+                dbConnection.insertParent(createdParent);
+            }
+                else if (isEdit)
+            {
+                dbConnection.updateParent(createdParent);
+            }
         }
 
         private Parent constructParent()
@@ -79,6 +90,10 @@ namespace TBCN
             createdParent.WorkPhone = txtWorkPhone.Text;
             createdParent.MobilePhone = txtMobilePhone.Text;
 
+            if (isEdit)
+            {
+                createdParent.ParentID = editID;
+            }
 
             createdParent.HomeAddress = constructHomeAddress();
             createdParent.WorkAddress = constructWorkAddress();
