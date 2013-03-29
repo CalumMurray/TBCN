@@ -25,7 +25,7 @@ namespace TBCN
             childIDList = new List<int>();
             staffIDList = new List<string>();
             parentIDList = new List<int>();
-            data.loadItems();
+            //data.loadItems();
         }
 
         //Search for children by name
@@ -38,17 +38,18 @@ namespace TBCN
             {
                 if (child.FirstName == childName || child.LastName == childName)
                 {
-                    found = true;
-                    foundChildren.Add(child);
-                    
+                    for (int i = 1; i <= childIDList.Count; i++)
+                    {
+                        if (i == child.ChildID)
+                        {
+                            found = true;
+                            lstChildren.SelectedIndex = i - 1;
+                            // foundChildren.Add(child);
+                        }
+                    }
                 }
             }
-            if (found)
-            {
-                lstChildren.Items.Clear();
-                lstChildren.Items.AddRange(foundChildren.ToArray());
-            }
-            else
+            if (!found)
                 MessageBox.Show("No children were found.");
 
         }

@@ -15,10 +15,12 @@ namespace TBCN
     {
         private const string connStr = "SERVER=arlia.computing.dundee.ac.uk;USER=12ac3u03;DATABASE=12ac3d03;PORT=3306;PASSWORD=ab123c;";
 
-        //private int childID;
-        //private int parentID;
-        //private int contactID;
-
+        private int lastChildID;
+        private int lastParentID;
+        private int lastContactID;
+        private int lastMedicalID;
+        private int lastAttendanceID;
+        private String lastEmployeeNINO;
 
         public Database()
         {
@@ -83,32 +85,13 @@ namespace TBCN
             try
             {
                 MySqlCommand insertCommand = new MySqlCommand(null, connection);
-                MySqlCommand idCommand = new MySqlCommand("SELECT LAST_INSERT_ID()", connection);
-                
+                               
                 //updateCommand.Transaction = transaction;
 
                 // Create and prepare an SQL statement.
                 insertCommand.CommandText = @"INSERT INTO child (First_Name, Last_Name, Gender, DOB, First_Language, Room_Attending, Sibling, Date_Applied, Date_Left, Attendance, Extra_Days, Teas, Medical_Information)
                                             VALUES (@firstname, @lastname, @gender, @dob, @firstlanguage, @roomattending, @sibling, @dateapplied, @dateleft, @attendance, @extra, @teas, @medical);";
-                
-                //insertMedical(childToUpdate.MedicalInfo);
-                //int medicalID = (int)idCommand.ExecuteScalar();
-
-               // //Fill in prepared statement parameters
-               //// MySqlParameter idParam = new MySqlParameter("@id", childToUpdate.ChildID);
-               // MySqlParameter fNameParam = new MySqlParameter("@firstname", childToUpdate.FirstName);
-               // MySqlParameter lNameParam = new MySqlParameter("@lastname", childToUpdate.LastName);
-               // MySqlParameter genderParam = new MySqlParameter("@gender", childToUpdate.Gender);
-               // MySqlParameter dobParam = new MySqlParameter("@dob", childToUpdate.DOB);
-               // MySqlParameter languageParam = new MySqlParameter("@firstlanguage", childToUpdate.FirstLanguage);
-               // MySqlParameter roomParam = new MySqlParameter("@roomattending", childToUpdate.RoomAttending); 
-               // //MySqlParameter siblingParam = new MySqlParameter("@sibling", childToUpdate.Sibling.ChildID);
-               // MySqlParameter dateAppliedParam = new MySqlParameter("@dateapplied", childToUpdate.DateApplied);
-               // MySqlParameter dateLeftParam = new MySqlParameter("@dateleft", null);
-               // MySqlParameter attendanceParam = new MySqlParameter("@attenance", null);
-               // MySqlParameter extraParam = new MySqlParameter("@extra", childToUpdate.ExtraDays);
-               // MySqlParameter teasParam = new MySqlParameter("@teas", childToUpdate.Teas);
-               // MySqlParameter medicalParam = new MySqlParameter("@medical", 1/*medicalID*/);
+               
 
                 insertCommand.Parameters.AddWithValue("@firstname", childToAdd.FirstName);
                 insertCommand.Parameters.AddWithValue("@lastname", childToAdd.LastName);
@@ -119,10 +102,10 @@ namespace TBCN
                 //updateCommand.Parameters.Add(siblingParam);
                 insertCommand.Parameters.AddWithValue("@dateapplied", childToAdd.DateApplied);
                 insertCommand.Parameters.AddWithValue("@dateleft", null);
-                insertCommand.Parameters.AddWithValue("@attendance", 1/*childToUpdate.Attendance*/);
+                insertCommand.Parameters.AddWithValue("@attendance", lastAttendanceID);
                 insertCommand.Parameters.AddWithValue("@extra", childToAdd.ExtraDays);
                 insertCommand.Parameters.AddWithValue("@teas", childToAdd.Teas);
-                insertCommand.Parameters.AddWithValue("@medical", 1/*medicalID*/);
+                insertCommand.Parameters.AddWithValue("@medical", lastMedicalID);
 
                 // Prepare statement
                 Console.WriteLine("Executing: [ " + insertCommand.CommandText + "].");
@@ -131,7 +114,9 @@ namespace TBCN
                 insertCommand.ExecuteNonQuery();
 
 
-                //childID = (int)idCommand.ExecuteScalar();
+                //Remember the last medical id
+                MySqlCommand idCommand = new MySqlCommand("SELECT LAST_INSERT_ID()", connection);
+                lastChildID = (int)idCommand.ExecuteScalar();
                 //insertAttendance(childToAdd);
                 //insertMedical(childToUpdate.MedicalInfo);
                 //insertMedical(childToUpdate.MedicalInfo);
@@ -145,7 +130,7 @@ namespace TBCN
                 //linkECChild(ec, childToUpdate);
 
                 //Perform transaction
-                transaction.Commit();
+                //transaction.Commit();
             }
             catch (MySqlException mysqle)
             {
@@ -183,6 +168,10 @@ namespace TBCN
             Console.WriteLine("Executing: [ " + insertCommand.CommandText + "].");
             insertCommand.Prepare();
             insertCommand.ExecuteNonQuery();
+
+            //Remember the last medical id
+            MySqlCommand idCommand = new MySqlCommand("SELECT LAST_INSERT_ID()", connection);
+            lastParentID = (int)idCommand.ExecuteScalar();
 
             CloseConnection(connection);
         }
@@ -247,6 +236,10 @@ namespace TBCN
             insertCommand.Prepare();
             insertCommand.ExecuteNonQuery();
 
+            //Remember the last contact id
+            MySqlCommand idCommand = new MySqlCommand("SELECT LAST_INSERT_ID()", connection);
+            lastContactID = (int)idCommand.ExecuteScalar();
+
             CloseConnection(connection);
         }
 
@@ -288,6 +281,10 @@ namespace TBCN
             Console.WriteLine("Executing: [ " + insertCommand.CommandText + "].");
             insertCommand.Prepare();
             insertCommand.ExecuteNonQuery();
+
+            //Remember the last attendance id
+            MySqlCommand idCommand = new MySqlCommand("SELECT LAST_INSERT_ID()", connection);
+            lastAttendanceID = (int)idCommand.ExecuteScalar();
 
             CloseConnection(connection);
         }
@@ -334,6 +331,10 @@ namespace TBCN
             insertCommand.Prepare();
             insertCommand.ExecuteNonQuery();
 
+            //Remember the last medical id
+            MySqlCommand idCommand = new MySqlCommand("SELECT LAST_INSERT_ID()", connection);
+            lastMedicalID = (int)idCommand.ExecuteScalar();
+
             CloseConnection(connection);
         }
 
@@ -379,6 +380,8 @@ namespace TBCN
                 Console.WriteLine("Executing: [ " + insertCommand.CommandText + "].");
                 insertCommand.Prepare();
                 insertCommand.ExecuteNonQuery();
+
+                lastEmployeeNINO = employeeToAdd.NINo;
 
             }
             catch (MySqlException mysqle)
@@ -490,7 +493,7 @@ namespace TBCN
                                         FROM emergency_contact
                                         INNER JOIN address homeAddr ON emergency_contact.Home_Address = homeAddr.Address_1
                                         INNER JOIN address workAddr ON emergency_contact.Work_Address = workAddr.Address_1
-                                        INNER JOIN child_has_emergency_contact ON emergency_contact.Parent_ID = child_has_emergency_contact.Parent_ID;";
+                                        INNER JOIN child_has_emergency_contact ON emergency_contact.Contact_ID = child_has_emergency_contact.Contact_ID;";
 
             Console.WriteLine("Executing: [ " + selectCommand.CommandText + "].");
             MySqlDataReader contactReader = selectCommand.ExecuteReader();
