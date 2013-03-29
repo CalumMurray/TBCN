@@ -1041,7 +1041,7 @@ namespace TBCN
             newParent.HomeAddress = constructMultipleAddress(parentReader, "home");
             newParent.WorkAddress = constructMultipleAddress(parentReader, "work");
             //newParent.Spouse = childReader.GetInt16(10);
-            newParent.Email = parentReader.GetString("Email");
+            newParent.Email = SafeGetString(parentReader, "Email");
 
             //Neglecting list of children?
 
@@ -1335,9 +1335,12 @@ namespace TBCN
                 return false;
 
             MySqlCommand updateCommand = new MySqlCommand(null, connection);
-            updateCommand.CommandText = @"UPDATE parent_guardian 
-                                        SET First_Name = @firstname, Last_Name = @lastname, Title = @title, Gender = @gender, Work_Phone = @workphone, Home_Phone = @homephone, Mobile_Phone = @mobilephone, Home_Address = @homeaddress, Work_Address = @workaddress, Spouse = @spouse, Email = @email);";
+            updateCommand.CommandText = @"UPDATE parent_guardian
+                                        SET First_Name = @firstname, Last_Name = @lastname, Title = @title, Gender = @gender, Work_Phone = @workphone, Home_Phone = @homephone, Mobile_Phone = @mobilephone, Home_Address = @homeaddress, Work_Address = @workaddress, Spouse = @spouse, Email = @email
+                                        WHERE Parent_ID = @parentid;";
 
+
+            updateCommand.Parameters.AddWithValue("@parentid", parentToUpdate.ParentID);
             updateCommand.Parameters.AddWithValue("@firstname", parentToUpdate.FirstName);
             updateCommand.Parameters.AddWithValue("@lastname", parentToUpdate.LastName);
             updateCommand.Parameters.AddWithValue("@gender", parentToUpdate.Gender);
