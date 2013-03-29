@@ -13,6 +13,7 @@ namespace TBCN
     {
         Parent parent;
         DataContainer data;
+
         public frmParentReport(Parent parent)
         {
             InitializeComponent();

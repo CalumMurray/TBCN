@@ -55,17 +55,15 @@ namespace TBCN
             lblCounty.Text = employee.Address.County;
             lblPostCode.Text = employee.Address.PostCode; 
 
-            lblEC1.Text = employee.EmergencyContact.FirstName + " " + employee.EmergencyContact.LastName;
+            //lblEC1.Text = employee.EmergencyContact.FirstName + " " + employee.EmergencyContact.LastName;
 
             lblMedical.Text = employee.Medical.ToString();
         }
 
         private void btnEmployeeReportEdit_Click(object sender, EventArgs e)
         {
-            //new frmEditEmployee(employee).ShowDialog();
+            frmEditEmployee editDialog = new frmEditEmployee(employee);
+            editDialog.ShowDialog();
         }
-
-
-  
     }
 }

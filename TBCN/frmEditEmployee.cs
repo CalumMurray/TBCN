@@ -22,6 +22,43 @@ namespace TBCN
 
         }
 
+        public frmEditEmployee(Employee EmployeeToEdit)
+        {
+            InitializeComponent();
+
+            txtFirstName.Text = EmployeeToEdit.FirstName;
+            txtLastName.Text = EmployeeToEdit.LastName;
+
+            if (EmployeeToEdit.Gender == 'M')
+            {
+                cmbGender.Text = "Male";
+            }
+            else if (EmployeeToEdit.Gender == 'F')
+            {
+                cmbGender.Text = "Female";
+            }
+            
+            txtPhone.Text = EmployeeToEdit.HomePhone;
+            txtMobile.Text = EmployeeToEdit.MobilePhone;
+            txtAddress1.Text = EmployeeToEdit.Address.Address1;
+            txtCounty.Text = EmployeeToEdit.Address.County;
+            txtPostCode.Text = EmployeeToEdit.Address.PostCode;
+            txtCity.Text = EmployeeToEdit.Address.City;
+            txtEmail.Text = EmployeeToEdit.Email;
+            txtEntitledHolidays.Text = EmployeeToEdit.HolidaysEntitled.ToString();
+            txtHolidaysTaken.Text = EmployeeToEdit.HolidaysTaken.ToString();
+            dtpDOB.Value = EmployeeToEdit.DOB;
+            if (EmployeeToEdit.DateFinished != new DateTime(0001, 1, 1, 0, 0, 0))
+            {
+                dtpLeaveDate.Value = EmployeeToEdit.DateFinished;
+            }
+            dtpStartDate.Value = EmployeeToEdit.DateStarted;
+            dtpPVGDate.Value = EmployeeToEdit.PVGDate;
+            txtNINo.Text = EmployeeToEdit.NINo;
+            txtSalary.Text = EmployeeToEdit.Salary.ToString();
+            txtHours.Text = EmployeeToEdit.WeeksHours.ToString();
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
