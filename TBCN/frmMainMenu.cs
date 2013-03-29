@@ -15,11 +15,12 @@ namespace TBCN
         List<int> childIDList;
         List<string> staffIDList;
         List<int> parentIDList;
-
+        Database db;
         public frmMainMenu()
         {
             InitializeComponent();
             data = new DataContainer();
+            db = new Database();
 
             childIDList = new List<int>();
             staffIDList = new List<string>();
@@ -27,20 +28,7 @@ namespace TBCN
             data.loadItems();
         }
 
-        private void frmMainMenu_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the '_12ac3d03DataSet.child' table. You can move, or remove it, as needed.
-
-            //TOOD: Issue Invoice every month.
-
-            //TODO: Check children for room moves
-
-            //TODO: Check renewal of PVG (3 years)
-
-
-
-        }
-
+        //Search for children by name
         private void btnChildren_Click(object sender, EventArgs e)
         {
             bool found = false;
@@ -58,13 +46,14 @@ namespace TBCN
             if (found)
             {
                 lstChildren.Items.Clear();
-                lstChildren.Items.Add(foundChildren);
+                lstChildren.Items.AddRange(foundChildren.ToArray());
             }
             else
                 MessageBox.Show("No children were found.");
 
         }
 
+        //Search for staff by name
         private void btnStaff_Click(object sender, EventArgs e)
         {
             bool found = false;
@@ -82,18 +71,19 @@ namespace TBCN
             if (found)
             {
                 lstChildren.Items.Clear();
-                lstChildren.Items.Add(foundEmployees);
+                lstChildren.Items.AddRange(foundEmployees.ToArray());
             }
             else
                 MessageBox.Show("No staff members were found.");
         }
 
+        //Search for parents by name
         private void btnParents_Click(object sender, EventArgs e)
         {
             bool found = false;
             String parentName = txtStaff.Text;
             List<Parent> foundParents = new List<Parent>();
-            foreach (Parent parent in data.employees)
+            foreach (Parent parent in data.parents)
             {
                 if (parent.FirstName == parentName || parent.LastName == parentName)
                 {
@@ -105,21 +95,27 @@ namespace TBCN
             if (found)
             {
                 lstChildren.Items.Clear();
-                lstChildren.Items.Add(foundParents);
+                lstChildren.Items.AddRange(foundParents.ToArray());
             }
             else
                 MessageBox.Show("No parents were found.");
         }
 
+        //Check for children required to move room
         private void btnCheckAges_Click(object sender, EventArgs e)
         {
+            
             List<Child> childrenToMove = db.childrenToMoveRoom();
             if (childrenToMove.Count == 0)
                 MessageBox.Show("No children are scheduled to move to an older room.");
             else
+            {
+                lstChildren.Items.Clear();
                 lstChildren.Items.AddRange(childrenToMove.ToArray());
+            }
         }
 
+        //Show all children
         private void tabChildren_Enter(object sender, EventArgs e)
         {
             lstChildren.Items.Clear();
@@ -131,6 +127,31 @@ namespace TBCN
             }
         }
 
+        //Show all parents
+        private void tabParents_Enter(object sender, EventArgs e)
+        {
+            lstParents.Items.Clear();
+            parentIDList = new List<int>();
+            foreach (Parent parent in data.parents)
+            {
+                lstParents.Items.Add(parent.FirstName + " " + parent.LastName);
+                parentIDList.Add(parent.ParentID);
+            }
+        }
+
+        //Show all employees
+        private void tabStaff_Enter(object sender, EventArgs e)
+        {
+            lstStaff.Items.Clear();
+            staffIDList = new List<string>();
+            foreach (Employee employee in data.employees)
+            {
+                lstStaff.Items.Add(employee.FirstName + " " + employee.LastName);
+                staffIDList.Add(employee.NINo);
+            }
+        }
+
+        //Select single child - view report
         private void lstChildren_DoubleClick(object sender, EventArgs e)
         {
             Child selectedChild = null;
@@ -159,6 +180,7 @@ namespace TBCN
             }
         }
 
+        //Select single employee - view report
         private void lstStaff_DoubleClick(object sender, EventArgs e)
         {
             Employee selectedEmployee = null;
@@ -187,6 +209,7 @@ namespace TBCN
             }
         }
 
+        //Select single parent - view report
         private void lstParents_DoubleClick(object sender, EventArgs e)
         {
             Parent selectedParent = null;
@@ -215,27 +238,38 @@ namespace TBCN
             }
         }
 
-        private void tabParents_Enter(object sender, EventArgs e)
+        //Add new persons to database...
+
+        private void btnAddParent_Click(object sender, EventArgs e)
         {
-            lstParents.Items.Clear();
-            parentIDList = new List<int>();
-            foreach (Parent parent in data.parents)
+            new frmEditParent("Add a Parent").ShowDialog();
+        }
+
+        private void btnAddStaff_Click(object sender, EventArgs e)
+        {
+            new frmEditEmployee().ShowDialog();
+        }
+
+        private void btnAddChild_Click(object sender, EventArgs e)
+        {
+            new frmEditChild().ShowDialog();
+        }
+
+        private void btnCheckPVGDate_Click(object sender, EventArgs e)
+        {
+            List<Employee> employeesToRenew = db.pvgRenewals();
+            if (employeesToRenew.Count == 0)
+                MessageBox.Show("No employees due for PVG renewal.");
+            else
             {
-                lstParents.Items.Add(parent.FirstName + " " + parent.LastName);
-                parentIDList.Add(parent.ParentID);
+                lstChildren.Items.Clear();
+                lstChildren.Items.AddRange(employeesToRenew.ToArray());
             }
         }
 
-        private void tabStaff_Enter(object sender, EventArgs e)
-        {
-            lstStaff.Items.Clear();
-            staffIDList = new List<string>();
-            foreach (Employee employee in data.employees)
-            {
-                lstStaff.Items.Add(employee.FirstName + " " + employee.LastName);
-                staffIDList.Add(employee.NINo);
-            }
-        }
+
+
+        
 
 
 

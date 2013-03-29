@@ -60,11 +60,12 @@ namespace TBCN
             lblMedical.Text = employee.Medical.ToString();
         }
 
-        private void lblHomePhone_Click(object sender, EventArgs e)
+        private void btnEmployeeReportEdit_Click(object sender, EventArgs e)
         {
-
+            //new frmEditEmployee(employee).ShowDialog();
         }
 
-    
+
+  
     }
 }

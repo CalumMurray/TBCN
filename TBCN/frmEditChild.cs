@@ -96,10 +96,9 @@ namespace TBCN
             newChild.RoomAttending = cmbRoom.Text;
             newChild.DateApplied = dtpStartDate.Value;
             newChild.DateLeft = dtpLeaveDate.Value;
-            newChild.ExtraDays = Convert.ToInt16(txtExtra.Text); //TODO: Number or specific days
+            newChild.ExtraDays = Convert.ToInt16(txtExtra.Text); 
             newChild.Teas = Convert.ToInt16(txtTeas.Text);
             
-            //Get attendance //TODO: Number of specific days
             Control[] attendanceBoxes = this.Controls.Find("chk", false);
             
             for (int i = 0; i < attendanceBoxes.Length; i++)

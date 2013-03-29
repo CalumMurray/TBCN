@@ -349,7 +349,7 @@ namespace TBCN
                 MySqlCommand insertCommand = new MySqlCommand(null, connection);
 
                 // Create and prepare an SQL statement.
-                insertCommand.CommandText = @"INSERT INTO parent 
+                insertCommand.CommandText = @"INSERT INTO employee 
                                             VALUES (@nino, @firstname, @lastname, @position, @gender, @datestarted, @datefinished, @pvgdate, @holidaysentitled, @holidaystaken, @hours, @address, @dob, @salary, @homephone, @mobilephone, @email, @training, @medical, @ec);";
 
                 //Fill in prepared statement parameters
@@ -461,9 +461,9 @@ namespace TBCN
                 return null;
 
             MySqlCommand selectCommand = new MySqlCommand(null, connection);
-            selectCommand.CommandText = @"SELECT * FROM parent
-                                        INNER JOIN address ON parent.home_address = address.Address_1
-                                        INNER JOIN medical_information ON parent.medical_information = medical_information.Medical_ID;";
+            selectCommand.CommandText = @"SELECT * FROM employee
+                                        INNER JOIN address ON employee.home_address = address.Address_1
+                                        INNER JOIN medical_information ON employee.medical_information = medical_information.Medical_ID;";
 
             Console.WriteLine("Executing: [ " + selectCommand.CommandText + "].");
             MySqlDataReader staffReader = selectCommand.ExecuteReader();
@@ -862,9 +862,9 @@ namespace TBCN
                 return null;
 
             MySqlCommand selectCommand = new MySqlCommand(null, connection);
-            selectCommand.CommandText = @"SELECT * FROM parent 
-                                        INNER JOIN address ON parent.Home_Address = address.Address_1
-                                        INNER JOIN medical_information ON parent.Medical_Information = medical_information.Medical_ID
+            selectCommand.CommandText = @"SELECT * FROM employee 
+                                        INNER JOIN address ON employee.Home_Address = address.Address_1
+                                        INNER JOIN medical_information ON employee.Medical_Information = medical_information.Medical_ID
                                         WHERE National_Insurance_Number = @nino;";
             selectCommand.Parameters.AddWithValue("@nino", employeeNINo);
 
@@ -1042,7 +1042,7 @@ namespace TBCN
                 names = staffSearchString.Split(' ');
 
             MySqlCommand selectCommand = new MySqlCommand(null, connection);
-            selectCommand.CommandText = @"SELECT * FROM parent WHERE First_Name = @searchString
+            selectCommand.CommandText = @"SELECT * FROM employee WHERE First_Name = @searchString
                                         OR Last_Name = @searchString
                                         OR (First_Name = @firstname
                                             AND Last_Name = @lastname)
@@ -1185,7 +1185,7 @@ namespace TBCN
                 return false;
 
             MySqlCommand deleteCommand = new MySqlCommand(null, connection);
-            deleteCommand.CommandText = "DELETE FROM parent WHERE National_Insurance_Number = @nino;";
+            deleteCommand.CommandText = "DELETE FROM employee WHERE National_Insurance_Number = @nino;";
             deleteCommand.Parameters.AddWithValue("@nino", nino);
 
             deleteCommand.Prepare();
@@ -1418,7 +1418,7 @@ namespace TBCN
                 return null;
 
             MySqlCommand selectCommand = new MySqlCommand(null, connection);
-            selectCommand.CommandText = @"SELECT * FROM parent
+            selectCommand.CommandText = @"SELECT * FROM employee
                                         WHERE PVG_Date > (DATE_FORMAT(NOW(), '%Y-%m-%d') - INTERVAL 3 YEAR);";
 
             MySqlDataReader employeeReader = selectCommand.ExecuteReader();
