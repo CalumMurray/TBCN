@@ -123,10 +123,10 @@ namespace TBCN
 
             try
             {
-                lblAddress1.Text = data.parents[child.ParentsIDs[0]].HomeAddress.Address1; //Correct?
-                lblCity.Text = data.parents[child.ParentsIDs[0]].HomeAddress.City; //Correct?
-                lblCounty.Text = data.parents[child.ParentsIDs[0]].HomeAddress.County; //Correct?
-                lblPostCode.Text = data.parents[child.ParentsIDs[0]].HomeAddress.PostCode; //Correct?
+                lblAddress1.Text = data.parents[child.ParentsIDs[0]-1].HomeAddress.Address1; //Correct?
+                lblCity.Text = data.parents[child.ParentsIDs[0]-1].HomeAddress.City; //Correct?
+                lblCounty.Text = data.parents[child.ParentsIDs[0]-1].HomeAddress.County; //Correct?
+                lblPostCode.Text = data.parents[child.ParentsIDs[0]-1].HomeAddress.PostCode; //Correct?
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -145,7 +145,7 @@ namespace TBCN
 
             try
             {
-                lblParent1.Text = data.parents[child.ParentsIDs[0]].FirstName + " " + data.parents[child.ParentsIDs[0]].LastName;
+                lblParent1.Text = data.parents[child.ParentsIDs[0]-1].FirstName + " " + data.parents[child.ParentsIDs[0]-1].LastName;
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -154,7 +154,7 @@ namespace TBCN
 
             try
             {
-                lblParent2.Text = data.parents[child.ParentsIDs[1]].FirstName + " " + data.parents[child.ParentsIDs[1]].LastName;
+                lblParent2.Text = data.parents[child.ParentsIDs[1]-1].FirstName + " " + data.parents[child.ParentsIDs[1]-1].LastName;
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -173,8 +173,5 @@ namespace TBCN
             editForm.ShowDialog();
             data = new DataContainer();
         }
-
-
-
     }
 }
