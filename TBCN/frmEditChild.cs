@@ -125,10 +125,10 @@ namespace TBCN
         private void btnAddEC_Click(object sender, EventArgs e)
         {
             
-            //new frmEditParent("Add an Emergency Contact").ShowDialog();
+            new frmEditParent("Add an Emergency Contact").ShowDialog();
 
-            //DataContainer data = new DataContainer(); //Refresh Data from DB
-            //ChildToAdd.EmergencyContactsIDs[0] = data.contacts[(data.contacts.Count - 1].ContactID;
+            DataContainer data = new DataContainer(); //Refresh Data from DB
+            ChildToAdd.EmergencyContactsIDs[0] = data.contacts[(data.contacts.Count - 1)].ContactID;
         }
 
         private void btnAddParent_Click(object sender, EventArgs e)
@@ -149,7 +149,7 @@ namespace TBCN
 
         private void btnAddMedical_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Add Medical Information form.");
+            new frmMedicalInformation().ShowDialog();
         }
 
 

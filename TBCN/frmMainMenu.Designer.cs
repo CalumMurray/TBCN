@@ -34,6 +34,7 @@
             this.txtParents = new System.Windows.Forms.TextBox();
             this.lstParents = new System.Windows.Forms.ListBox();
             this.tabStaff = new System.Windows.Forms.TabPage();
+            this.btnCheckPVGDate = new System.Windows.Forms.Button();
             this.btnAddStaff = new System.Windows.Forms.Button();
             this.btnStaff = new System.Windows.Forms.Button();
             this.txtStaff = new System.Windows.Forms.TextBox();
@@ -46,7 +47,6 @@
             this.lstChildren = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCheckPVGDate = new System.Windows.Forms.Button();
             this.tabParents.SuspendLayout();
             this.tabStaff.SuspendLayout();
             this.tabChildren.SuspendLayout();
@@ -91,8 +91,8 @@
             // 
             // txtParents
             // 
-            this.txtParents.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtParents.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txtParents.ForeColor = System.Drawing.Color.Gray;
             this.txtParents.Location = new System.Drawing.Point(5, 8);
             this.txtParents.Name = "txtParents";
@@ -102,9 +102,9 @@
             // 
             // lstParents
             // 
-            this.lstParents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstParents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lstParents.FormattingEnabled = true;
             this.lstParents.Location = new System.Drawing.Point(5, 34);
             this.lstParents.Name = "lstParents";
@@ -127,6 +127,16 @@
             this.tabStaff.Text = "Staff";
             this.tabStaff.UseVisualStyleBackColor = true;
             this.tabStaff.Enter += new System.EventHandler(this.tabStaff_Enter);
+            // 
+            // btnCheckPVGDate
+            // 
+            this.btnCheckPVGDate.Location = new System.Drawing.Point(369, 168);
+            this.btnCheckPVGDate.Name = "btnCheckPVGDate";
+            this.btnCheckPVGDate.Size = new System.Drawing.Size(75, 23);
+            this.btnCheckPVGDate.TabIndex = 9;
+            this.btnCheckPVGDate.Text = "Check PVG";
+            this.btnCheckPVGDate.UseVisualStyleBackColor = true;
+            this.btnCheckPVGDate.Click += new System.EventHandler(this.btnCheckPVGDate_Click);
             // 
             // btnAddStaff
             // 
@@ -151,8 +161,8 @@
             // 
             // txtStaff
             // 
-            this.txtStaff.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtStaff.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txtStaff.ForeColor = System.Drawing.Color.Gray;
             this.txtStaff.Location = new System.Drawing.Point(5, 8);
             this.txtStaff.Name = "txtStaff";
@@ -162,9 +172,9 @@
             // 
             // lstStaff
             // 
-            this.lstStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lstStaff.FormattingEnabled = true;
             this.lstStaff.Location = new System.Drawing.Point(5, 34);
             this.lstStaff.Name = "lstStaff";
@@ -223,8 +233,8 @@
             // 
             // txtChildren
             // 
-            this.txtChildren.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtChildren.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txtChildren.ForeColor = System.Drawing.Color.Gray;
             this.txtChildren.Location = new System.Drawing.Point(6, 6);
             this.txtChildren.Name = "txtChildren";
@@ -234,9 +244,9 @@
             // 
             // lstChildren
             // 
-            this.lstChildren.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstChildren.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lstChildren.FormattingEnabled = true;
             this.lstChildren.Location = new System.Drawing.Point(6, 32);
             this.lstChildren.Name = "lstChildren";
@@ -246,9 +256,9 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabChildren);
             this.tabControl1.Controls.Add(this.tabStaff);
             this.tabControl1.Controls.Add(this.tabParents);
@@ -269,16 +279,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Teddy Bear Club Nursery";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnCheckPVGDate
-            // 
-            this.btnCheckPVGDate.Location = new System.Drawing.Point(369, 168);
-            this.btnCheckPVGDate.Name = "btnCheckPVGDate";
-            this.btnCheckPVGDate.Size = new System.Drawing.Size(75, 23);
-            this.btnCheckPVGDate.TabIndex = 9;
-            this.btnCheckPVGDate.Text = "Check PVG";
-            this.btnCheckPVGDate.UseVisualStyleBackColor = true;
-            this.btnCheckPVGDate.Click += new System.EventHandler(this.btnCheckPVGDate_Click);
             // 
             // frmMainMenu
             // 
