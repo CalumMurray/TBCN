@@ -62,44 +62,50 @@ namespace TBCN
             List<Employee> foundEmployees = new List<Employee>();
             foreach (Employee employee in data.employees)
             {
-                if (employee.FirstName == employeeName || employee.LastName == employeeName)
+                if (employeeName == employee.FirstName || employeeName == employee.LastName)
                 {
-                    found = true;
-                    foundEmployees.Add(employee);
+                    for (int i = 0; i < staffIDList.Count; i++)
+                    {
 
+                        if (staffIDList[i] == employee.NINo)
+                        {
+                            found = true;
+                            lstStaff.SelectedIndex = i;
+                            // foundChildren.Add(child);
+                        }
+                    }
                 }
             }
-            if (found)
-            {
-                lstChildren.Items.Clear();
-                lstChildren.Items.AddRange(foundEmployees.ToArray());
-            }
-            else
+            if (!found)
                 MessageBox.Show("No staff members were found.");
+                
         }
 
         //Search for parents by name
         private void btnParents_Click(object sender, EventArgs e)
         {
             bool found = false;
-            String parentName = txtStaff.Text;
+            String parentName = txtParents.Text;
             List<Parent> foundParents = new List<Parent>();
             foreach (Parent parent in data.parents)
             {
-                if (parent.FirstName == parentName || parent.LastName == parentName)
+                if (parentName == parent.FirstName || parentName == parent.LastName)
                 {
-                    found = true;
-                    foundParents.Add(parent);
+                    for (int i = 1; i <= parentIDList.Count; i++)
+                    {
 
+                        if (i == parent.ParentID)
+                        {
+                            found = true;
+                            lstParents.SelectedIndex = i - 1;
+                            // foundChildren.Add(child);
+                        }
+                    }
                 }
             }
-            if (found)
-            {
-                lstChildren.Items.Clear();
-                lstChildren.Items.AddRange(foundParents.ToArray());
-            }
-            else
+            if (!found)
                 MessageBox.Show("No parents were found.");
+                
         }
 
         //Check for children required to move room
