@@ -39,7 +39,7 @@ namespace TBCN
             DateTime today = DateTime.Today;
             int age = today.Year - dob.Year;
             if (dob > today.AddYears(-age)) age--;
-            return age + "years old";
+            return age + " years old";
         }
 
         private void lblParent1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -151,12 +151,20 @@ namespace TBCN
             {
                 lblParent1.Text = "";
             }
+            catch (NullReferenceException)
+            {
+                lblParent1.Text = "";
+            }
 
             try
             {
                 lblParent2.Text = data.parents[child.ParentsIDs[1]-1].FirstName + " " + data.parents[child.ParentsIDs[1]-1].LastName;
             }
             catch (ArgumentOutOfRangeException)
+            {
+                lblParent2.Text = "";
+            }
+            catch (NullReferenceException)
             {
                 lblParent2.Text = "";
             }
